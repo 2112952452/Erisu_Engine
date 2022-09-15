@@ -49,91 +49,91 @@ cmake_ninja_workdir = D$:\repos\Erisu$ Engine\cmake-build-debug\
 
 build cmake_object_order_depends_target_Erisu_Engine: phony || CMakeFiles\Erisu_Engine.dir
 
-build CMakeFiles\Erisu_Engine.dir\Function\MeshData.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Function\MeshData.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Application\ErisuApp.cpp || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Function
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Function\main.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Function\main.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Input\InputSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Function
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Platform\Renderer\OpenGLRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Renderer\OpenGLRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\OpenGLRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Renderer\OpenGLRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Renderer
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Platform\Renderer\Renderer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Renderer\Renderer.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Renderer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Renderer\Renderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Renderer
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Platform\OpenGL\glad\src\glad.c.obj: C_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\OpenGL\glad\src\glad.c || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Shader\GLSLShader.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Shader\GLSLShader.cpp || cmake_object_order_depends_target_Erisu_Engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Shader
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window\OpenGLWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Renderer\Window\OpenGLWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window\Window.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Function\Renderer\Window\Window.cpp || cmake_object_order_depends_target_Erisu_Engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Core\Log\LogSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Core\Timer\Timer.cpp || cmake_object_order_depends_target_Erisu_Engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Platform\OpenGL\glad\src\glad.c.obj: C_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\Runtime\Platform\OpenGL\glad\src\glad.c || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\OpenGL\glad\src
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Platform\OpenGL\glad\src
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Platform\ErisuApp.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\ErisuApp.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Source\main.cpp || cmake_object_order_depends_target_Erisu_Engine
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Source\Runtime\Platform\OpenGL\glad\include" -I"D:\repos\Erisu Engine\Source\Runtime\Core\Log\spdlog\include"
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform
-  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
-  TARGET_PDB = Erisu_Engine.pdb
-
-build CMakeFiles\Erisu_Engine.dir\Core\Timer.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Core\Timer.cpp || cmake_object_order_depends_target_Erisu_Engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
-  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Core
-  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
-  TARGET_PDB = Erisu_Engine.pdb
-
-build CMakeFiles\Erisu_Engine.dir\Platform\Window\Window.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Window\Window.cpp || cmake_object_order_depends_target_Erisu_Engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
-  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Window
-  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
-  TARGET_PDB = Erisu_Engine.pdb
-
-build CMakeFiles\Erisu_Engine.dir\Platform\Window\OpenGLWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Window\OpenGLWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
-  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Window
-  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
-  TARGET_PDB = Erisu_Engine.pdb
-
-build CMakeFiles\Erisu_Engine.dir\Platform\Input\InputSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Input\InputSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
-  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Input
-  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
-  TARGET_PDB = Erisu_Engine.pdb
-
-build CMakeFiles\Erisu_Engine.dir\Platform\Shader\GLSLShader.cpp.obj: CXX_COMPILER__Erisu_Engine_Debug D$:\repos\Erisu$ Engine\Platform\Shader\GLSLShader.cpp || cmake_object_order_depends_target_Erisu_Engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Platform\OpenGL\glfw\include" -I"D:\repos\Erisu Engine\Platform\OpenGL\glad\include"
-  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Platform\Shader
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
@@ -145,10 +145,10 @@ build CMakeFiles\Erisu_Engine.dir\Platform\Shader\GLSLShader.cpp.obj: CXX_COMPIL
 #############################################
 # Link the executable Erisu_Engine.exe
 
-build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_Debug CMakeFiles\Erisu_Engine.dir\Function\MeshData.cpp.obj CMakeFiles\Erisu_Engine.dir\Function\main.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Renderer\OpenGLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Renderer\Renderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\OpenGL\glad\src\glad.c.obj CMakeFiles\Erisu_Engine.dir\Platform\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Core\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Window\Window.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Window\OpenGLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Platform\Shader\GLSLShader.cpp.obj | ..\Platform\OpenGL\glfw\lib\lib-vc2022\glfw3.lib
+build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_Debug CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\OpenGLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Renderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Shader\GLSLShader.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window\OpenGLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Renderer\Window\Window.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Platform\OpenGL\glad\src\glad.c.obj CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj | ..\Source\Runtime\Platform\OpenGL\glfw\lib\lib-vc2022\glfw3.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:X86 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = ..\Platform\OpenGL\glfw\lib\lib-vc2022\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = ..\Source\Runtime\Platform\OpenGL\glfw\lib\lib-vc2022\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

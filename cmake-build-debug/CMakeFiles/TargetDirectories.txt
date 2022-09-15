@@ -1,0 +1,3 @@
+D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/Erisu_Engine.dir
+D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/rebuild_cache.dir

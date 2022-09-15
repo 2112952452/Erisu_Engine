@@ -1,0 +1,14 @@
+# ninja log v5
+37	685	6848287237800258	CMakeFiles/Erisu_Engine.dir/Platform/OpenGL/glad/src/glad.c.obj	60c3b09a4065f1d7
+1	693	6849440859927898	CMakeFiles/Erisu_Engine.dir/Platform/Renderer/OpenGLRenderer.cpp.obj	d99e9808bbb309d0
+1	1407	6849440197554987	CMakeFiles/Erisu_Engine.dir/Function/main.cpp.obj	1e247ee19c750b5a
+669	831	6849441865904204	Erisu_Engine.exe	3ea5b010ba438ce5
+22	285	6848411470095610	CMakeFiles/Erisu_Engine.dir/Platform/Window/Window.cpp.obj	fac85dd99556019c
+1	106	6849442242954285	build.ninja	29825f96505ecac1
+11	535	6848411472607343	CMakeFiles/Erisu_Engine.dir/Platform/Renderer/Renderer.cpp.obj	d635f6908a3e75cf
+1	1691	6848411947569779	CMakeFiles/Erisu_Engine.dir/Platform/ErisuApp.cpp.obj	3807b2acfd836fe5
+44	2443	6848287255373082	CMakeFiles/Erisu_Engine.dir/Core/Timer.cpp.obj	3badaa2be1e1e0af
+1	827	6848738149838996	CMakeFiles/Erisu_Engine.dir/Platform/Window/OpenGLWindow.cpp.obj	23eb77e903f507
+7	844	6848697397622047	CMakeFiles/Erisu_Engine.dir/Function/MeshData.cpp.obj	3b2f5915a40983ae
+1	668	6849441864534202	CMakeFiles/Erisu_Engine.dir/Platform/Shader/GLSLShader.cpp.obj	9bad4c35ef9dc83a
+1	1298	6849420861275816	CMakeFiles/Erisu_Engine.dir/Platform/Input/InputSystem.cpp.obj	99da5a8e67ce442c

@@ -8,7 +8,7 @@
 
 #include "LogSystem.h"
 
-namespace Adarion::Core
+namespace Erisu::Core
 {
     LogSystem &LogSystem::GetInstance()
     {
@@ -19,7 +19,9 @@ namespace Adarion::Core
     LogSystem::LogSystem()
     {
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+        console_sink->set_pattern(R"([%^%l%$] [%s:%#] %v)");
         auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFileName_, true);
+        file_sink->set_pattern(R"([%^%l%$] %v)");
 
         const spdlog::sinks_init_list sink_list = { file_sink, console_sink };
         spdlog::init_thread_pool(8192, 1);
@@ -30,7 +32,7 @@ namespace Adarion::Core
                                                           spdlog::thread_pool(),
                                                           spdlog::async_overflow_policy::block);
         pLogger_->set_level(spdlog::level::trace);
-        pLogger_->set_pattern(R"([%^%l%$] [%s:%#] %v)");
+        pLogger_->flush_on(spdlog::level::trace);
 
         spdlog::register_logger(pLogger_);
 
@@ -46,6 +48,9 @@ namespace Adarion::Core
     }
 
     LogSystem::~LogSystem()
-    = default;
+    {
+        spdlog::drop_all();
+        spdlog::shutdown();
+    }
 
 }

@@ -7,7 +7,7 @@
 
 #include <chrono>
 
-namespace Adarion::Core
+namespace Erisu::Core
 {
     class Timer
     {
@@ -19,16 +19,16 @@ namespace Adarion::Core
         void Stop();
         void Reset();
 
-        [[nodiscard]] __int64 GetNanoSeconds() const;
-        [[nodiscard]] __int64 GetMilliseconds() const;
-        [[nodiscard]] __int64 GetNanoDeltaTime() const;
-        [[nodiscard]] __int64 GetMilliDeltaTime() const;
+        [[nodiscard]] int64_t GetNanoSeconds() const;
+        [[nodiscard]] int64_t GetMilliseconds() const;
+        [[nodiscard]] int64_t GetNanoDeltaTime() const;
+        [[nodiscard]] int64_t GetMilliDeltaTime() const;
 
         template<class cast>
-        [[nodiscard]] __int64 GetTime() const;
+        [[nodiscard]] int64_t GetTime() const;
 
         template<class cast>
-        [[nodiscard]] __int64 GetDeltaTime() const;
+        [[nodiscard]] int64_t GetDeltaTime() const;
 
     private:
         using Clock = std::chrono::high_resolution_clock;
@@ -43,10 +43,10 @@ namespace Adarion::Core
     };
 
     template<class cast>
-    __int64 Timer::GetTime() const { return std::chrono::duration_cast<cast>((isRunning ? Clock::now() : stopTime) - startTime).count(); }
+    int64_t Timer::GetTime() const { return std::chrono::duration_cast<cast>((isRunning ? Clock::now() : stopTime) - startTime).count(); }
 
     template<class cast>
-    __int64 Timer::GetDeltaTime() const { return std::chrono::duration_cast<cast>(deltaTime).count(); }
+    int64_t Timer::GetDeltaTime() const { return std::chrono::duration_cast<cast>(deltaTime).count(); }
 }
 
 #endif //ERISU_ENGINE_TIMER_H

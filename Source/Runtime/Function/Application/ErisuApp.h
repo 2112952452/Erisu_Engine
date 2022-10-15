@@ -6,17 +6,19 @@
 #define ERISU_ENGINE_ERISUAPP_H
 
 #include <memory>
-#include "../Renderer/Renderer.h"
-#include "../../Core/Timer/Timer.h"
+#include <Timer/Timer.h>
 
-namespace Adarion::Platform
+#include "../Object/Scene.h"
+#include "../Render/GLRenderer.h"
+
+namespace Erisu::Function
 {
     class ErisuApp
     {
     public:
-        explicit ErisuApp(Renderer *);
+        ErisuApp();
 
-        ErisuApp() = default;
+        ErisuApp(std::shared_ptr<GLRenderer> renderer, std::shared_ptr<Scene> scene);
 
         ErisuApp(const ErisuApp &) = delete;
 
@@ -30,8 +32,10 @@ namespace Adarion::Platform
 
         void Run();
 
-        [[maybe_unused]]
-        void SetRenderer(Renderer *);
+        void SetRenderer(const std::shared_ptr<GLRenderer> &pRenderer);
+
+        void SetScene(const std::shared_ptr<Scene> &pScene);
+
 
     private:
         int calculateFPS();
@@ -44,12 +48,13 @@ namespace Adarion::Platform
         virtual void UpdateLogic();
 
         virtual void Shutdown();
-
     protected:
         bool isRunning_ = false;
 
         Core::Timer timer_{};
-        std::unique_ptr<Renderer> pRenderer_;
+        std::shared_ptr<GLRenderer> pRenderer_;
+        std::shared_ptr<Scene> pScene_;
+
     };
 
 }

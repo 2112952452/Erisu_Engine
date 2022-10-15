@@ -9,10 +9,7 @@
 #include <string>
 #include <mutex>
 
-#define SPDLOG_COMPILED_LIB
-#define SPDLOG_FMT_EXTERNAL
-
-namespace Adarion::Core
+namespace Erisu::Core
 {
     class LogSystem
     {
@@ -44,15 +41,17 @@ namespace Adarion::Core
     };
 }
 
+#define LOG_FATAL_CALLBACK()    Erisu::Core::LogSystem::Close(); std::abort()
 
-#define LOG_FATAL_CALLBACK() Adarion::Core::LogSystem::Close(); std::abort()
+#define LOG_INFO(...)           SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::info, __VA_ARGS__)
+#define LOG_WARNING(...)        SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::warn, __VA_ARGS__)
+#define LOG_ERROR(...)          SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::err, __VA_ARGS__)
+#define LOG_FATAL(...)          do { SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::critical, __VA_ARGS__); LOG_FATAL_CALLBACK(); } while (0)
 
-#define LOG_HELPER(LOG_LEVEL, ...) Adarion::Core::LogSystem::GetInstance().Log##LOG_LEVEL(__VA_ARGS__)
-#define LOG_INFO(...) SPDLOG_LOGGER_CALL(Adarion::Core::LogSystem::GetLogger(), spdlog::level::info, __VA_ARGS__)
-#define LOG_WARNING(...) SPDLOG_LOGGER_CALL(Adarion::Core::LogSystem::GetLogger(), spdlog::level::warn, __VA_ARGS__)
-#define LOG_ERROR(...) SPDLOG_LOGGER_CALL(Adarion::Core::LogSystem::GetLogger(), spdlog::level::err, __VA_ARGS__)
-#define LOG_FATAL(...) do { SPDLOG_LOGGER_CALL(Adarion::Core::LogSystem::GetLogger(), spdlog::level::critical, __VA_ARGS__); \
- LOG_FATAL_CALLBACK(); } while (0)
-#define LOG_DEBUG(...) SPDLOG_LOGGER_CALL(Adarion::Core::LogSystem::GetLogger(), spdlog::level::debug, __VA_ARGS__)
+#if defined(_DEBUG) || defined(DEBUG)
+#define LOG_DEBUG(...)      SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::debug, __VA_ARGS__)
+#else
+#define LOG_DEBUG(...)      do {} while (0)
+#endif
 
 #endif //ERISU_ENGINE_LOGSYSTEM_H

@@ -1,51 +1,68 @@
 cmake_minimum_required(VERSION 3.10.0)
 
-project(Erisu_Engine VERSION 0.1.0)
+project(Erisu_Engine VERSION 0.1.1)
 
 set(CMAKE_CXX_STANDARD 20)
 
 set(RUNTIME_PATH ${CMAKE_SOURCE_DIR}/Source/Runtime)
+set(CMAKE_CXX_FLAGS "-Xclang -fcxx-exceptions -O2 -openmp")
 
-set(GLFW_INCLUDE_DIR ${RUNTIME_PATH}/Platform/OpenGL/glfw/include)
-set(GLFW_LIB ${RUNTIME_PATH}/Platform/OpenGL/glfw/lib/lib-vc2022/glfw3.lib)
-set(GLAD_INCLUDE_DIR ${RUNTIME_PATH}/Platform/OpenGL/glad/include)
+# 64-bit
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
 
 #添加依赖的头文件
 include_directories(
-        ${GLFW_INCLUDE_DIR}
-        ${GLAD_INCLUDE_DIR}
-        ${RUNTIME_PATH}/Core/Log/spdlog/include
+        ${RUNTIME_PATH}/Core/
+        ${RUNTIME_PATH}/Core/include/
+        ${RUNTIME_PATH}/Function/Object/Component
 )
 
-#收集文件
-file(GLOB FUNCTION_SOURCES ${RUNTIME_PATH}/Function/*/*.cpp)
-file(GLOB FUNCTION_HEADERS ${RUNTIME_PATH}/Function/*/*.h)
+#添加依赖的库文件
+find_package(glad CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(eigen3 CONFIG REQUIRED)
+find_package(assimp CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
+find_package(freetype CONFIG REQUIRED)
+find_package(freetype-gl CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 
-file(GLOB _FUNCTION_SOURCES ${RUNTIME_PATH}/Function/*/*/*.cpp)
-file(GLOB _FUNCTION_HEADERS ${RUNTIME_PATH}/Function/*/*/*.h)
-
-file(GLOB PLATFORM_SOURCES ${RUNTIME_PATH}/Platform/*/*.cpp)
-file(GLOB PLATFORM_HEADERS ${RUNTIME_PATH}/Platform/*/*.h)
-
-file(GLOB CORE_SOURCES ${RUNTIME_PATH}/Core/*/*.cpp)
-file(GLOB CORE_HEADERS ${RUNTIME_PATH}/Core/*/*.h)
+find_path(STB_INCLUDE_DIRS "stb_image.h")
 
 #生成可执行程序
 add_executable(${PROJECT_NAME}
-        ${FUNCTION_SOURCES}
-        ${FUNCTION_HEADERS}
-
-        ${_FUNCTION_SOURCES}
-        ${_FUNCTION_HEADERS}
-        ${PLATFORM_SOURCES}
-        ${PLATFORM_HEADERS}
-        ${CORE_SOURCES}
-        ${CORE_HEADERS}
-
-        ${GLAD_INCLUDE_DIR}/../src/glad.c
         Source/main.cpp
-)
+        ${RUNTIME_PATH}/Core/Global/Global.h ${RUNTIME_PATH}/Core/DataStruct/OctTree.cpp ${RUNTIME_PATH}/Core/Log/LogSystem.cpp ${RUNTIME_PATH}/Core/Timer/Timer.cpp
+        "Source/Runtime/Function/2D ToolKit/Component/TextRenderer.cpp"
+        Source/Runtime/Function/Application/ErisuApp.cpp
+        "Source/Runtime/Function/2D ToolKit/Component/SpriteRenderer.cpp"
+        Source/Runtime/Function/Input/InputSystem.cpp
+        Source/Runtime/Function/Object/Component/IComponent.cpp
+        Source/Runtime/Function/Object/Component/MeshRenderer.cpp
+        Source/Runtime/Function/Object/Component/RendererQueue.cpp
+        Source/Runtime/Function/Object/Camera.cpp
+        Source/Runtime/Function/Object/GameObject.cpp
+        Source/Runtime/Function/Object/Light.cpp
+        Source/Runtime/Function/Object/Scene.cpp
+        Source/Runtime/Function/Object/Transform.cpp
+        Source/Runtime/Function/Render/Material/Material.cpp
+        Source/Runtime/Function/Render/Mesh/GLMesh.cpp
+        Source/Runtime/Function/Render/Shader/GLShader.cpp
+        Source/Runtime/Function/Render/Window/GLWindow.cpp
+        Source/Runtime/Function/Render/Window/ImGuiWindow.cpp
+        Source/Runtime/Function/Render/GLRenderer.cpp
+        Source/Runtime/Function/Render/GLTexture.cpp
+        Source/Runtime/Function/Render/PostProcessBase.cpp
+        Source/Runtime/Function/Utility/ImGuiUtility.cpp
+        Source/Runtime/Resource/ResourceManager.cpp
+        Source/Runtime/Resource/ModelImport/ModelImport.cpp
+        Source/Runtime/UserComponent/TestComponent.cpp
+        )
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 target_link_libraries(${PROJECT_NAME}
-        ${GLFW_LIB}
+        PRIVATE glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only nlohmann_json::nlohmann_json freetype freetype-gl
         )
+

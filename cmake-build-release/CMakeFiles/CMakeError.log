@@ -1,0 +1,14 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: D:/repos/Erisu Engine/cmake-build-release/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_52afb && [1/2] Building C object CMakeFiles\cmTC_52afb.dir\CheckIncludeFile.c.obj
+FAILED: CMakeFiles/cmTC_52afb.dir/CheckIncludeFile.c.obj 
+"C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\bin\clang-cl.exe"  /nologo   -m64  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\cmTC_52afb.dir\CheckIncludeFile.c.obj /FdCMakeFiles\cmTC_52afb.dir\ -c -- "D:\repos\Erisu Engine\cmake-build-release\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+D:\repos\Erisu Engine\cmake-build-release\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1,10): fatal error: 'pthread.h' file not found
+#include <pthread.h>
+         ^~~~~~~~~~~
+1 error generated.
+ninja: build stopped: subcommand failed.
+
+
+

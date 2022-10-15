@@ -3,7 +3,7 @@
 //
 
 #include "Timer.h"
-namespace Adarion::Core
+namespace Erisu::Core
 {
     Timer::Timer() : startTime(Clock::now()), stopTime(Clock::now()), deltaTime(0), isRunning(false)
     {}
@@ -26,22 +26,25 @@ namespace Adarion::Core
     void Timer::Reset()
     {
         deltaTime = {};
-        isRunning = false;
+        startTime = Clock::now();
+        stopTime = Clock::now();
+
+        isRunning = true;
     }
 
-    __int64 Timer::GetNanoSeconds() const
+    int64_t Timer::GetNanoSeconds() const
     {
         return std::chrono::duration_cast<std::chrono::nanoseconds>(
                 (isRunning ? Clock::now() : stopTime) - startTime).count();
     }
 
-    __int64 Timer::GetNanoDeltaTime() const { return std::chrono::duration_cast<std::chrono::nanoseconds>(deltaTime).count(); }
+    int64_t Timer::GetNanoDeltaTime() const { return std::chrono::duration_cast<std::chrono::nanoseconds>(deltaTime).count(); }
 
-    __int64 Timer::GetMilliseconds() const
+    int64_t Timer::GetMilliseconds() const
     {
         return std::chrono::duration_cast<std::chrono::milliseconds>(
                 (isRunning ? Clock::now() : stopTime) - startTime).count();
     }
 
-    __int64 Timer::GetMilliDeltaTime() const { return std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count(); }
+    int64_t Timer::GetMilliDeltaTime() const { return std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count(); }
 }

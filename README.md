@@ -1,3 +1,3 @@
 # Erisu_Engine
 
-Personal Game Engine based OpenGL for studying
+Personal Game Engine based on OpenGL for studying

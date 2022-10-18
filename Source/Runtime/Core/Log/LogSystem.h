@@ -48,6 +48,8 @@ namespace Erisu::Core
 #define LOG_ERROR(...)          SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::err, __VA_ARGS__)
 #define LOG_FATAL(...)          do { SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::critical, __VA_ARGS__); LOG_FATAL_CALLBACK(); } while (0)
 
+#define LOG_ERROR_IF(condition, ...)    do { if (condition) { LOG_ERROR(__VA_ARGS__);  return; } } while (0)
+
 #if defined(_DEBUG) || defined(DEBUG)
 #define LOG_DEBUG(...)      SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::debug, __VA_ARGS__)
 #else

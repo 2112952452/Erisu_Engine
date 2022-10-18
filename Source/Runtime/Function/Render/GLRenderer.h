@@ -10,9 +10,9 @@
 
 #include "Window/GLWindow.h"
 #include "Shader/GLShader.h"
-#include "../Object/Camera.h"
+#include "../Base/Camera.h"
 #include "Window/ImGuiWindow.h"
-#include "../Object/Scene.h"
+#include "../Base/Scene.h"
 #include "PostProcessBase.h"
 
 namespace Erisu::Function

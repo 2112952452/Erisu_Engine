@@ -5,7 +5,7 @@ project(Erisu_Engine VERSION 0.1.1)
 set(CMAKE_CXX_STANDARD 20)
 
 set(RUNTIME_PATH ${CMAKE_SOURCE_DIR}/Source/Runtime)
-set(CMAKE_CXX_FLAGS "-Xclang -fcxx-exceptions -O2 -openmp")
+set(CMAKE_CXX_FLAGS "-Xclang -fcxx-exceptions -O2")
 
 # 64-bit
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
 include_directories(
         ${RUNTIME_PATH}/Core/
         ${RUNTIME_PATH}/Core/include/
-        ${RUNTIME_PATH}/Function/Object/Component
+        ${RUNTIME_PATH}/Function/Base/Component
 )
 
 #添加依赖的库文件
@@ -28,7 +28,7 @@ find_package(freetype-gl CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-find_path(STB_INCLUDE_DIRS "stb_image.h")
+find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_truetype.h" "stb_image_write.h")
 
 #生成可执行程序
 add_executable(${PROJECT_NAME}
@@ -38,14 +38,14 @@ add_executable(${PROJECT_NAME}
         Source/Runtime/Function/Application/ErisuApp.cpp
         "Source/Runtime/Function/2D ToolKit/Component/SpriteRenderer.cpp"
         Source/Runtime/Function/Input/InputSystem.cpp
-        Source/Runtime/Function/Object/Component/IComponent.cpp
-        Source/Runtime/Function/Object/Component/MeshRenderer.cpp
-        Source/Runtime/Function/Object/Component/RendererQueue.cpp
-        Source/Runtime/Function/Object/Camera.cpp
-        Source/Runtime/Function/Object/GameObject.cpp
-        Source/Runtime/Function/Object/Light.cpp
-        Source/Runtime/Function/Object/Scene.cpp
-        Source/Runtime/Function/Object/Transform.cpp
+        Source/Runtime/Function/Base/Component/IComponent.cpp
+        Source/Runtime/Function/Base/Component/MeshRenderer.cpp
+        Source/Runtime/Function/Base/Component/RendererQueue.cpp
+        Source/Runtime/Function/Base/Camera.cpp
+        Source/Runtime/Function/Base/GameObject.cpp
+        Source/Runtime/Function/Base/Light.cpp
+        Source/Runtime/Function/Base/Scene.cpp
+        Source/Runtime/Function/Base/Transform.cpp
         Source/Runtime/Function/Render/Material/Material.cpp
         Source/Runtime/Function/Render/Mesh/GLMesh.cpp
         Source/Runtime/Function/Render/Shader/GLShader.cpp

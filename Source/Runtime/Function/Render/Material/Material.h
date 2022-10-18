@@ -6,7 +6,7 @@
 #define ERISU_ENGINE_MATERIAL_H
 
 #include "../Shader/GLShader.h"
-#include "../../Object/Camera.h"
+#include "../../Base/Camera.h"
 #include "assimp/vector3.h"
 #include <memory>
 

@@ -60,7 +60,7 @@ return;\
         [[nodiscard]] int64_t GetId() const;
         [[nodiscard]] bool IsEnabled() const;
 
-        void SetActive(bool active);
+        virtual void SetActive(bool active);
         void SetName(const std::string &name);
 
         virtual Json Serialize() const;
@@ -71,3 +71,4 @@ return;\
 }
 
 #endif //ERISU_ENGINE_ICOMPONENT_H
+#undef Interface

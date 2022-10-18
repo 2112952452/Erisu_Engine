@@ -51,8 +51,8 @@ build cmake_object_order_depends_target_Erisu_Engine: phony || CMakeFiles\Erisu_
 
 build CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\main.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -60,8 +60,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj: CXX_COMPILER__Erisu_Engin
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Core\DataStruct\OctTree.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -69,8 +69,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Core\Log\LogSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -78,8 +78,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj: CXX
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Core\Timer\Timer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -87,8 +87,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj: CXX_C
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Component\TextRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -96,8 +96,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\T
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Application\ErisuApp.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -105,8 +105,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.c
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Component\SpriteRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -114,89 +114,89 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\S
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Input\InputSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\IComponent.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Component\IComponent.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\IComponent.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\IComponent.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\MeshRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Component\MeshRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\MeshRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\RendererQueue.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Component\RendererQueue.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\RendererQueue.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\RendererQueue.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Camera.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Camera.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Camera.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\GameObject.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\GameObject.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\GameObject.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Light.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Light.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Light.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Scene.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Scene.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Scene.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
-build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Transform.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Object\Transform.cpp || cmake_object_order_depends_target_Erisu_Engine
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Transform.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Material\Material.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -204,8 +204,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Materi
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Mesh\GLMesh.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -213,8 +213,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Shader\GLShader.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -222,8 +222,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Window\GLWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -231,8 +231,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -240,8 +240,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWin
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\GLRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -249,8 +249,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\GLTexture.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -258,8 +258,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.o
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\PostProcessBase.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -267,8 +267,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Function\Utility\ImGuiUtility.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -276,8 +276,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.c
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Resource\ResourceManager.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -285,8 +285,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.ob
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\Resource\ModelImport\ModelImport.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -294,8 +294,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImpor
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj: CXX_COMPILER__Erisu_Engine_MinSizeRel D$:\repos\Erisu$ Engine\Source\Runtime\UserComponent\TestComponent.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
-  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Object\Component" -imsvcD:\vcpkg\installed\x64-windows\include
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
@@ -309,8 +309,8 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp
 #############################################
 # Link the executable Erisu_Engine.exe
 
-build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_MinSizeRel CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\IComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\MeshRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Component\RendererQueue.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Camera.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\GameObject.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Light.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Scene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Object\Transform.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj | D$:\vcpkg\installed\x64-windows\lib\glad.lib D$:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib D$:\vcpkg\installed\x64-windows\lib\imgui.lib D$:\vcpkg\installed\x64-windows\lib\spdlog.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib D$:\vcpkg\installed\x64-windows\lib\freetype-gl.lib D$:\vcpkg\installed\x64-windows\lib\pugixml.lib D$:\vcpkg\installed\x64-windows\lib\glfw3dll.lib D$:\vcpkg\installed\x64-windows\lib\fmt.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib D$:\vcpkg\installed\x64-windows\lib\glew32.lib
-  FLAGS = -Xclang -fcxx-exceptions -O2 -openmp -m64 /MD /O1 /Ob1 /DNDEBUG
+build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_MinSizeRel CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\IComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\RendererQueue.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj | D$:\vcpkg\installed\x64-windows\lib\glad.lib D$:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib D$:\vcpkg\installed\x64-windows\lib\imgui.lib D$:\vcpkg\installed\x64-windows\lib\spdlog.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib D$:\vcpkg\installed\x64-windows\lib\freetype-gl.lib D$:\vcpkg\installed\x64-windows\lib\pugixml.lib D$:\vcpkg\installed\x64-windows\lib\glfw3dll.lib D$:\vcpkg\installed\x64-windows\lib\fmt.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib D$:\vcpkg\installed\x64-windows\lib\glew32.lib
+  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /O1 /Ob1 /DNDEBUG
   LINK_FLAGS = /machine:x64 /INCREMENTAL:NO /subsystem:console
   LINK_LIBRARIES = D:\vcpkg\installed\x64-windows\lib\glad.lib  D:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib  D:\vcpkg\installed\x64-windows\lib\imgui.lib  D:\vcpkg\installed\x64-windows\lib\spdlog.lib  D:\vcpkg\installed\x64-windows\lib\freetype.lib  D:\vcpkg\installed\x64-windows\lib\freetype-gl.lib  D:\vcpkg\installed\x64-windows\lib\pugixml.lib  D:\vcpkg\installed\x64-windows\lib\glfw3dll.lib  D:\vcpkg\installed\x64-windows\lib\fmt.lib  opengl32.lib  glu32.lib  D:\vcpkg\installed\x64-windows\lib\freetype.lib  D:\vcpkg\installed\x64-windows\lib\glew32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir

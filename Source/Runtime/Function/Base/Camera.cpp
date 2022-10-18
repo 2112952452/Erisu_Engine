@@ -96,7 +96,7 @@ namespace Erisu::Function
 
         projection << 1 / aspect_, 0, 0, 0,
                 0, 1, 0, 0,
-                0, 0, 2 / (near_ - far_), (near_ + far_) / (near_ - far_),
+                0, 0, -2 / (far_ - near_), -(far_ + near_) / (far_ - near_),
                 0, 0, 0, 1;
 
         return projection;

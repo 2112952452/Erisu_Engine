@@ -100,7 +100,7 @@ CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Erisu_Engine
 CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/lld-link.exe
 
 //make program
-CMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/PROGRA~1/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -328,6 +328,9 @@ glad_DIR:PATH=D:/vcpkg/installed/x64-windows/share/glad
 
 //The directory containing a CMake configuration file for glfw3.
 glfw3_DIR:PATH=D:/vcpkg/installed/x64-windows/share/glfw3
+
+//The directory containing a CMake configuration file for glm.
+glm_DIR:PATH=D:/vcpkg/installed/x64-windows/share/glm
 
 //The directory containing a CMake configuration file for imgui.
 imgui_DIR:PATH=D:/vcpkg/installed/x64-windows/share/imgui

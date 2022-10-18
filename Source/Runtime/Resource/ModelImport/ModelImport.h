@@ -5,7 +5,7 @@
 #ifndef ERISU_ENGINE_MODELIMPORT_H
 #define ERISU_ENGINE_MODELIMPORT_H
 
-#include "../Function/Object/GameObject.h"
+#include "../Function/Base/GameObject.h"
 #include "../Function/Render/Material/Material.h"
 
 namespace Erisu::Resource

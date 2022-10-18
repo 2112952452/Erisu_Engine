@@ -4,7 +4,7 @@
 
 #include "ModelImport.h"
 #include "Log/LogSystem.h"
-#include "../../Function/Object/Component/MeshRenderer.h"
+#include "../../Function/Base/Component/MeshRenderer.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>

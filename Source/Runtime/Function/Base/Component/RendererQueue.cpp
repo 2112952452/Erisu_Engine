@@ -81,12 +81,21 @@ namespace Erisu::Function
         // Show all SpriteRenderer
         for (const auto &renderer : renderers_)
         {
-            if (ImGui::TreeNode(("SpriteRenderer (Priority: " + std::to_string(renderer.first) + ")").c_str()))
+            if (ImGui::TreeNode(("Renderer (Priority: " + std::to_string(renderer.first) + ")").c_str()))
             {
                 renderer.second->ShowInInspector();
                 ImGui::TreePop();
             }
         }
 
+    }
+
+    void RendererQueue::UpdateSubComponents()
+    {
+        for (const auto &renderer : renderers_)
+        {
+            renderer.second->SetScene(scene_.lock());
+            renderer.second->SetGameObject(gameObject_.lock());
+        }
     }
 }

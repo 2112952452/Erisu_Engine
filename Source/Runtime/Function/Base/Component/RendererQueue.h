@@ -43,6 +43,7 @@ namespace Erisu::Function
         void Render() override;
 
         void ShowInInspector() override;
+        void UpdateSubComponents(); // update all sub components' scene and game object
     };
 
     template<class ...TArg>

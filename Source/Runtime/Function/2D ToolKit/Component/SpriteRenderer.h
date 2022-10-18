@@ -5,7 +5,7 @@
 #ifndef ERISU_ENGINE_SPRITERENDERER_H
 #define ERISU_ENGINE_SPRITERENDERER_H
 
-#include "../../Object/Component/IComponent.h"
+#include "../../Base/Component/IComponent.h"
 #include "../../Render/GLTexture.h"
 #include "ISortableComponent.h"
 

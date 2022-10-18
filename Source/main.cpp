@@ -4,8 +4,8 @@
 
 #include "Runtime/Function/Render/GLRenderer.h"
 #include "Runtime/Function/Application/ErisuApp.h"
-#include "Runtime/Function/Object/GameObject.h"
-#include "Runtime/Function/Object/Light.h"
+#include "Runtime/Function/Base/GameObject.h"
+#include "Runtime/Function/Base/Light.h"
 #include "Runtime/Resource/ModelImport/ModelImport.h"
 #include "RendererQueue.h"
 #include "Runtime/Function/Utility/ImGuiUtility.h"
@@ -101,9 +101,7 @@ int main()
     app.SetScene(scene);
     app.Run();
 
-
     scene->Destroy();
-
     return 0;
 }
 
@@ -159,10 +157,12 @@ void InitScene(std::shared_ptr<Scene> &scene)
     std::shared_ptr<GameObject> sprite = std::make_shared<GameObject>("Sprite");
     std::shared_ptr<RendererQueue> spriteRendererQueue = std::make_shared<RendererQueue>("SpriteRendererQueue");
     sprite->AddComponent(spriteRendererQueue);
+    scene->AddGameObject(sprite);
 
     spriteRendererQueue->CreateSpriteRenderer("Texture2", R"(C:\Users\21129\Desktop\下载.png)", 1);
     spriteRendererQueue->CreateSpriteRenderer("Texture1", R"(C:\Users\21129\Desktop\1.png)", 2);
     spriteRendererQueue->CreateSpriteRenderer("Texture0", R"(C:\Users\21129\Desktop\Tlinw12l_1.png)", 0);
-    spriteRendererQueue->CreateTextRenderer("Text", L"Hello World", 20, 3);
-    scene->AddGameObject(sprite);
+    spriteRendererQueue->CreateTextRenderer("Text", "努力未来 A BEAUTIFUL STAR", 120, 3);
+    spriteRendererQueue->CreateTextRenderer("Text", "努力未来 A BEAUTIFUL STAR", 120, 4);
+
 }

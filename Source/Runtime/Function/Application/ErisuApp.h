@@ -8,7 +8,7 @@
 #include <memory>
 #include <Timer/Timer.h>
 
-#include "../Object/Scene.h"
+#include "../Base/Scene.h"
 #include "../Render/GLRenderer.h"
 
 namespace Erisu::Function

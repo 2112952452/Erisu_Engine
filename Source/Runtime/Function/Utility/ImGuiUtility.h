@@ -6,7 +6,7 @@
 #define ERISU_ENGINE_IMGUIUTILITY_H
 
 #include <imgui.h>
-#include "../Object/GameObject.h"
+#include "../Base/GameObject.h"
 #include "MeshRenderer.h"
 
 namespace Erisu::Function

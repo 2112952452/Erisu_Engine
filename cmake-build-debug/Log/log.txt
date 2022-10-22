@@ -2,60 +2,16 @@
 [warning] Engine is under development, please do not use it in production environment.
 [debug] GLAD and GLFW Initialized
 [debug] Loading texture: Resources\Textures\ErisuWhite.png
-[debug] aabb box: [0, 0, 0], [552.8, 0, 559.2]
-[debug] aabb box: [213, 548, 227], [343, 548, 332]
-[debug] aabb box: [0, 548.8, 0], [556, 548.8, 559.2]
-[debug] aabb box: [0, 0, 559.2], [556, 548.8, 559.2]
-[debug] [Object id: 1807194222944, name: front_wall]: Destroyed.
-[debug] aabb box: [0, 0, 0], [0, 548.8, 559.2]
-[debug] aabb box: [549.6, 0, 0], [556, 548.8, 559.2]
-[debug] aabb box: [82, 0, 65], [290, 165, 272]
-[debug] aabb box: [265, 0, 247], [472, 330, 456]
-[debug] aabb box: [-0.158207, 1.702011, 0.30841], [0.146492, 1.8854511, 0.437756]
-[debug] Loading texture: D:\Games202\homework0\assets\mary\MC003_Kozakura_Mari.png
-[debug] aabb box: [-0.943624, 0.001194, -1.161887], [0.943376, 3.407185, 0.70835]
-[debug] aabb box: [-1, 0, -1], [1, 0, 1]
-[debug] aabb box: [-0.585967, -0.759125, -0.696223], [0.585967, 0.984026, 1.07776]
-[debug] Loading texture: C:\Users\21129\Desktop\下载.png
-[debug] Loading texture: C:\Users\21129\Desktop\1.png
-[debug] Loading texture: C:\Users\21129\Desktop\Tlinw12l_1.png
+[debug] Loading texture: D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\神社_神社内B.png
+[debug] Loading texture: C:\Users\21129\Desktop\349.png
 [debug] ImGui Initialized
 [debug] OpenGL Renderer Initialized
 [debug] Application Initialized.
 [info] Erisu Engine Shutdown.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194225536, name: floor]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194221216, name: ceiling]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194222944, name: green_wall]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194222080, name: short_block]: Destroyed.
-[debug] [Object id: 1807194219776, name: light]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194221792, name: back_wall]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194223808, name: red_wall]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194223520, name: tall_block]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807194222656, name: 文本]: Destroyed.
-[debug] [Object id: 1807194225824, name: Body_MC003_Kozakura_Mari_face]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807291855984, name: 平面]: Destroyed.
-[debug] Component destroyed: Mesh0
-[debug] [Object id: 1807291850224, name: defaultobject]: Destroyed.
+[debug] Component destroyed: GalBackground
 [debug] Component destroyed: Text
-[debug] Component destroyed: Text
-[debug] Component destroyed: Texture1
-[debug] Component destroyed: Texture2
-[debug] Component destroyed: Texture0
-[debug] Component destroyed: SpriteRendererQueue
-[debug] [Object id: 1807194219488, name: cornell_box.obj]: Destroyed.
-[debug] [Object id: 1807194218624, name: Marry.obj]: Destroyed.
-[debug] [Object id: 1807291853680, name: plane.obj]: Destroyed.
-[debug] [Object id: 1807291852528, name: spot_control_mesh.obj]: Destroyed.
-[debug] [Object id: 1807291852240, name: Sprite]: Destroyed.
+[debug] Component destroyed: Background
+[debug] Component destroyed: TextBox
+[debug] [Object id: 1680598828448, name: GalBackground]: Destroyed.
+[debug] [Object id: 1680598829888, name: TextBoxObj]: Destroyed.
 [debug] [Scene Main Scene]: Destroyed.

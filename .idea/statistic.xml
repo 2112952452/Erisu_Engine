@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/Source/Runtime/Core/include" />
         <option value="$PROJECT_DIR$/Source/Runtime/Core/assimp" />
         <option value="$PROJECT_DIR$/Source/Runtime/Core/freetype" />
+        <option value="$PROJECT_DIR$/Source/Resources" />
       </list>
     </option>
   </component>

@@ -13,16 +13,17 @@ namespace Erisu::Function
     class TextRenderer : public ISortableComponent
     {
     private:
-        // Template Struct
-        struct __Text__Renderer__Char
+        struct Text_Renderer_Char
         {
             unsigned int textureID;         // ID handle of the glyph texture
+            [[deprecated]]
+            unsigned int outlineTexID;      // Temporarily discarded
             Eigen::Vector2i size;           // Size of glyph
             Eigen::Vector2i bearing;        // Offset from baseline to left/top of glyph
             unsigned int advance;           // Offset to advance to next glyph
         };
 
-        using TRChar = __Text__Renderer__Char;
+        using TRChar = Text_Renderer_Char;
 
     private:
         std::string fontPath_;
@@ -35,7 +36,7 @@ namespace Erisu::Function
         Transform transform_ {};
 
         std::unique_ptr<GLShader> fontShader_;
-        std::unordered_map<wchar_t, __Text__Renderer__Char> characters;
+        std::unordered_map<wchar_t, Text_Renderer_Char> characters;
 
         bool outlineEnable_ = true;
         float outlineWidth_ = 5;
@@ -44,7 +45,7 @@ namespace Erisu::Function
         void LoadCharacter();
 
     public:
-        inline static std::string defaultFontPath = R"(C:\Users\21129\AppData\Local\Microsoft\Windows\Fonts\方正兰亭中粗黑_GBK.TTF)";
+        inline static std::string defaultFontPath = R"(Resources/font/SourceHanSansSC-Normal.otf)";
         inline static int defaultFontSize = 20;
 
         static void SetDefaultFontPath(const std::string &defaultFontPath);

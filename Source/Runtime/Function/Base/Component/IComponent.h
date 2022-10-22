@@ -36,8 +36,10 @@ return;\
 
         friend class GameObject;
     protected:
-        void SetGameObject(const std::shared_ptr<GameObject> &gameObject);
-        void SetScene (const std::shared_ptr<Scene> &scene);
+        virtual void SetScene (const std::shared_ptr<Scene> &scene);
+
+        virtual void SetGameObject(const std::shared_ptr<GameObject> &gameObject);
+
     protected:
         std::weak_ptr<GameObject> gameObject_ {};
         std::weak_ptr<Scene> scene_ {};

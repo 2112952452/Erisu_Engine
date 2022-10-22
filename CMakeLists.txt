@@ -58,7 +58,7 @@ add_executable(${PROJECT_NAME}
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp
         Source/Runtime/UserComponent/TestComponent.cpp
-        )
+        "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.h" "Source/Runtime/Function/Galgame ToolKit/Struct/GalText.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.h")
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 

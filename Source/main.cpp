@@ -10,6 +10,8 @@
 #include "RendererQueue.h"
 #include "Runtime/Function/Utility/ImGuiUtility.h"
 #include "Runtime/Function/Input/InputSystem.h"
+#include "Runtime/Function/Galgame ToolKit/Component/GalTextBox.h"
+#include "Runtime/Function/Galgame ToolKit/Component/GalBackground.h"
 
 using namespace Erisu::Function;
 using namespace Erisu::Resource;
@@ -33,6 +35,7 @@ namespace
 }
 
 void InitScene(std::shared_ptr<Scene> &);
+void InitGalScene(std::shared_ptr<Scene> &scene);
 
 int main()
 {
@@ -87,15 +90,11 @@ int main()
         }
     });
 
-    InitScene(scene);
+    //InitScene(scene);
+    InitGalScene(scene);
 
     renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(scene); });
     renderer->AddImGuiWindow(DrawInspector);
-
-    InputSystem::GetInstance().RegisterInput("Test", InputType::Key, GLFW_KEY_A, InputState::Press, [&]()
-    {
-        LOG_DEBUG("Test key A");
-    });
 
     app.SetRenderer(renderer);
     app.SetScene(scene);
@@ -164,5 +163,21 @@ void InitScene(std::shared_ptr<Scene> &scene)
     spriteRendererQueue->CreateSpriteRenderer("Texture0", R"(C:\Users\21129\Desktop\Tlinw12l_1.png)", 0);
     spriteRendererQueue->CreateTextRenderer("Text", "努力未来 A BEAUTIFUL STAR", 120, 3);
     spriteRendererQueue->CreateTextRenderer("Text", "努力未来 A BEAUTIFUL STAR", 120, 4);
+
+}
+
+
+void InitGalScene(std::shared_ptr<Scene> &scene)
+{
+    std::shared_ptr<GameObject> galBackground = std::make_shared<GameObject>("GalBackground");
+    std::shared_ptr<GalBackground> galBackgroundComponent = std::make_shared<GalBackground>("GalBackground", R"(D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\神社_神社内B.png)");
+    galBackground->AddComponent(galBackgroundComponent);
+    scene->AddGameObject(galBackground);
+
+    std::shared_ptr<GameObject> textBoxObj = std::make_shared<GameObject>("TextBoxObj");
+    std::shared_ptr<GalTextBox> textBox = std::make_shared<GalTextBox>("TextBox", R"(C:\Users\21129\Desktop\349.png)");
+
+    textBoxObj->AddComponent(textBox);
+    scene->AddGameObject(textBoxObj);
 
 }

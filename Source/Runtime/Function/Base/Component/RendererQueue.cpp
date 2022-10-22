@@ -98,4 +98,16 @@ namespace Erisu::Function
             renderer.second->SetGameObject(gameObject_.lock());
         }
     }
+
+    void RendererQueue::SetGameObject(const std::shared_ptr<GameObject> &gameObject)
+    {
+        IComponent::SetGameObject(gameObject);
+        UpdateSubComponents();
+    }
+
+    void RendererQueue::SetScene(const std::shared_ptr<Scene> &scene)
+    {
+        IComponent::SetScene(scene);
+        UpdateSubComponents();
+    }
 }

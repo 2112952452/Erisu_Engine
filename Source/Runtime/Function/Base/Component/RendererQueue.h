@@ -18,11 +18,17 @@ namespace Erisu::Function
     class RendererQueue : public IComponent
     {
     private:
+        friend class GalTextBox;
         using RendererPtr = std::shared_ptr<ISortableComponent>;
 
     private:
         std::map<int, RendererPtr> renderers_;
 
+    protected:
+        void SetGameObject(const std::shared_ptr<GameObject> &gameObject) override;
+        void SetScene(const std::shared_ptr<Scene> &scene) override;
+
+        void UpdateSubComponents(); // update all sub components' scene and game object
     public:
         explicit RendererQueue(const std::string &name);
         ~RendererQueue() override;
@@ -43,7 +49,6 @@ namespace Erisu::Function
         void Render() override;
 
         void ShowInInspector() override;
-        void UpdateSubComponents(); // update all sub components' scene and game object
     };
 
     template<class ...TArg>

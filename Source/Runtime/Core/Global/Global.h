@@ -14,8 +14,8 @@ namespace Erisu::Global
 {
     inline Function::GLTexture ErisuWhiteTexture;
 
-    inline unsigned int FrameWidth  = 1600;
-    inline unsigned int FrameHeight = 1000;
+    inline unsigned int FrameWidth  = 1280;
+    inline unsigned int FrameHeight = 720;
 
     inline GLFWwindow* pMainWindow = nullptr;
 

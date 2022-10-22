@@ -5,6 +5,10 @@
 
 #include <freetype/freetype.h>
 #include FT_FREETYPE_H
+#include FT_GLYPH_H
+#include FT_OUTLINE_H
+#include FT_BITMAP_H
+
 
 #include <imgui.h>
 #include <utility>
@@ -24,9 +28,10 @@ namespace
 layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>
 out vec2 TexCoords;
 uniform mat4 projection;
+uniform vec2 offset;
 void main()
 {
-    gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);
+    gl_Position = projection * vec4(vertex.xy + offset, 0.0, 1.0);
     TexCoords = vertex.zw;
 }
 )";
@@ -207,28 +212,6 @@ namespace Erisu::Function
             float w = ch.size.x();// * transform_.GetScale().x();
             float h = ch.size.y();// * transform_.GetScale().y();
 
-            glBindTexture(GL_TEXTURE_2D, ch.textureID);
-
-            if (outlineEnable_)
-            {
-                fontShader_->SetVec3("textColor", outlineColor_.head<3>());
-                // FONT Shadow outline
-                float outlineOffset = outlineWidth_ * fontSize_ / 100.0f;
-                float outlineVertices[6][4] = {
-                        {x_pos - outlineOffset, y_pos + h + outlineOffset, 0.0f, 0.0f},
-                        {x_pos - outlineOffset, y_pos + outlineOffset,     0.0f, 1.0f},
-                        {x_pos + w - outlineOffset, y_pos + outlineOffset,     1.0f, 1.0f},
-
-                        {x_pos - outlineOffset, y_pos + h + outlineOffset, 0.0f, 0.0f},
-                        {x_pos + w - outlineOffset, y_pos + outlineOffset,     1.0f, 1.0f},
-                        {x_pos + w - outlineOffset, y_pos + h + outlineOffset, 1.0f, 0.0f}
-                };
-
-                glBindBuffer(GL_ARRAY_BUFFER, VBO);
-                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(outlineVertices), outlineVertices);
-                glDrawArrays(GL_TRIANGLES, 0, 6);
-            }
-
             float vertices[6][4] = {
                     {x_pos,     y_pos + h, 0.0f, 0.0f},
                     {x_pos,     y_pos,     0.0f, 1.0f},
@@ -239,12 +222,28 @@ namespace Erisu::Function
                     {x_pos + w, y_pos + h, 1.0f, 0.0f}
             };
 
-            fontShader_->SetVec3("textColor", color_.head<3>());
-
             glBindBuffer(GL_ARRAY_BUFFER, VBO);
             glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindTexture(GL_TEXTURE_2D, ch.textureID);
 
+            if (outlineEnable_ && outlineWidth_ != 0)
+            {
+                fontShader_->SetVec3("textColor", outlineColor_.head<3>());
+
+                // TODO: Optimize outline rendering
+                constexpr static float outlineOffsetX[4] = { -1, 1, 0, 0 };
+                constexpr static float outlineOffsetY[4] = { 0, 0, -1, 1 };
+                for (int i = 0; i < 4; ++i)
+                {
+                    Eigen::Vector2f outlineOffset = { outlineOffsetX[i] * outlineWidth_ * fontSize_ / 100.0f, outlineOffsetY[i] * outlineWidth_ * fontSize_ / 100.0f };
+                    fontShader_->SetVec2("offset", outlineOffset);
+                    glDrawArrays(GL_TRIANGLES, 0, 6);
+                }
+            }
+
+            fontShader_->SetVec2("offset", Eigen::Vector2f{ 0, 0 });
+            fontShader_->SetVec3("textColor", color_.head<3>());
+            glBindTexture(GL_TEXTURE_2D, ch.textureID);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
             x += (float)(ch.advance >> 6);// * transform_.GetScale().x();
@@ -280,7 +279,7 @@ namespace Erisu::Function
         ImGui::Separator();
 
         ImGui::DragInt("Font Size", &fontSize_, 1.0f);
-        ImGui::InputText("Font Path", fontPath_.data(), fontPath_.size());
+        ImGui::Text("Font Path: %s", fontPath_.data());
         ImGui::DebugTextEncoding(text_.data());
 
         if (ImGui::Button("Apply")) LoadCharacter();
@@ -333,8 +332,9 @@ namespace Erisu::Function
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-            __Text__Renderer__Char character = {
+            Text_Renderer_Char character = {
                     texture,
+                    0,
                     Eigen::Vector2i(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                     Eigen::Vector2i(face->glyph->bitmap_left, face->glyph->bitmap_top),
                     static_cast<unsigned int>(face->glyph->advance.x)

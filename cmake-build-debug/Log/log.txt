@@ -1,17 +1,22 @@
 [info] Erisu Engine Start.
 [warning] Engine is under development, please do not use it in production environment.
 [debug] GLAD and GLFW Initialized
+[debug] Loading texture: Resources/Textures/DefaultGalTextBoxBackGround.png
 [debug] Loading texture: Resources\Textures\ErisuWhite.png
-[debug] Loading texture: D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\神社_神社内B.png
+[debug] Loading texture: D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\街_お店A.png
 [debug] Loading texture: C:\Users\21129\Desktop\349.png
+[debug] Loading texture: C:\Users\21129\Desktop\1.png
 [debug] ImGui Initialized
 [debug] OpenGL Renderer Initialized
 [debug] Application Initialized.
+[info] Change to next scene
 [info] Erisu Engine Shutdown.
-[debug] Component destroyed: GalBackground
-[debug] Component destroyed: Text
-[debug] Component destroyed: Background
+[debug] [Object id: 2229161749248, name: BackgroundObj]: Destroyed.
+[debug] [Object id: 2229161750976, name: TextBoxObj]: Destroyed.
+[debug] Component destroyed: spr
+[debug] [Object id: 2229161752128, name: Test Object]: Destroyed.
+[debug] Component destroyed: TexBoxText
+[debug] Component destroyed: TexBoxBackground
 [debug] Component destroyed: TextBox
-[debug] [Object id: 1680598828448, name: GalBackground]: Destroyed.
-[debug] [Object id: 1680598829888, name: TextBoxObj]: Destroyed.
-[debug] [Scene Main Scene]: Destroyed.
+[debug] Component destroyed: Background
+[debug] [Scene Test Scene]: Destroyed.

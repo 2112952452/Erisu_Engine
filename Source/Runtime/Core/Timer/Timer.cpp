@@ -47,4 +47,23 @@ namespace Erisu::Core
     }
 
     int64_t Timer::GetMilliDeltaTime() const { return std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count(); }
+
+    void Timer::Pause() // no much difference with Stop()
+    {
+        if (isRunning)
+        {
+            stopTime = Clock::now();
+            deltaTime = stopTime - startTime;
+            isRunning = false;
+        }
+    }
+
+    void Timer::Resume()
+    {
+        if (!isRunning)
+        {
+            startTime = Clock::now() - deltaTime;
+            isRunning = true;
+        }
+    }
 }

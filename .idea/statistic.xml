@@ -13,6 +13,10 @@
         <option value="$PROJECT_DIR$/Source/Runtime/Core/assimp" />
         <option value="$PROJECT_DIR$/Source/Runtime/Core/freetype" />
         <option value="$PROJECT_DIR$/Source/Resources" />
+        <option value="$PROJECT_DIR$/Source/Runtime/Tool/Python" />
+        <option value="$PROJECT_DIR$/Source/Runtime/Tool/QuickJS" />
+        <option value="$PROJECT_DIR$/Source/Scripts" />
+        <option value="$PROJECT_DIR$/venv" />
       </list>
     </option>
   </component>

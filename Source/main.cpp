@@ -1,6 +1,7 @@
 #include <Log/LogSystem.h>
 #include <imgui.h>
 #include <Global/Global.h>
+#include <Python.h>
 
 #include "Runtime/Function/Render/GLRenderer.h"
 #include "Runtime/Function/Application/ErisuApp.h"
@@ -9,9 +10,9 @@
 #include "Runtime/Resource/ModelImport/ModelImport.h"
 #include "RendererQueue.h"
 #include "Runtime/Function/Utility/ImGuiUtility.h"
-#include "Runtime/Function/Input/InputSystem.h"
 #include "Runtime/Function/Galgame ToolKit/Component/GalTextBox.h"
-#include "Runtime/Function/Galgame ToolKit/Component/GalBackground.h"
+#include "Runtime/Function/Galgame ToolKit/Component/GalScene.h"
+#include "Runtime/Function/2D ToolKit/Base/AnimationCurve.h"
 
 using namespace Erisu::Function;
 using namespace Erisu::Resource;
@@ -35,66 +36,107 @@ namespace
 }
 
 void InitScene(std::shared_ptr<Scene> &);
-void InitGalScene(std::shared_ptr<Scene> &scene);
+
+void InitGalScene(std::shared_ptr<GalScene> &scene);
+
+#include <iostream>
 
 int main()
 {
+
+    {
+        Py_Initialize();
+
+        PyRun_SimpleString("import sys");
+        PyRun_SimpleString("sys.path.append('./Scripts')");
+
+        PyObject * pModule = PyImport_ImportModule("hello");
+        PyObject * pFunc = PyObject_GetAttrString(pModule, "process");
+        PyObject_CallObject(pFunc, nullptr);
+
+        Py_Finalize();
+    }
+
     LOG_INFO("Erisu Engine Start.");
     LOG_WARNING("Engine is under development, please do not use it in production environment.");
 
     ErisuApp app;
 
-    std::shared_ptr<Scene> scene = std::make_shared<Scene>("Main Scene");
     std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(windowWidth, windowHeight, "Erisu Engine");
+    std::shared_ptr<GalScene> scene = std::make_shared<GalScene>("Test Scene");
+    std::shared_ptr<Camera> camera = std::make_shared<Camera>(90, (float) windowWidth / windowHeight, 0.1f, 1000.0f,
+                                                              Camera::CameraType::Ortho);
 
     Erisu::Global::Init();
-
-    std::shared_ptr<Camera> camera = std::make_shared<Camera>(90, (float) windowWidth / windowHeight, 0.1f, 1000.0f);
-    camera->GetTransform().SetPosition(Eigen::Vector3f(0, 1.8, -2));
-    camera->GetTransform().SetRotation(Eigen::Vector3f(0, 90, 0));
-
-    std::shared_ptr<DirectionalLight> light = std::make_shared<DirectionalLight>(
-            Eigen::Vector3f(0, 0, 0), Eigen::Vector3f(1, 1, 1), Eigen::Vector3f(30, 30, 0), 1.f);
-    scene->SetMainLight(light);
 
     renderer->SetCamera(camera);
     scene->SetCamera(camera);
 
-    auto postEffectShader = std::make_shared<GLShader>(GLShader::ReadShaderFromFile(shaderPath + "PostEffect.vert"),
-                                                       GLShader::ReadShaderFromFile(shaderPath + "PostEffect.frag"));
-    postEffectShader->CompileAndLink();
-
-    renderer->AddPostEffect(std::make_shared<PostProcessBase>(postEffectShader));
-
-    renderer->AddImGuiWindow([]() { ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode, nullptr); });
-
-    renderer->AddImGuiWindow([&]() {
-
-        {
-            // Push w key to move forward
-            if (ImGui::IsKeyPressed('W'))
-                camera->GetTransform().MoveForward(0.5f);
-
-            // Push s key to move backward
-            if (ImGui::IsKeyPressed('S'))
-                camera->GetTransform().MoveBackward(0.5f);
-
-            // Push a key to move left
-            if (ImGui::IsKeyPressed('A'))
-                camera->GetTransform().MoveLeft(0.5f);
-
-            // Push d key to move right
-            if (ImGui::IsKeyPressed('D'))
-                camera->GetTransform().MoveRight(0.5f);
-
-        }
+    renderer->AddImGuiWindow([]() {
+        ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode, nullptr);
     });
-
-    //InitScene(scene);
-    InitGalScene(scene);
-
     renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(scene); });
     renderer->AddImGuiWindow(DrawInspector);
+
+    static float test = 0.0f;
+    static AnimationBase<float> animation(8.0f, &test, Animation::EaseInOutSineCurve, true);
+
+
+    renderer->AddImGuiWindow([&]() {
+        animation.Update();
+
+        ImGui::Begin("Animation Test");
+        ImGui::SliderFloat("Test", &test, 0.0f, 100.0f);
+        if (ImGui::Button("Play"))
+        {
+            animation.Play(100.0f); // done
+        }
+        if (ImGui::Button("Pause"))
+        {
+            animation.Pause(); // done
+        }
+        if (ImGui::Button("Resume"))
+        {
+            animation.Resume(); // done
+        }
+        if (ImGui::Button("Stop"))
+        {
+            animation.Stop(); // done
+        }
+        if (ImGui::Button("Reset"))
+        {
+            animation.Reset(); // done
+        }
+        if (ImGui::Button("Force Stop"))
+        {
+            animation.ForceStop(); // done
+        }
+        ImGui::End();
+    });
+
+    InitGalScene(scene);
+
+    std::shared_ptr<GameObject> testObject = std::make_shared<GameObject>("Test Object");
+    std::shared_ptr<SpriteRenderer> spriteRenderer = std::make_shared<SpriteRenderer>("spr", R"(C:\Users\21129\Desktop\1.png)");
+
+    testObject->AddComponent(spriteRenderer);
+    scene->AddGameObject(testObject);
+    auto *transparency = (float*)(spriteRenderer->GetColor().data() + 3);
+    std::shared_ptr<IAnimation> ia = std::make_shared<AnimationBase<float>>(0.5f, transparency, 0.f, Animation::EaseInOutSineCurve, false);
+
+    renderer->AddImGuiWindow([&] {
+        ia->Update();
+        ImGui::Begin("Test");
+        ImGui::SliderFloat("Transparency", transparency, 0.0f, 1.0f);
+        if (ImGui::Button("Play"))
+        {
+            ia->Play();
+        }
+
+        ImGui::End();
+    });
+
+
 
     app.SetRenderer(renderer);
     app.SetScene(scene);
@@ -103,6 +145,55 @@ int main()
     scene->Destroy();
     return 0;
 }
+
+std::vector<std::shared_ptr<GalText>> buildGalText(const std::vector<std::string> &texts)
+{
+    std::vector<std::shared_ptr<GalText>> result;
+    for (const auto &text: texts)
+        result.emplace_back(std::make_shared<GalText>(text, 65, 1.5f, Eigen::Vector2f{-0.5f, 0.1f}));
+
+    for (int i = 0; i < result.size() - 1; ++i)
+        result[i]->nextText = result[i + 1];
+
+    result[result.size() - 1]->clickCallback = []() {
+        // Change to next scene
+        // ...();
+        LOG_INFO("Change to next scene");
+    };
+
+    return result;
+}
+
+void InitGalScene(std::shared_ptr<GalScene> &scene)
+{
+    scene->InitScene();
+
+    static std::vector<std::string> testGalText = {"[努力未来] a beautiful star\nAinidekirukotowamadaarukai",
+                                                   "ランドリー今日は",
+                                                   "がら空きでラッキーデー",
+                                                   "かったりー油汚れも",
+                                                   "これでバイバイ",
+                                                   "誰だ誰だ頭の中呼びかける声は",
+                                                   "あれが欲しいこれが欲しいと",
+                                                   "謳っている",
+                                                   "幸せになりたい",
+                                                   "楽して生きていたい",
+                                                   "この手につかみたい",
+                                                   "あなたのその胸の中",
+                                                   "ハッピーで埋めつくして",
+                                                   "Rest in peace まで行こうぜ",
+                                                   "いつか見た地獄のいい所",
+                                                   "愛をばらまいて",
+                                                   "I love you 貶してくれ",
+                                                   "全部奪って笑ってくれマイハニー"};
+    static auto galText = buildGalText(testGalText);
+
+    scene->SetCurrentText(galText[0]);
+    scene->SetBackground(
+            std::make_shared<GLTexture>(R"(D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\街_お店A.png)"));
+    scene->SetTextBoxBackground(std::make_shared<GLTexture>(R"(C:\Users\21129\Desktop\349.png)"));
+}
+
 
 void InitScene(std::shared_ptr<Scene> &scene)
 {
@@ -166,18 +257,3 @@ void InitScene(std::shared_ptr<Scene> &scene)
 
 }
 
-
-void InitGalScene(std::shared_ptr<Scene> &scene)
-{
-    std::shared_ptr<GameObject> galBackground = std::make_shared<GameObject>("GalBackground");
-    std::shared_ptr<GalBackground> galBackgroundComponent = std::make_shared<GalBackground>("GalBackground", R"(D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\神社_神社内B.png)");
-    galBackground->AddComponent(galBackgroundComponent);
-    scene->AddGameObject(galBackground);
-
-    std::shared_ptr<GameObject> textBoxObj = std::make_shared<GameObject>("TextBoxObj");
-    std::shared_ptr<GalTextBox> textBox = std::make_shared<GalTextBox>("TextBox", R"(C:\Users\21129\Desktop\349.png)");
-
-    textBoxObj->AddComponent(textBox);
-    scene->AddGameObject(textBoxObj);
-
-}

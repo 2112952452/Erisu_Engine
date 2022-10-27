@@ -16,6 +16,8 @@ namespace Erisu::Function
         ~GLTexture();
 
         explicit GLTexture(const std::string_view& path);
+        explicit GLTexture(unsigned int glTextureId);
+
         bool Load(const std::string_view& path);
 
         void Release();

@@ -28,16 +28,16 @@ The CXX compiler identification is Clang, found in "D:/repos/Erisu Engine/cmake-
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_3823d && [1/2] Building C object CMakeFiles\cmTC_3823d.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_3823d.exe
+Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_37432 && [1/2] Building C object CMakeFiles\cmTC_37432.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_37432.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_65f23 && [1/2] Building CXX object CMakeFiles\cmTC_65f23.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_65f23.exe
+Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_de0fa && [1/2] Building CXX object CMakeFiles\cmTC_de0fa.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_de0fa.exe
 
 
 
@@ -46,8 +46,8 @@ Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja
 Detecting CXX [-std:c++14] compiler features compiled with the following output:
 Change Dir: D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_c6ea0 && [1/2] Building CXX object CMakeFiles\cmTC_c6ea0.dir\feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_c6ea0.exe
+Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_5a967 && [1/2] Building CXX object CMakeFiles\cmTC_5a967.dir\feature_tests.cxx.obj
+[2/2] Linking CXX executable cmTC_5a967.exe
 
 
 
@@ -112,8 +112,8 @@ Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: D:/repos/Erisu Engine/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_51771 && [1/2] Building CXX object CMakeFiles\cmTC_51771.dir\feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_51771.exe
+Run Build Command(s):C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe cmTC_f1773 && [1/2] Building CXX object CMakeFiles\cmTC_f1773.dir\feature_tests.cxx.obj
+[2/2] Linking CXX executable cmTC_f1773.exe
 
 
 

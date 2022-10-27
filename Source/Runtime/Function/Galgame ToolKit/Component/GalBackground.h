@@ -12,7 +12,10 @@ namespace Erisu::Function
     class GalBackground : public SpriteRenderer
     {
     public:
+        explicit GalBackground(const std::string &name);
         GalBackground(const std::string &name, const std::string &texturePath);
+        GalBackground(const std::string &name, std::shared_ptr<GLTexture> texture);
+
 
     };
 }

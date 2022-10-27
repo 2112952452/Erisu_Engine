@@ -13,7 +13,7 @@ namespace Erisu::Function
 {
     class Scene : public std::enable_shared_from_this<Scene>
     {
-    private:
+    protected:
         std::string name_;
         std::vector<std::shared_ptr<GameObject>> gameObjects_;
 
@@ -41,11 +41,11 @@ namespace Erisu::Function
 
         void RemoveGameObject(const std::shared_ptr<GameObject> &gameObject);
 
-        void RenderObjects();
+        virtual void RenderObjects();
 
-        void UpdateObjects();
+        virtual void UpdateObjects();
 
-        void Destroy();
+        virtual void Destroy();
 
         void DelayDestroy(const std::shared_ptr<GameObject> &gameObject);
 
@@ -59,7 +59,7 @@ namespace Erisu::Function
 
         [[nodiscard]] std::vector<std::shared_ptr<Light>> &GetAdditionalLights();
 
-        void ShowInInspector();
+        virtual void ShowInInspector();
 
     protected:
         void FrustumCulling();

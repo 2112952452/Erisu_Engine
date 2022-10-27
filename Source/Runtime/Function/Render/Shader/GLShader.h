@@ -8,6 +8,7 @@
 #include <string>
 #include <eigen3/Eigen/Dense>
 #include <map>
+#include "Log/LogSystem.h"
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"

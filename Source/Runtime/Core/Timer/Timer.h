@@ -18,6 +18,8 @@ namespace Erisu::Core
         void Start();
         void Stop();
         void Reset();
+        void Pause();
+        void Resume();
 
         [[nodiscard]] int64_t GetNanoSeconds() const;
         [[nodiscard]] int64_t GetMilliseconds() const;

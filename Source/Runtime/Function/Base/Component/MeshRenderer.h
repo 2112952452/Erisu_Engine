@@ -9,10 +9,11 @@
 #include "../../Render/Mesh/GLMesh.h"
 #include "../../Render/Material/Material.h"
 
-#include <Reflection/Reflection.h>
-
 // TODO: multiple mesh
-ReflNameSpaceDerivedClass(MeshRenderer, public IComponent, Erisu::Function)
+namespace Erisu::Function
+{
+    class MeshRenderer : public IComponent
+    {
     private:
         std::unique_ptr<GLMesh> mesh_;
         std::shared_ptr<Material> material_;
@@ -43,13 +44,7 @@ ReflNameSpaceDerivedClass(MeshRenderer, public IComponent, Erisu::Function)
 
         void ShowInInspector() override;
 
-    ReflFieldBegin
-        ReflField(MeshRenderer, mesh_, std::shared_ptr<GLMesh>)
-        ReflField(MeshRenderer, material_, std::shared_ptr<Material>)
-        ReflField(MeshRenderer, isStaticMesh, bool)
-        ReflField(MeshRenderer, name, std::string)
-    ReflFieldEnd
-
-ReflNamespaceClassEnd(MeshRenderer, Erisu::Function)
+    };
+}
 
 #endif //ERISU_ENGINE_MESHRENDERER_H

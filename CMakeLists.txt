@@ -15,6 +15,8 @@ include_directories(
         ${RUNTIME_PATH}/Core/
         ${RUNTIME_PATH}/Core/include/
         ${RUNTIME_PATH}/Function/Base/Component
+        ${RUNTIME_PATH}/Tool/Python/include
+        ${RUNTIME_PATH}/Tool/QuickJS/include
 )
 
 #添加依赖的库文件
@@ -24,14 +26,13 @@ find_package(eigen3 CONFIG REQUIRED)
 find_package(assimp CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(freetype CONFIG REQUIRED)
-find_package(freetype-gl CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_truetype.h" "stb_image_write.h")
 
 #生成可执行程序
-add_executable(${PROJECT_NAME}
+add_executable(Erisu_Engine
         Source/main.cpp
         ${RUNTIME_PATH}/Core/Global/Global.h ${RUNTIME_PATH}/Core/DataStruct/OctTree.cpp ${RUNTIME_PATH}/Core/Log/LogSystem.cpp ${RUNTIME_PATH}/Core/Timer/Timer.cpp
         "Source/Runtime/Function/2D ToolKit/Component/TextRenderer.cpp"
@@ -58,11 +59,12 @@ add_executable(${PROJECT_NAME}
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp
         Source/Runtime/UserComponent/TestComponent.cpp
-        "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.h" "Source/Runtime/Function/Galgame ToolKit/Struct/GalText.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.h")
+        "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.h" "Source/Runtime/Function/Galgame ToolKit/Struct/GalText.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.h" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.cpp" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.h" Source/Runtime/Function/Utility/PythonModule.cpp Source/Runtime/Function/Utility/PythonModule.h "Source/Runtime/Function/2D ToolKit/Base/AnimationBase.h" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.cpp" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.h" "Source/Runtime/Function/2D ToolKit/Base/IAnimation.h")
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
+target_include_directories(Erisu_Engine PRIVATE ${STB_INCLUDE_DIRS})
 
-target_link_libraries(${PROJECT_NAME}
-        PRIVATE glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only nlohmann_json::nlohmann_json freetype freetype-gl
+target_link_libraries(Erisu_Engine
+        PRIVATE glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only nlohmann_json::nlohmann_json freetype
         )
 
+target_link_libraries(Erisu_Engine PRIVATE ${RUNTIME_PATH}/Tool/Python/libs/python310_d.lib)

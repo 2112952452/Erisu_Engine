@@ -50,10 +50,7 @@ namespace Erisu::Function
     }
 
     void IComponent::Destroy()
-    {
-        //if (!gameObject_.expired())
-        //    gameObject_.lock()->RemoveComponent(shared_from_this());
-    }
+    {}
 
     IComponent::Json IComponent::Serialize() const
     {

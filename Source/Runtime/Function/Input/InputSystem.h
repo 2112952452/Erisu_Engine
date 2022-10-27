@@ -20,9 +20,9 @@ namespace Erisu::Function
 
     enum class InputState
     {
-        Press,
-        Release,
-        Hold
+        Press = GLFW_PRESS,
+        Release = GLFW_RELEASE,
+        Hold = GLFW_REPEAT
     };
 
     class InputSystem
@@ -49,9 +49,9 @@ namespace Erisu::Function
 
         void RegisterInput(const std::string &name, InputType type, int key, InputState state, const std::function<void()> &callback);
         void RegisterInput(const std::string &name, InputType type, int key, const std::function<void()> &callback);
-
         void UnregisterInput(const std::string &name);
 
+    private:
         bool IsInputPressed(const std::string &name);
         bool IsInputReleased(const std::string &name);
         bool IsInputHeld(const std::string &name);
@@ -66,6 +66,8 @@ namespace Erisu::Function
         };
 
         std::unordered_map<std::string, Input> inputs_;
+        std::unordered_map<std::string, InputState> inputStates_;
+
     };
 }
 

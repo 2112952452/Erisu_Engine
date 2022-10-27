@@ -1,25 +1,15 @@
 # ninja log v5
-3344	6618	6875521330171778	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Core/Reflection/Reflection.cpp.obj	2a2fef59676214c2
 37	2015	6877152649374287	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Core/DataStruct/OctTree.cpp.obj	e90081c6271a8a2
-1687	3559	6875594613423823	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Light.cpp.obj	24437f1dc164cc2
-182	4730	6876393934673032	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Component/IComponent.cpp.obj	797a7568a49897c7
 5364	5430	6877152683631707	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Resource/ResourceManager.cpp.obj	15c158778d531c71
 2152	5061	6877152679780934	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/Mesh/GLMesh.cpp.obj	d62fae43c9c367c8
-283	2253	6875594600364149	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Camera.cpp.obj	43ac9546eca37015
 4189	6653	6877152695654454	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/Window/ImGuiWindow.cpp.obj	14f2b436c3e02b7c
-2583	5363	6877152682786520	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/Material/Material.cpp.obj	66e37e9ed6290518
-3214	5999	6875594637795020	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Transform.cpp.obj	2accc94943136262
-161	4189	6877152670994004	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/2D_ToolKit/Component/SpriteRenderer.cpp.obj	4f2e9d34a9a900ec
 6098	8975	6877152718927409	CMakeFiles/Erisu_Engine.dir/Source/Runtime/UserComponent/TestComponent.cpp.obj	d123c8d63eb7a6e
+161	4189	6877152670994004	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/2D_ToolKit/Component/SpriteRenderer.cpp.obj	4f2e9d34a9a900ec
+2583	5363	6877152682786520	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/Material/Material.cpp.obj	66e37e9ed6290518
 4863	7505	6877152704256255	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/PostProcessBase.cpp.obj	fcb80f8fd573fc4d
 1678	8279	6877152711925715	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Base/GameObject.cpp.obj	625d9d33c9857235
-213	4587	6876393933181715	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Component/MeshRenderer.cpp.obj	8d1602f87d89cc0
 3	5126	6877152679810945	CMakeFiles/Erisu_Engine.dir/Source/main.cpp.obj	1e2e75486a5571f2
-1928	7184	6875594649638405	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Scene.cpp.obj	9569ca8ef8d7761d
-285	6466	6876393952097620	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/GameObject.cpp.obj	8b1cb2033c0c4387
 5132	11264	6877152741811037	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Render/GLTexture.cpp.obj	6c172ea941f3d1f5
-121	4771	6876400128138084	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Object/Component/RendererQueue.cpp.obj	953663d726b1cf3
-5185	8123	6875521345174297	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/2D_ToolKit/Component/UI/ButtonComponent.cpp.obj	8313bf58f8fca15a
 5232	9004	6877152719177404	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Utility/ImGuiUtility.cpp.obj	2bd2b4cbcea71bd7
 133	5231	6877152681346202	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/2D_ToolKit/Component/TextRenderer.cpp.obj	f65b0f6785deaa6b
 248	2069	6877152649939490	CMakeFiles/Erisu_Engine.dir/Source/Runtime/Function/Input/InputSystem.cpp.obj	f901cb24cab61d83

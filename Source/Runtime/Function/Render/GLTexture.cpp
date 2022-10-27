@@ -86,4 +86,14 @@ namespace Erisu::Function
     {
         glBindTexture(GL_TEXTURE_2D, id);
     }
+
+    GLTexture::GLTexture(unsigned int glTextureId) : id(glTextureId), bLoaded(true)
+    {
+        glBindTexture(GL_TEXTURE_2D, id);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_INTERNAL_FORMAT, &channels);
+        widthRatio = static_cast<float>(width) / static_cast<float>(height);
+    }
+
 }

@@ -8,17 +8,15 @@
 #include "../../Base/Component/IComponent.h"
 #include "../../Render/GLTexture.h"
 #include "ISortableComponent.h"
+#include "../Base/Renderable2DBase.h"
+#include "../Base/AnimationBase.h"
 
 namespace Erisu::Function
 {
-    class SpriteRenderer : public ISortableComponent
+    class SpriteRenderer : public ISortableComponent, public Renderable2DBase
     {
-    private:
-        std::shared_ptr<GLShader> shader_;
-        std::shared_ptr<GLTexture> texture_;
-    public:
-        Transform transform {};
-        Eigen::Vector4f color = { 1.0f, 1.0f, 1.0f, 1.0f };
+    protected:
+        Eigen::Matrix4f GetParentModelMatrix() override;
 
     public:
         explicit SpriteRenderer(const std::string &name, int priority = 0);
@@ -27,9 +25,6 @@ namespace Erisu::Function
         SpriteRenderer(const std::string &name, const std::string &texturePath, int priority = 0);
 
         ~SpriteRenderer() override;
-
-        void SetTexture(const std::shared_ptr<GLTexture> &texture);
-        void SetShader(const std::shared_ptr<GLShader> &shader);
 
         void Update() override;
         void Render() override;

@@ -50,8 +50,8 @@ namespace Erisu::Function
         unsigned textureColorBuffer_= 0;
 
         // imtermediate buffer
-        unsigned frameSampleBufferObj_;
-        unsigned frameSampleColorBuffer_;
+        unsigned frameSampleBufferObj_{};
+        unsigned frameSampleColorBuffer_{};
     };
 }
 

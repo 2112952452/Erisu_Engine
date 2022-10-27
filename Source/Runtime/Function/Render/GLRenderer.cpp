@@ -52,15 +52,8 @@ namespace Erisu::Function
                 gCamera->SetAspect(static_cast<float>(width) / height);
         });
 
-        // Cull Front Face
-        //glEnable(GL_CULL_FACE);
-        //glCullFace(GL_FRONT);
-        //glFrontFace(GL_CW);
-
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
-
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         #pragma region FrameBuffer Init
         // Init Framebuffer

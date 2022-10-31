@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_Erisu_Engine: phony || CMakeFiles\Erisu_
 
 build CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\main.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source
@@ -60,7 +60,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj: CXX_COMPILER__Erisu_Engin
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Core\DataStruct\OctTree.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct
@@ -69,7 +69,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Core\Log\LogSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log
@@ -78,7 +78,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj: CXX
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Core\Timer\Timer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer
@@ -87,7 +87,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj: CXX_C
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Component\TextRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component
@@ -96,7 +96,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\T
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Application\ErisuApp.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application
@@ -105,7 +105,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.c
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Component\SpriteRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component
@@ -114,7 +114,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\S
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Input\InputSystem.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input
@@ -123,7 +123,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\IComponent.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\IComponent.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
@@ -132,7 +132,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\ICompon
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\MeshRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
@@ -141,7 +141,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRen
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\RendererQueue.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Component\RendererQueue.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component
@@ -150,7 +150,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\Rendere
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Camera.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
@@ -159,7 +159,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj: C
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\GameObject.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
@@ -168,7 +168,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.ob
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Light.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
@@ -177,7 +177,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj: CX
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Scene.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
@@ -186,7 +186,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj: CX
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Base\Transform.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base
@@ -195,7 +195,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Material\Material.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material
@@ -204,7 +204,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Materi
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Mesh\GLMesh.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh
@@ -213,7 +213,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Shader\GLShader.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader
@@ -222,7 +222,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Window\GLWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window
@@ -231,7 +231,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window
@@ -240,7 +240,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWin
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\GLRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
@@ -249,7 +249,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\GLTexture.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
@@ -258,7 +258,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.o
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Render\PostProcessBase.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render
@@ -267,7 +267,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Utility\ImGuiUtility.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility
@@ -276,7 +276,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.c
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Resource\ResourceManager.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource
@@ -285,7 +285,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.ob
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Resource\ModelImport\ModelImport.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport
@@ -294,7 +294,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImpor
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\UserComponent\TestComponent.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent
@@ -303,7 +303,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextBox.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Galgame$ ToolKit\Component\GalTextBox.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component
@@ -312,7 +312,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Compon
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalBackground.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Galgame$ ToolKit\Component\GalBackground.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component
@@ -321,7 +321,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Compon
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalScene.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Galgame$ ToolKit\Component\GalScene.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component
@@ -330,7 +330,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Compon
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Galgame$ ToolKit\Component\GalTextRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component
@@ -339,7 +339,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Compon
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\Renderable2DBase.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Base\Renderable2DBase.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base
@@ -348,7 +348,7 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\Render
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\PythonModule.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\Utility\PythonModule.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility
@@ -357,10 +357,19 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\PythonModule.c
 
 build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\AnimationCurve.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Base\AnimationCurve.cpp || cmake_object_order_depends_target_Erisu_Engine
   DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
   INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base
+  TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
+  TARGET_PDB = Erisu_Engine.pdb
+
+build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\deprecated\StringRenderer.cpp.obj: CXX_COMPILER__Erisu_Engine_RelWithDebInfo D$:\repos\Erisu$ Engine\Source\Runtime\Function\2D$ ToolKit\Component\deprecated\StringRenderer.cpp || cmake_object_order_depends_target_Erisu_Engine
+  DEFINES = -DFMT_SHARED -DGLFW_DLL -DIMGUI_ENABLE_FREETYPE -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20
+  INCLUDES = -I"D:\repos\Erisu Engine\Source\Runtime\Core" -I"D:\repos\Erisu Engine\Source\Runtime\Core\include" -I"D:\repos\Erisu Engine\Source\Runtime\Function\Base\Component" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\Python\include" -I"D:\repos\Erisu Engine\Source\Runtime\Tool\QuickJS\include" -imsvcD:\vcpkg\installed\x64-windows\include
+  OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\deprecated
   TARGET_COMPILE_PDB = CMakeFiles\Erisu_Engine.dir\
   TARGET_PDB = Erisu_Engine.pdb
 
@@ -372,10 +381,10 @@ build CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\Animat
 #############################################
 # Link the executable Erisu_Engine.exe
 
-build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_RelWithDebInfo CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\IComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\RendererQueue.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextBox.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalBackground.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalScene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\Renderable2DBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\PythonModule.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\AnimationCurve.cpp.obj | D$:\vcpkg\installed\x64-windows\lib\glad.lib D$:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib D$:\vcpkg\installed\x64-windows\lib\imgui.lib D$:\vcpkg\installed\x64-windows\lib\spdlog.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib ..\Source\Runtime\Tool\Python\libs\python310_d.lib D$:\vcpkg\installed\x64-windows\lib\pugixml.lib D$:\vcpkg\installed\x64-windows\lib\glfw3dll.lib D$:\vcpkg\installed\x64-windows\lib\fmt.lib
-  FLAGS = -Xclang -fcxx-exceptions -O2 -m64 /MD /Zi /O2 /Ob1 /DNDEBUG
+build Erisu_Engine.exe: CXX_EXECUTABLE_LINKER__Erisu_Engine_RelWithDebInfo CMakeFiles\Erisu_Engine.dir\Source\main.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\DataStruct\OctTree.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Log\LogSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Core\Timer\Timer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\TextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Application\ErisuApp.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\SpriteRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Input\InputSystem.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\IComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\MeshRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Component\RendererQueue.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Camera.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\GameObject.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Light.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Scene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Base\Transform.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Material\Material.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Mesh\GLMesh.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Shader\GLShader.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\GLWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\Window\ImGuiWindow.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\GLTexture.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Render\PostProcessBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\ImGuiUtility.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ResourceManager.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Resource\ModelImport\ModelImport.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\UserComponent\TestComponent.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextBox.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalBackground.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalScene.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Galgame_ToolKit\Component\GalTextRenderer.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\Renderable2DBase.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\Utility\PythonModule.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Base\AnimationCurve.cpp.obj CMakeFiles\Erisu_Engine.dir\Source\Runtime\Function\2D_ToolKit\Component\deprecated\StringRenderer.cpp.obj | D$:\vcpkg\installed\x64-windows\lib\glad.lib D$:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib D$:\vcpkg\installed\x64-windows\lib\imgui.lib D$:\vcpkg\installed\x64-windows\lib\spdlog.lib D$:\vcpkg\installed\x64-windows\lib\freetype.lib D$:\vcpkg\installed\x64-windows\lib\pugixml.lib D$:\vcpkg\installed\x64-windows\lib\glfw3dll.lib D$:\vcpkg\installed\x64-windows\lib\fmt.lib
+  FLAGS = -Xclang -O3 -Os -m64 /MD /Zi /O2 /Ob1 /DNDEBUG
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = D:\vcpkg\installed\x64-windows\lib\glad.lib  D:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib  D:\vcpkg\installed\x64-windows\lib\imgui.lib  D:\vcpkg\installed\x64-windows\lib\spdlog.lib  D:\vcpkg\installed\x64-windows\lib\freetype.lib  ..\Source\Runtime\Tool\Python\libs\python310_d.lib  D:\vcpkg\installed\x64-windows\lib\pugixml.lib  D:\vcpkg\installed\x64-windows\lib\glfw3dll.lib  D:\vcpkg\installed\x64-windows\lib\fmt.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = D:\vcpkg\installed\x64-windows\lib\glad.lib  D:\vcpkg\installed\x64-windows\lib\assimp-vc143-mt.lib  D:\vcpkg\installed\x64-windows\lib\imgui.lib  D:\vcpkg\installed\x64-windows\lib\spdlog.lib  D:\vcpkg\installed\x64-windows\lib\freetype.lib  D:\vcpkg\installed\x64-windows\lib\pugixml.lib  D:\vcpkg\installed\x64-windows\lib\glfw3dll.lib  D:\vcpkg\installed\x64-windows\lib\fmt.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\Erisu_Engine.dir
   POST_BUILD = cmd.exe /C "cd /D "D:\repos\Erisu Engine\cmake-build-relwithdebinfo" && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/repos/Erisu Engine/cmake-build-relwithdebinfo/Erisu_Engine.exe" -installedDir D:/vcpkg/installed/x64-windows/bin -OutVariable out"
   PRE_LINK = cd .

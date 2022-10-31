@@ -47,6 +47,7 @@ namespace Erisu::Function
 
         void Update() override;
         void Render() override;
+        void Destroy() override;
 
         void ShowInInspector() override;
     };

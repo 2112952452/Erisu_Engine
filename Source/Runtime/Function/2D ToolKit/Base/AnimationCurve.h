@@ -35,6 +35,7 @@ namespace Erisu::Function
     {
 #define M_PI_2 1.57079632679489661923
 #define M_PI 3.14159265358979323846
+
         const inline static AnimationCurve LinearCurve = AnimationCurve([](float time) { return time; });
         const inline static AnimationCurve EaseInCurve = AnimationCurve([](float time) { return time * time; });
         const inline static AnimationCurve EaseOutCurve = AnimationCurve([](float time) { return time * (2 - time); });

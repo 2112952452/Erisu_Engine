@@ -20,6 +20,11 @@ namespace Erisu::Function
     class GLRenderer
     {
     public:
+        bool DebugMode = false;
+        unsigned int MSAASampleCount = 2;
+        bool EnabledMSAA = false;
+
+    public:
         GLRenderer(int width, int height, const char *windowTitle_);
 
         ~GLRenderer();

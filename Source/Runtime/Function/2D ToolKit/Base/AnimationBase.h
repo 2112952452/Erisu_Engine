@@ -95,6 +95,7 @@ namespace Erisu::Function
 
         [[nodiscard]] virtual bool IsLoop() const;
 
+        bool IsBinding();
     };
 
 }
@@ -155,7 +156,7 @@ namespace Erisu::Function
     {
         if (isPlaying_)
         {
-            current_ = timer_.GetNanoSeconds() / 1000000000.0f;
+            current_ = timer_.GetMilliseconds() / 1000.0f;
             if (current_ >= duration_) isLoop_ ? Reset() : ForceStop();
             else
             {
@@ -278,6 +279,12 @@ namespace Erisu::Function
 
         timer_.Stop();
         onStop_ ? onStop_() : void();
+    }
+
+    template<typename T>
+    bool AnimationBase<T>::IsBinding()
+    {
+        return target_ != nullptr;
     }
 
     template<typename T>

@@ -24,6 +24,7 @@ namespace Erisu::Function
 
         void RenderObjects() override;
         void UpdateObjects() override;
+        void Destroy() override;
 
         void ShowInInspector() override;
 

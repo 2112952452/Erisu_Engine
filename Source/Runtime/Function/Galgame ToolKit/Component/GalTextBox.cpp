@@ -36,7 +36,7 @@ namespace Erisu::Function
     GalTextBox::GalTextBox(const std::string &name) : RendererQueue(name)
     {
         background_ = std::make_shared<SpriteRenderer>("TexBoxBackground", DefaultBackgroundPath_.data(), 0);
-        text_ = std::make_shared<GalTextRenderer>("TexBoxText", DefaultFontPath_.data(), TestString, 65,
+        text_ = std::make_shared<GalTextRenderer>("TexBoxText", Global::DefaultFontPath, TestString, Global::DefaultFontSize,
                                                Eigen::Vector4f(1.0f, 1.0f, 1.0f, 1.0f), 1);
         text_->GetTransform().SetPosition(Eigen::Vector3f(-0.8f, 0.1f, 0.0f));
 
@@ -55,7 +55,7 @@ namespace Erisu::Function
             : RendererQueue(name)
     {
         background_ = std::make_shared<SpriteRenderer>("Background", DefaultBackgroundPath_.data(), 0);
-        text_ = std::make_shared<GalTextRenderer>("Text", fontPath, TestString, 65,
+        text_ = std::make_shared<GalTextRenderer>("Text", fontPath, TestString, Global::DefaultFontSize,
                                                Eigen::Vector4f(1.0f, 1.0f, 1.0f, 1.0f), 1);
         text_->GetTransform().SetPosition(Eigen::Vector3f(-0.5f, 0.1f, 0.0f));
 
@@ -76,7 +76,7 @@ namespace Erisu::Function
     GalTextBox::GalTextBox(const std::string &name, const std::string &backgroundPath) : RendererQueue(name)
     {
         background_ = std::make_shared<SpriteRenderer>("Background", backgroundPath, 0);
-        text_ = std::make_shared<GalTextRenderer>("Text", DefaultFontPath_.data(), TestString, 65,
+        text_ = std::make_shared<GalTextRenderer>("Text", Global::DefaultFontPath, TestString, Global::DefaultFontSize,
                                                Eigen::Vector4f(1.0f, 1.0f, 1.0f, 1.0f), 1);
         text_->GetTransform().SetPosition(Eigen::Vector3f(-0.5f, 0.1f, 0.0f));
 
@@ -92,7 +92,11 @@ namespace Erisu::Function
         text_->SetText(text->text);
         text_->SetFontSize(text->fontSize);
         text_->GetTransform().SetPosition(Eigen::Vector3f(text->position.x(), text->position.y(), 0.0f));
-        text_->SetShowProgress(0);
+        text_->SetShowProgress(0.0f);
+
+        fadeIn.SetDuration(text->text.size() / text->showSpeed * 0.02f);
+        fadeIn.BindTarget(text_->GetShowProgress());
+        fadeIn.Play(1.0f);
     }
 
     GalTextBox::GalTextBox(const std::string &name, std::shared_ptr<SpriteRenderer> background,
@@ -131,12 +135,13 @@ namespace Erisu::Function
         if (isTriggered)
         {
             isTriggered = false;
-            if (text_->GetShowProgress() != 1.0f)
-                text_->SetShowProgress(1.0f);
+            if (text_->GetShowProgress() <= 0.95f) {
+                fadeIn.ForceStop();
+            }
             else if (!currentText_->nextText.expired())
             {
                 auto nextText = currentText_->nextText.lock();
-                if (nextText->clickCallback != nullptr) nextText->clickCallback();
+                if (nextText->goNextCallback != nullptr) nextText->goNextCallback();
                 SetCurrentText(nextText);
             }
         }
@@ -162,5 +167,13 @@ namespace Erisu::Function
     void GalTextBox::RotateBackground(float angle)
     {
         background_->SetRotation(background_->GetRotation() + angle);
+    }
+
+    void GalTextBox::Render()
+    {
+        if (fadeIn.IsBinding())
+            fadeIn.Update();
+
+        RendererQueue::Render();
     }
 }

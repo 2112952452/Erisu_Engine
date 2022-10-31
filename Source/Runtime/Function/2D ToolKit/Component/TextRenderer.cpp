@@ -13,14 +13,8 @@
 #include <imgui.h>
 #include <utility>
 #include <Global/Global.h>
+#include <codecvt>
 
-#if defined(_WIN32) || defined(_WIN64)
-
-#include <Windows.h>
-
-#else
-#error "TODO: Implement Muity byte character support for non-Windows platform"
-#endif
 
 namespace
 {
@@ -55,94 +49,22 @@ void main()
 }
 )";
 
-    constexpr std::string_view quadVertexShader = R"(#version 330 core
-layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>
-
-out vec2 TexCoord;
-
-uniform mat4 model;
-
-void main()
-{
-    gl_Position = model * vec4(vertex.xy, 0, 1.0);
-    TexCoord = vertex.zw;
-}
-)";
-
-
-    constexpr std::string_view quadFragmentShader = R"(#version 330 core
-out vec4 FragColor;
-
-in vec2 TexCoord;
-
-uniform sampler2D texture0;
-uniform vec4 color;
-
-void main()
-{
-    FragColor = texture(texture0, TexCoord) * color;
-}
-)";
-
-    std::once_flag flag;
-
-    unsigned int VAO, VBO;
-    unsigned int quadVAO = 0, quadVBO = 0;
-
-    std::unique_ptr<Erisu::Function::GLShader> quadShader;
-
-    void Init()
-    {
-        std::call_once(flag, []() {
-            glGenVertexArrays(1, &VAO);
-            glGenBuffers(1, &VBO);
-
-            glBindVertexArray(VAO);
-            glBindBuffer(GL_ARRAY_BUFFER, VBO);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, nullptr, GL_DYNAMIC_DRAW);
-            glEnableVertexAttribArray(0);
-            glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *) 0);
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            glBindVertexArray(0);
-
-            glGenVertexArrays(1, &quadVAO);
-            glGenBuffers(1, &quadVBO);
-            glBindVertexArray(quadVAO);
-            glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, nullptr, GL_DYNAMIC_DRAW);
-            glEnableVertexAttribArray(0);
-            glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *) 0);
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            glBindVertexArray(0);
-
-            quadShader = std::make_unique<Erisu::Function::GLShader>(quadVertexShader.data(), quadFragmentShader.data(),
-                                                                     true);
-        });
-    }
-
-
-    std::wstring stringToWstring(const std::string &str)
-    {
-        std::wstring wstr;
-        // Multi Byte -> Unicode
-        int len = MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, nullptr, 0);
-        auto *buffer = new wchar_t[len + 1];
-        MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, buffer, len);
-        buffer[len] = '\0';
-        wstr = buffer;
-        delete[] buffer;
-
-        return wstr;
-    }
 }
 
 
 namespace Erisu::Function
 {
     TextRenderer::TextRenderer(std::string name, int priority) : ISortableComponent(std::move(name), priority),
-                                                                 fontPath_(defaultFontPath),
-                                                                 fontSize_(defaultFontSize)
-    { ::Init(); }
+                                                                 fontPath_(Global::DefaultFontPath),
+                                                                 fontSize_(Global::DefaultFontSize)
+    {
+        fontVertexShader = defaultFontVertexShader;
+        fontFragmentShader = defaultFontFragmentShader;
+        characters_ = {256, Character(0, this)};
+
+        for (int i = 0; i < 256; ++i)
+            characters_[i].index_ = i;
+    }
 
     TextRenderer::TextRenderer(std::string name, std::string fontPath, std::string text, int fontSize,
                                Eigen::Vector4f color, int priority) :
@@ -151,25 +73,46 @@ namespace Erisu::Function
             fontSize_(fontSize),
             color_(std::move(color))
     {
-        ::Init();
+        wText_ = StringToWstring(text_);
+
+        fontVertexShader = defaultFontVertexShader;
+        fontFragmentShader = defaultFontFragmentShader;
+        characters_ = {256, Character(0, this)};
+
+        for (int i = 0; i < 256; ++i)
+            characters_[i].index_ = i;
     }
 
     TextRenderer::TextRenderer(std::string name, std::string text, int fontSize, int priority) :
             ISortableComponent(std::move(name), priority),
             text_(std::move(text)),
             fontSize_(fontSize),
-            fontPath_(defaultFontPath)
+            fontPath_(Global::DefaultFontPath)
     {
-        ::Init();
+        wText_ = StringToWstring(text_);
+
+        fontVertexShader = defaultFontVertexShader;
+        fontFragmentShader = defaultFontFragmentShader;
+        characters_ = {256, Character(0, this)};
+
+        for (int i = 0; i < 256; ++i)
+            characters_[i].index_ = i;
     }
 
     TextRenderer::TextRenderer(std::string name, std::string text, int priority) :
             ISortableComponent(std::move(name), priority),
             text_(std::move(text)),
-            fontSize_(defaultFontSize),
-            fontPath_(defaultFontPath)
+            fontSize_(Global::DefaultFontSize),
+            fontPath_(Global::DefaultFontPath)
     {
-        ::Init();
+        wText_ = StringToWstring(text_);
+
+        fontVertexShader = defaultFontVertexShader;
+        fontFragmentShader = defaultFontFragmentShader;
+        characters_ = {256, Character(0, this)};
+
+        for (int i = 0; i < 256; ++i)
+            characters_[i].index_ = i;
     }
 
     void TextRenderer::SetFontPath(const std::string &fontPath)
@@ -180,6 +123,14 @@ namespace Erisu::Function
     void TextRenderer::SetText(const std::string &text)
     {
         text_ = text;
+        wText_ = StringToWstring(text);
+        if (text_.size() > 256) // 一般一句话不会渲染超过256个字符吧？？
+        {
+            characters_ = { text_.size() + 1, Character(0, this) };
+
+            for (int i = 0; i < text_.size() + 1; ++i)
+                characters_[i].index_ = i;
+        }
         shouldReload_ = true;
     }
 
@@ -220,24 +171,32 @@ namespace Erisu::Function
 
         if (shouldReload_)
         {
+            // for one frame is too heavy
             LoadCharacter();
             shouldReload_ = false;
         }
 
         auto modelMatrix = gameObject_.lock()->GetModelMatrix();
 
-        float x_ = (-textWidth_ + Global::FrameWidth) * 0.5f + modelMatrix(0, 3) + transform_.GetPosition().x(),
-            y_ = (-textHeight_ + Global::FrameHeight) * 0.5f + modelMatrix(1, 3) + transform_.GetPosition().y();
+        float x_ = (Global::FrameWidth) * 0.5f + modelMatrix(0, 3) + transform_.GetPosition().x(),
+                y_ = (Global::FrameHeight) * 0.5f + modelMatrix(1, 3) + transform_.GetPosition().y();
 
-        constexpr static float outlineOffsetX[] = { -1, 1, 0, 0 };
-        constexpr static float outlineOffsetY[] = { 0, 0, -1, 1 };
+        constexpr static float outlineOffsetX[] = {-1, 1, 0, 0};
+        constexpr static float outlineOffsetY[] = {0, 0, -1, 1};
 
-        for (auto &ch: characters_)
+        float duration = 0, delta = 1.f / (float) wText_.size();
+        for (size_t i = 0; i < wText_.size(); ++i)
         {
+            if (duration > showProgress_)
+                break;
+            duration += delta;
+            auto &ch = characters_[i];
+
             for (int i = 0; outlineEnable_ && i < 4; ++i)
             {
                 ch.SetColor(outlineColor_);
-                ch.ResetVertexData(x_ + outlineOffsetX[i] * outlineWidth_ * fontSize_ / 64, y_ + outlineOffsetY[i] * outlineWidth_ * fontSize_ / 64);
+                ch.ResetVertexData(x_ + outlineOffsetX[i] * outlineWidth_ * fontSize_ / 64,
+                                   y_ + outlineOffsetY[i] * outlineWidth_ * fontSize_ / 64);
                 ch.Render();
             }
 
@@ -279,40 +238,40 @@ namespace Erisu::Function
         ImGui::Unindent();
     }
 
-    void TextRenderer::SetDefaultFontPath(const std::string &defaultFontPath)
-    {
-        TextRenderer::defaultFontPath = defaultFontPath;
-    }
-
-    void TextRenderer::SetDefaultFontSize(int defaultFontSize)
-    {
-        TextRenderer::defaultFontSize = defaultFontSize;
-    }
-
     void TextRenderer::LoadCharacter()
     {
-        characters_.clear();
-        wText_ = stringToWstring(text_);
+        if (fontSize_ != Global::DefaultFontSize || fontPath_ != Global::DefaultFontPath || ftLibrary == nullptr ||
+            ftFace == nullptr)
+        {
+            if (ftFace)
+            {
+                FT_Done_Face(ftFace);
+                ftFace = nullptr;
+            }
+            if (ftLibrary)
+            {
+                FT_Done_FreeType(ftLibrary);
+                ftLibrary = nullptr;
+            }
 
-        LOG_ERROR_IF(FT_Init_FreeType(&ftLibrary), "Failed to initialize FreeType library");
-        LOG_ERROR_IF(FT_New_Face(ftLibrary, fontPath_.data(), 0, &ftFace), "Failed to load font");
-        LOG_ERROR_IF(FT_Set_Pixel_Sizes(ftFace, 0, fontSize_), "Failed to set font size");
-        LOG_ERROR_IF(FT_Select_Charmap(ftFace, FT_ENCODING_UNICODE), "Failed to select charmap");
+            LOG_ERROR_IF(FT_Init_FreeType(&ftLibrary), "Failed to initialize FreeType library");
+            LOG_ERROR_IF(FT_New_Face(ftLibrary, fontPath_.data(), 0, &ftFace), "Failed to load font");
+            LOG_ERROR_IF(FT_Set_Pixel_Sizes(ftFace, 0, fontSize_), "Failed to set font size");
+            LOG_ERROR_IF(FT_Select_Charmap(ftFace, FT_ENCODING_UNICODE), "Failed to select charmap");
+        }
 
-        for (auto ch: wText_)
-            characters_.emplace_back(Character{ch, this});
+        for (size_t i = 0; i < wText_.size(); ++i)
+            characters_[i].ReSetCharacter(wText_[i]);
 
         // Calculate text width
         textWidth_ = 0.0f;
         textHeight_ = 0.0f;
-        for (auto &c : characters_)
+        for (size_t i = 0; i < wText_.size(); ++i)
         {
-            textWidth_ += (c.advance_ >> 6);
-            textHeight_ = textHeight_ > c.size_.y() ? textHeight_ : c.size_.y();
+            textWidth_ += (characters_[i].advance_ >> 6);
+            textHeight_ = textHeight_ > characters_[i].size_.y() ? textHeight_ : characters_[i].size_.y();
         }
 
-        FT_Done_Face(ftFace);
-        FT_Done_FreeType(ftLibrary);
     }
 
     void TextRenderer::SetOutlineEnable(bool outlineEnable)
@@ -350,7 +309,7 @@ namespace Erisu::Function
         return outlineEnable_;
     }
 
-    float TextRenderer::GetShowProgress() const
+    float &TextRenderer::GetShowProgress()
     {
         return showProgress_;
     }
@@ -387,6 +346,48 @@ namespace Erisu::Function
         return 0;
     }
 
+    void TextRenderer::Destroy()
+    {
+        IComponent::Destroy();
+        FT_Done_Face(ftFace);
+        FT_Done_FreeType(ftLibrary);
+    }
+
+    void TextRenderer::SetFontShader(std::string &vertexShader, std::string &fragmentShader)
+    {
+        fontVertexShader = vertexShader;
+        fontFragmentShader = fragmentShader;
+
+        for (auto &ch: characters_)
+            ch.SetShader(std::make_shared<GLShader>(vertexShader, fragmentShader));
+    }
+
+    void TextRenderer::SetOnUpdateUniform(const std::function<void(const std::shared_ptr<GLShader>&, Character*)>& onUpdateUniform)
+    {
+        onUpdateUniform_ = onUpdateUniform;
+    }
+
+    std::wstring TextRenderer::StringToWstring(const std::string &str)
+    {
+        // TODO: This STL may be MSVC ONLY?
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+        return converter.from_bytes(str);
+    }
+
+    TextRenderer::TextRenderer(std::string name, std::string text, std::string vertex, std::string fragment, std::string fontPath, int fontSize,
+                               int priority) : ISortableComponent(std::move(name), priority), text_(std::move(text)),
+                                               fontVertexShader(std::move(vertex)),
+                                               fontFragmentShader(std::move(fragment)),
+                                                  fontPath_(std::move(fontPath)), fontSize_(fontSize),
+                                                  wText_(StringToWstring(text_))
+    {
+        characters_ = { 256, Character(0, this) };
+
+        for (int i = 0; i < 256; ++i)
+            characters_[i].index_ = i;
+
+    }
+
     Eigen::Matrix4f TextRenderer::Character::GetParentModelMatrix()
     {
         return parent_->gameObject_.lock()->GetModelMatrix() * parent_->transform_.GetModelMatrix();
@@ -394,6 +395,9 @@ namespace Erisu::Function
 
     void TextRenderer::Character::ReloadGlyph()
     {
+        if (ch_ == 0)
+            return;
+
         LOG_ERROR_IF(FT_Load_Char(parent_->ftFace, ch_, FT_LOAD_RENDER | FT_LOAD_FORCE_AUTOHINT),
                      "Failed to load Glyph");
 
@@ -413,8 +417,11 @@ namespace Erisu::Function
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         glBindTexture(GL_TEXTURE_2D, 0);
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
-        SetTexture(std::make_shared<GLTexture>(texture));
+        texture_ = std::make_shared<GLTexture>(texture, parent_->ftFace->glyph->bitmap.width,
+                                               parent_->ftFace->glyph->bitmap.rows);
+
         size_ = Eigen::Vector2i(parent_->ftFace->glyph->bitmap.width, parent_->ftFace->glyph->bitmap.rows);
         bearing_ = Eigen::Vector2i(parent_->ftFace->glyph->bitmap_left, parent_->ftFace->glyph->bitmap_top);
         advance_ = static_cast<unsigned int>(parent_->ftFace->glyph->advance.x);
@@ -439,7 +446,7 @@ namespace Erisu::Function
 
     TextRenderer::Character::Character(wchar_t ch, TextRenderer *parent)
             : Renderable2DBase(
-            std::make_shared<GLShader>(defaultFontVertexShader.data(), defaultFontFragmentShader.data(), true)),
+            std::make_shared<GLShader>(parent->fontVertexShader, parent->fontFragmentShader, true)),
               ch_(ch), parent_(parent)
     {
         Character::OnInit();
@@ -449,7 +456,7 @@ namespace Erisu::Function
     {
         shader_->SetMat4("projection", this->projectionMatrix_);
         shader_->SetVec4("u_Color", color_);
-
+        if (parent_->onUpdateUniform_) parent_->onUpdateUniform_(shader_, this);
         glActiveTexture(GL_TEXTURE0);
         texture_->Bind();
     }
@@ -464,19 +471,26 @@ namespace Erisu::Function
         float h = size_.y();
 
         float vertices[] =
-        {
-            xPos, yPos + h, 0.0f, 0.0f,
-            xPos, yPos,     0.0f, 1.0f,
-            xPos + w, yPos, 1.0f, 1.0f,
+                {
+                        xPos, yPos + h, 0.0f, 0.0f,
+                        xPos, yPos, 0.0f, 1.0f,
+                        xPos + w, yPos, 1.0f, 1.0f,
 
-            xPos, yPos + h, 0.0f, 0.0f,
-            xPos + w, yPos, 1.0f, 1.0f,
-            xPos + w, yPos + h, 1.0f, 0.0f
-        };
+                        xPos, yPos + h, 0.0f, 0.0f,
+                        xPos + w, yPos, 1.0f, 1.0f,
+                        xPos + w, yPos + h, 1.0f, 0.0f
+                };
 
         glBindBuffer(GL_ARRAY_BUFFER, vbo_);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     }
+
+    void TextRenderer::Character::ReSetCharacter(wchar_t ch)
+    {
+        ch_ = ch;
+        ReloadGlyph();
+    }
+
 }

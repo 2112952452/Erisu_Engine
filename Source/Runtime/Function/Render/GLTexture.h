@@ -17,11 +17,17 @@ namespace Erisu::Function
 
         explicit GLTexture(const std::string_view& path);
         explicit GLTexture(unsigned int glTextureId);
+        GLTexture(unsigned int glTextureId, int width, int height);
+        GLTexture(int width, int height, unsigned * buffer);
 
         bool Load(const std::string_view& path);
 
         void Release();
         void Bind() const;
+
+        void GenerateEmptyTex();
+        void FillTexSingleChannel(unsigned char* buffer, int width, int height);
+
 
     public:
         unsigned int id = 0;

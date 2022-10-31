@@ -85,8 +85,9 @@ namespace Erisu::Function
     void Renderable2DBase::SetColor(const Eigen::Vector4f &color)
     {
         this->color_ = color;
+        this->shader_->UseProgram();
+        this->shader_->SetVec4("u_Color", this->color_);
     }
-
 
     void Renderable2DBase::SetScale(const Eigen::Vector2f &scale)
     {
@@ -126,6 +127,7 @@ namespace Erisu::Function
 
     void Renderable2DBase::UpdateModelMatrix()
     {
+        auto backup = this->modelMatrix_;
         modelMatrix_ = Eigen::Matrix4f::Identity();
         auto imgWidth = static_cast<float>(texture_->width);
         auto imgHeight = static_cast<float>(texture_->height);
@@ -145,18 +147,21 @@ namespace Erisu::Function
                 0, 0, 0, 1;
 
         modelMatrix_ = GetParentModelMatrix() * modelMatrix_ * rotationMatrix;
+
+        if (backup != modelMatrix_)
+        {
+            this->shader_->UseProgram();
+            this->shader_->SetMat4("model", modelMatrix_);
+        }
     }
 
     void Renderable2DBase::UpdateUniforms()
     {
-        this->shader_->SetVec4("u_Color", this->color_);
-
+        // check if parent changed model matrix
         this->UpdateModelMatrix();
-        this->shader_->SetMat4("model", this->modelMatrix_);
-        this->shader_->SetMat4("projection", this->projectionMatrix_);
 
         glActiveTexture(GL_TEXTURE0);
-        this->texture_->Bind();
+        texture_->Bind();
     }
 
     void Renderable2DBase::DrawQuad()
@@ -168,9 +173,6 @@ namespace Erisu::Function
         glBindVertexArray(vao_);
         glBindBuffer(GL_ARRAY_BUFFER, vbo_);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
 
         glDepthFunc(GL_LESS);
         glDisable(GL_BLEND);
@@ -191,9 +193,8 @@ namespace Erisu::Function
                                            texture_(nullptr)
     {}
 
-    Renderable2DBase::Renderable2DBase(std::shared_ptr<GLTexture> texture) : shader_(
-            std::make_shared<GLShader>(defaultVertexShader.data(), defaultFragmentShader.data(), true)),
-                                                                             texture_(std::move(texture))
+    Renderable2DBase::Renderable2DBase(std::shared_ptr<GLTexture> texture) : shader_(std::make_shared<GLShader>(
+            defaultVertexShader.data(), defaultFragmentShader.data(), true)), texture_(std::move(texture))
     { }
 
     Renderable2DBase::Renderable2DBase(std::shared_ptr<GLShader> shader,
@@ -218,10 +219,16 @@ namespace Erisu::Function
 
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             glBindVertexArray(0);
+
         });
 
         vao_ = ::VAO;
         vbo_ = ::VBO;
+
+        this->shader_->UseProgram();
+        this->shader_->SetMat4("projection", this->projectionMatrix_);
+        this->shader_->SetVec4("u_Color", this->color_);
+        this->shader_->SetInt("u_Texture", 0);
     }
 
     bool Renderable2DBase::IsLoaded() const
@@ -234,8 +241,8 @@ namespace Erisu::Function
         this->texture_ = std::make_shared<GLTexture>(texturePath);
     }
 
-    Renderable2DBase::Renderable2DBase(const std::string &texturePath) : shader_(
-            std::make_shared<GLShader>(defaultVertexShader.data(), defaultFragmentShader.data(), true))
+    Renderable2DBase::Renderable2DBase(const std::string &texturePath) : shader_(std::make_shared<GLShader>(
+            defaultVertexShader.data(), defaultFragmentShader.data(), true))
     {
         LoadTexture(texturePath);
     }

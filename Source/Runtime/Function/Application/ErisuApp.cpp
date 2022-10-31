@@ -6,7 +6,6 @@
 
 #include <Log/LogSystem.h>
 #include <utility>
-#include <future>
 
 #include "../Function/Input/InputSystem.h"
 
@@ -22,22 +21,16 @@ namespace Erisu::Function
     {
         Init();
 
-        std::thread logicThread([&]()
-        {
-            while (isRunning_)
-            {
-                // per 0.02s update
-                while (timer_.GetMilliseconds() >= 20)
-                {
-                    timer_.Reset();
-                    UpdateLogic();
-                }
-            }
-        });
-        logicThread.detach();
-
         while (isRunning_ && pRenderer_->IsRunning())
+        {
             UpdateRender();
+
+            if (timer_.GetMilliseconds() >= 20)
+            {
+                timer_.Reset();
+                UpdateLogic();
+            }
+        }
 
         Shutdown();
     }

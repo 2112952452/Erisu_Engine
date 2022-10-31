@@ -211,7 +211,7 @@ namespace Erisu::Function
         for (auto & component : components_)
             component->Destroy();
 
-        components_.clear();
+        std::vector<std::shared_ptr<IComponent>>().swap(components_);
 
         // Remove from parent
         if (!parent_.expired())

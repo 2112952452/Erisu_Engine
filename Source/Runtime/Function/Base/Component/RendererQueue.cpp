@@ -110,4 +110,13 @@ namespace Erisu::Function
         IComponent::SetScene(scene);
         UpdateSubComponents();
     }
+
+    void RendererQueue::Destroy()
+    {
+        IComponent::Destroy();
+        for (const auto &renderer : renderers_)
+            renderer.second->Destroy();
+
+        std::map<int, RendererPtr>().swap(renderers_);
+    }
 }

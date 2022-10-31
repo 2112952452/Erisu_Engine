@@ -5,11 +5,14 @@
 #ifndef ERISU_ENGINE_PYTHONMODULE_H
 #define ERISU_ENGINE_PYTHONMODULE_H
 
+#include <Python.h>
+#include <string>
+
 namespace Erisu::Function
 {
     class PythonModule
     {
-        // TODO: Implement Python Module
+
     };
 }
 

@@ -60,6 +60,8 @@ namespace Erisu::Function
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode, nullptr);
+
         for (const auto &drawFunction : windowDrawFunctions_)
             drawFunction();
 

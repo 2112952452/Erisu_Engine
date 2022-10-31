@@ -5,7 +5,7 @@ project(Erisu_Engine VERSION 0.1.1)
 set(CMAKE_CXX_STANDARD 20)
 
 set(RUNTIME_PATH ${CMAKE_SOURCE_DIR}/Source/Runtime)
-set(CMAKE_CXX_FLAGS "-Xclang -fcxx-exceptions -O2")
+set(CMAKE_CXX_FLAGS "-Xclang -O3 -Os")
 
 # 64-bit
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
@@ -59,7 +59,7 @@ add_executable(Erisu_Engine
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp
         Source/Runtime/UserComponent/TestComponent.cpp
-        "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.h" "Source/Runtime/Function/Galgame ToolKit/Struct/GalText.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.h" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.cpp" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.h" Source/Runtime/Function/Utility/PythonModule.cpp Source/Runtime/Function/Utility/PythonModule.h "Source/Runtime/Function/2D ToolKit/Base/AnimationBase.h" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.cpp" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.h" "Source/Runtime/Function/2D ToolKit/Base/IAnimation.h")
+        "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextBox.h" "Source/Runtime/Function/Galgame ToolKit/Struct/GalText.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalBackground.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalScene.h" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.cpp" "Source/Runtime/Function/Galgame ToolKit/Component/GalTextRenderer.h" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.cpp" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.h" Source/Runtime/Function/Utility/PythonModule.cpp Source/Runtime/Function/Utility/PythonModule.h "Source/Runtime/Function/2D ToolKit/Base/AnimationBase.h" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.cpp" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.h" "Source/Runtime/Function/2D ToolKit/Base/IAnimation.h" "Source/Runtime/Function/2D ToolKit/Component/deprecated/StringRenderer.cpp" "Source/Runtime/Function/2D ToolKit/Component/deprecated/StringRenderer.h" Source/include.h)
 
 target_include_directories(Erisu_Engine PRIVATE ${STB_INCLUDE_DIRS})
 
@@ -67,4 +67,10 @@ target_link_libraries(Erisu_Engine
         PRIVATE glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only nlohmann_json::nlohmann_json freetype
         )
 
-target_link_libraries(Erisu_Engine PRIVATE ${RUNTIME_PATH}/Tool/Python/libs/python310_d.lib)
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    target_link_libraries(Erisu_Engine PRIVATE ${RUNTIME_PATH}/Tool/Python/libs/python310_d.lib)
+endif ()
+
+if (CMAKE_BUILD_TYPE MATCHES Release)
+    target_link_libraries(Erisu_Engine PRIVATE ${RUNTIME_PATH}/Tool/Python/libs/python310.lib)
+endif()

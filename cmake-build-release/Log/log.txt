@@ -1,2 +1,3 @@
 [info] Erisu Engine Start.
-[warning] Engine is under development, please do not use it in production environment.
+[info] Erisu Engine Shutdown.
+[info] Erisu Engine Shutdown.

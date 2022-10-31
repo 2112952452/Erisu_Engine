@@ -50,7 +50,7 @@ namespace Erisu::Function
     }
 
     void IComponent::Destroy()
-    {}
+    { }
 
     IComponent::Json IComponent::Serialize() const
     {

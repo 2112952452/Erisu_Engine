@@ -12,27 +12,32 @@
 
 namespace Erisu::Function
 {
+    // NEED TO OPTIMIZE
     class TextRenderer : public ISortableComponent
     {
     protected:
-        FT_Library ftLibrary;
-        FT_Face ftFace;
+        FT_Library ftLibrary = nullptr;
+        FT_Face ftFace = nullptr;
+
+        std::string fontVertexShader;
+        std::string fontFragmentShader;
 
     protected:
         friend class Character;
+        // 单字符多纹理渲染
         class Character : public Renderable2DBase
         {
         private:
             Eigen::Matrix4f GetParentModelMatrix() override;
-
         private:
             void ReloadGlyph();
             void OnInit() override;
             void UpdateUniforms() override;
 
-        private:
+        public:
             wchar_t ch_;
             TextRenderer* parent_;
+            int index_;
 
         public:
             unsigned int advance_{};
@@ -44,10 +49,15 @@ namespace Erisu::Function
 
         public:
             void ResetVertexData(float x, float y);
+            void ReSetCharacter(wchar_t ch);
         };
+
+
+        std::function<void(const std::shared_ptr<GLShader>&, Character*)> onUpdateUniform_ = nullptr;
 
     protected:
         std::vector<Character> characters_;
+
         float textWidth_ = 0.0f;
         float textHeight_ = 0.0f;
 
@@ -71,19 +81,16 @@ namespace Erisu::Function
 
     protected:
         void LoadCharacter();
-
         virtual int ProcessMarkerChar(wchar_t c, float &x, float& y, float curProgress);
-    public:
-        inline static std::string defaultFontPath = R"(Resources/font/SourceHanSansSC-Normal.otf)";
-        inline static int defaultFontSize = 20;
+        static std::wstring StringToWstring(const std::string &str);
 
-        static void SetDefaultFontPath(const std::string &defaultFontPath);
-        static void SetDefaultFontSize(int defaultFontSize);
     public:
         explicit TextRenderer(std::string name, int priority = 0);
         TextRenderer(std::string name, std::string fontPath, std::string text, int fontSize, Eigen::Vector4f color, int priority = 0);
         TextRenderer(std::string name, std::string text, int fontSize, int priority = 0);
         TextRenderer(std::string name, std::string text, int priority = 0);
+        TextRenderer(std::string name, std::string text, std::string vertex, std::string fragment, std::string fontPath, int fontSize, int priority = 0);
+
         ~TextRenderer() override = default;
 
         void SetFontPath(const std::string &fontPath);
@@ -95,6 +102,8 @@ namespace Erisu::Function
         void SetOutlineWidth(float outlineWidth);
         void SetOutlineColor(const Eigen::Vector4f &outlineColor);
         void SetLineSpacing(float lineSpacing);
+        void SetFontShader(std::string &vertexShader, std::string &fragmentShader);
+        void SetOnUpdateUniform(const std::function<void(const std::shared_ptr<GLShader>&, Character*)>& onUpdateUniform);
 
         [[nodiscard]] std::string GetFontPath() const;
         [[nodiscard]] std::string GetText() const;
@@ -102,10 +111,12 @@ namespace Erisu::Function
         [[nodiscard]] Eigen::Vector4f GetColor() const;
         [[nodiscard]] Transform& GetTransform();
         [[nodiscard]] bool GetOutlineEnable() const;
-        [[nodiscard]] float GetShowProgress() const;
+        [[nodiscard]] float& GetShowProgress();
         [[nodiscard]] float GetOutlineWidth() const;
         [[nodiscard]] Eigen::Vector4f GetOutlineColor() const;
         [[nodiscard]] float GetLineSpacing() const;
+
+        void Destroy() override;
 
         void Render() override;
         void Update() override;

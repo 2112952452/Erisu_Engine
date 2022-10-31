@@ -17,6 +17,8 @@
         <option value="$PROJECT_DIR$/Source/Runtime/Tool/QuickJS" />
         <option value="$PROJECT_DIR$/Source/Scripts" />
         <option value="$PROJECT_DIR$/venv" />
+        <option value="$PROJECT_DIR$/out" />
+        <option value="$PROJECT_DIR$/.vs" />
       </list>
     </option>
   </component>

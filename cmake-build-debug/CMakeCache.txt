@@ -305,6 +305,9 @@ eigen3_DIR:PATH=D:/vcpkg/installed/x64-windows/share/eigen3
 //The directory containing a CMake configuration file for fmt.
 fmt_DIR:PATH=D:/vcpkg/installed/x64-windows/share/fmt
 
+//The directory containing a CMake configuration file for freetype-gl.
+freetype-gl_DIR:PATH=D:/vcpkg/installed/x64-windows/share/freetype-gl
+
 //The directory containing a CMake configuration file for freetype.
 freetype_DIR:PATH=D:/vcpkg/installed/x64-windows/share/freetype
 

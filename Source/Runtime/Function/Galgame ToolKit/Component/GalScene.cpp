@@ -58,4 +58,13 @@ namespace Erisu::Function
         textBox_->SetBackground(texture);
     }
 
+    void GalScene::Destroy()
+    {
+        // TODO?: Change to weak_ptr?
+        textBox_.reset();
+        background_.reset();
+
+        Scene::Destroy();
+    }
+
 }

@@ -20,9 +20,9 @@ namespace Erisu::Function
         std::shared_ptr<GalTextRenderer> text_;
         std::shared_ptr<GalText> currentText_;
 
+        AnimationBase<float> fadeIn;
     private:
         inline static std::string_view DefaultBackgroundPath_ = "Resources/Textures/DefaultGalTextBoxBackGround.png";
-        inline static std::string_view DefaultFontPath_ = "Resources/font/SourceHanSansSC-Normal.otf";
 
     public:
         explicit GalTextBox(const std::string &name);
@@ -46,6 +46,7 @@ namespace Erisu::Function
         [[nodiscard]] const std::shared_ptr<GalTextRenderer>& GetText() const;
 
         void Update() override;
+        void Render() override;
     };
 }
 

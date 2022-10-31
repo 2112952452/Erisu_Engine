@@ -11,15 +11,9 @@ namespace Erisu::Function
 {
     class GalTextRenderer : public TextRenderer
     {
-    private:
-        Eigen::Vector4f backupColor_;
-    protected:
-        int ProcessMarkerChar(wchar_t c, float &x, float& y, float curProgress) override;
-
     public:
         GalTextRenderer(std::string name, std::string fontPath, std::string text, int fontSize, Eigen::Vector4f color, int priority = 0);
 
-        void Update() override;
 
     };
 }

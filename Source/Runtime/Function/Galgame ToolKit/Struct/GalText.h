@@ -19,20 +19,20 @@ namespace Erisu::Function
         float showSpeed = 0.2f; // a character per second
 
         Eigen::Vector2f position = {0.0f, 0.0f};
-        std::function<void()> clickCallback = nullptr;
+        std::function<void()> goNextCallback = nullptr;
         std::weak_ptr<GalText> nextText;
 
         GalText(std::string text, int fontSize, float showSpeed, Eigen::Vector2f position,
                 std::function<void()> clickCallback,
                 std::weak_ptr<GalText> nextText)
                 : text(std::move(text)), fontSize(fontSize), showSpeed(showSpeed), position(std::move(position)),
-                  clickCallback(std::move(clickCallback)), nextText(std::move(nextText))
+                  goNextCallback(std::move(clickCallback)), nextText(std::move(nextText))
         {}
 
         GalText(std::string text, int fontSize, float showSpeed, Eigen::Vector2f position,
                 std::function<void()> clickCallback)
                 : text(std::move(text)), fontSize(fontSize), showSpeed(showSpeed), position(std::move(position)),
-                  clickCallback(std::move(clickCallback))
+                  goNextCallback(std::move(clickCallback))
         {}
 
         GalText(std::string text, int fontSize, float showSpeed, Eigen::Vector2f position) : text(std::move(text)),

@@ -96,4 +96,53 @@ namespace Erisu::Function
         widthRatio = static_cast<float>(width) / static_cast<float>(height);
     }
 
+    GLTexture::GLTexture(unsigned int glTextureId, int width, int height)
+            : id(glTextureId), width(width), height(height), bLoaded(true)
+    {
+        widthRatio = static_cast<float>(width) / static_cast<float>(height);
+    }
+
+    GLTexture::GLTexture(int width, int height, unsigned int *buffer)
+        : width(width), height(height), bLoaded(true)
+    {
+        widthRatio = static_cast<float>(width) / static_cast<float>(height);
+        glGenTextures(1, &id);
+        glBindTexture(GL_TEXTURE_2D, id);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    }
+
+    void GLTexture::GenerateEmptyTex()
+    {
+        glGenTextures(1, &id);
+        glBindTexture(GL_TEXTURE_2D, id);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+    }
+
+    void GLTexture::FillTexSingleChannel(unsigned char *buffer, int width, int height)
+    {
+        if (!id) return;
+        bLoaded = true;
+
+        this->width = width;
+        this->height = height;
+        widthRatio = static_cast<float>(width) / static_cast<float>(height);
+
+        glBindTexture(GL_TEXTURE_2D, id);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, buffer);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
 }

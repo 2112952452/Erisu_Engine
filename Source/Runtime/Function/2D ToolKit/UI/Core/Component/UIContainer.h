@@ -18,7 +18,7 @@ namespace Erisu::Function
         {
             bool operator()(const std::shared_ptr<UIComponent>& lhs, const std::shared_ptr<UIComponent>& rhs) const
             {
-                return lhs->GetPriority() > rhs->GetPriority();
+                return lhs->GetPriority() < rhs->GetPriority();
             }
         };
         std::multiset<std::shared_ptr<UIComponent>, UIComponentComparer> components;

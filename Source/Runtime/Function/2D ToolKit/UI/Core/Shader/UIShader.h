@@ -12,7 +12,6 @@ namespace Erisu::Function
     std::shared_ptr<GLShader> DefaultUIShader();
     std::shared_ptr<GLShader> DefaultFontShader();
     std::pair<unsigned, unsigned> DefaultVAOVBO();
-    std::shared_ptr<GLShader> DefaultUITextShader();
 }
 
 

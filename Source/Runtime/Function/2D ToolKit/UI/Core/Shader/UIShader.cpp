@@ -70,25 +70,6 @@ void main()
 }
 )";
 
-    constexpr std::string_view defaultUITextFragmentShader = R"(
-#version 330 core
-
-out vec4 color;
-in vec2 TexCoords;
-
-uniform sampler2D u_Texture;
-uniform vec4 u_Color;
-
-void main()
-{
-    float alpha = texture(u_Texture, TexCoords).r;
-    if (alpha < 0.1)
-        discard;
-
-    color = vec4(u_Color.rgb, alpha);
-}
-)";
-
 }
 
 namespace Erisu::Function
@@ -134,8 +115,4 @@ namespace Erisu::Function
         return std::make_pair(VAO, VBO);
     }
 
-    std::shared_ptr<GLShader> DefaultUITextShader()
-    {
-        return std::make_shared<GLShader>(UIDefaultShader.data(), defaultUITextFragmentShader.data(), true);
-    }
 }

@@ -1,6 +1,6 @@
 #include "include.h"
 
-
+#include "Runtime/Function/2D ToolKit/UI/Core/Utility/UIInputUti.h"
 int main()
 {
     LOG_INFO("Erisu Engine Start.");
@@ -24,7 +24,7 @@ int main()
     std::shared_ptr<GLTexture> texture = GLTexture::Create(R"(C:\Users\21129\Desktop\下载.png)");
 
     std::shared_ptr<UIText> text = std::make_shared<UIText>("Test Text",
-                                                            "これはテスト用例です\nThis is a test string\n测试用例", 1);
+                                                            "これはテスト用例です\nThis is a test string\n测试用例", 2);
     text->SetFontSize(60);
     text->Anchor = UIAnchor::BottomCenter;
     text->SetOutlineThickness(3.f);
@@ -41,62 +41,13 @@ int main()
     //container->OriginOffset = Eigen::Vector2f(0, 100);
     image->Anchor = UIAnchor::TopLeft;
 
-    std::shared_ptr<UIInput> input = std::make_shared<UIInput>(image);
-    input->Layer =  1;
-    input->onClick = [&]
-    {
-        LOG_DEBUG("Clicked");
-    };
-    input->onPressed = [&]
-    {
-        LOG_DEBUG("Pressed");
-    };
-    input->onHoverEnter = [&]
-    {
-        image->SetColor(Eigen::Vector4f(.8f, .8f, .8f, 1));
-    };
-    input->onHoverExit = [&]
-    {
-        image->SetColor(Eigen::Vector4f(1, 1, 1, 1));
-    };
-    input->onPressedExit = [&]
-    {
-        LOG_DEBUG("Pressed Exit");
-    };
-    input->onDrag = [&](Eigen::Vector2f mousePos)
-    {
-        // if you want to drag the image, you can use this code
-        Eigen::Vector2f offset = input->LastMousePosition - input->BeforeDragPosition;
-        mousePos -= offset;
-
-        image->SetOnScreenPosition(mousePos.x(), mousePos.y());
-    };
-    input->onDragExit = [&] (Eigen::Vector2f mousePos)
-    {
-        LOG_DEBUG("Drag Exit");
-    };
-    input->Register();
-
-    std::shared_ptr<UIInput> input2 = std::make_shared<UIInput>(container);
-    input2->Layer = 0;
-
-    Eigen::Vector2f origin = container->OriginOffset;
-    input2->onDrag = [&](Eigen::Vector2f mousePos)
-    {
-        Eigen::Vector2f offset = input2->LastMousePosition - mousePos;
-
-        container->OriginOffset = origin - offset;
-    };
-    input2->onDragExit = [&] (Eigen::Vector2f mousePos)
-    {
-        origin = container->OriginOffset;
-    };
-
-    input2->Register();
-
+    Erisu::Function::CreateUIDragInput(text, 2);
+    Erisu::Function::CreateUIDragInput(container, 0);
+    Erisu::Function::CreateUIButtonInput(image, []{
+        LOG_INFO("クリックされました！");
+    }, 1);
 
     UIObject::AddUIComponent(container);
-    //UIObject::AddUIComponent(text);
 
     app.SetRenderer(renderer);
     app.SetScene(scene);

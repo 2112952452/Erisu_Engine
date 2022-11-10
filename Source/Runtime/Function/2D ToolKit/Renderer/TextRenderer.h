@@ -93,7 +93,7 @@ namespace Erisu::Function
         void SetFontSize(int fontSize);
         void SetColor(const Eigen::Vector4f &color);
         void SetOutlineEnable(bool outlineEnable);
-        void SetShowProgress(float showProgress);
+
         void SetOutlineWidth(float outlineWidth);
         void SetOutlineColor(const Eigen::Vector4f &outlineColor);
         void SetLineSpacing(float lineSpacing);

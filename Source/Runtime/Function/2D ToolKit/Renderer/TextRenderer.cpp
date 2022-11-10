@@ -236,11 +236,6 @@ namespace Erisu::Function
         outlineEnable_ = outlineEnable;
     }
 
-    void TextRenderer::SetShowProgress(float showProgress)
-    {
-        std::clamp(showProgress, 0.0f, 1.0f);
-    }
-
     void TextRenderer::SetOutlineWidth(float outlineWidth)
     {
         outlineWidth_ = outlineWidth;

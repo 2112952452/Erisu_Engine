@@ -42,6 +42,7 @@ namespace Erisu::Function
     public:
         void SetFrameBufferSizeCallback(GLFWframebuffersizefun callback);
 
+        void SetMaximizedCallback(GLFWwindowmaximizefun callback);
     };
 }
 #endif //ERISU_ENGINE_GLWINDOW_H

@@ -15,20 +15,20 @@
 ########################
 
 //Path to a program.
-CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-lib.exe
+CMAKE_AR:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-lib.exe
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Release
 
 //No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:UNINITIALIZED=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/clang-cl.exe
+CMAKE_CXX_COMPILER:UNINITIALIZED=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/clang-cl.exe
 
 //LLVM archiver
-CMAKE_CXX_COMPILER_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ar.exe
+CMAKE_CXX_COMPILER_AR:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ar.exe
 
 //Generate index for LLVM archive
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=-m64
@@ -49,13 +49,13 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
 
 //No help, variable specified on the command line.
-CMAKE_C_COMPILER:UNINITIALIZED=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/clang-cl.exe
+CMAKE_C_COMPILER:UNINITIALIZED=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/clang-cl.exe
 
 //LLVM archiver
-CMAKE_C_COMPILER_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ar.exe
+CMAKE_C_COMPILER_AR:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ar.exe
 
 //Generate index for LLVM archive
-CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe
+CMAKE_C_COMPILER_RANLIB:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-ranlib.exe
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=-m64
@@ -97,7 +97,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Erisu_Engine
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/lld-link.exe
+CMAKE_LINKER:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/lld-link.exe
 
 //make program
 CMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe
@@ -126,7 +126,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 CMAKE_MT:FILEPATH=C:/Program Files (x86)/Windows Kits/10/bin/10.0.19041.0/x64/mt.exe
 
 //Path to a program.
-CMAKE_NM:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-nm.exe
+CMAKE_NM:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/llvm-nm.exe
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -235,6 +235,24 @@ Erisu_Engine_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Erisu_Engine_SOURCE_DIR:STATIC=D:/repos/Erisu Engine
 
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
+
+//Python version to use for compiling modules
+PYBIND11_PYTHON_VERSION:STRING=
+
+//Path to a library.
+PYTHON_DEBUG_LIBRARY:FILEPATH=D:/vcpkg/installed/x64-windows/debug/lib/python310_d.lib
+
+//Path to a file.
+PYTHON_INCLUDE_DIR:PATH=D:/vcpkg/installed/x64-windows/include/python3.10
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=D:/vcpkg/installed/x64-windows/lib/python310.lib
+
 //Path to a file.
 STB_INCLUDE_DIRS:PATH=D:/vcpkg/installed/x64-windows/include
 
@@ -287,7 +305,7 @@ ZLIB_LIBRARY_RELEASE:FILEPATH=D:/vcpkg/installed/x64-windows/lib/zlib.lib
 Z_VCPKG_BUILTIN_POWERSHELL_PATH:FILEPATH=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
 
 //Path to a program.
-Z_VCPKG_CL:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.33.31629/bin/Hostx64/x64/cl.exe
+Z_VCPKG_CL:FILEPATH=D:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.33.31629/bin/Hostx64/x64/cl.exe
 
 //Path to a program.
 Z_VCPKG_PWSH_PATH:FILEPATH=Z_VCPKG_PWSH_PATH-NOTFOUND
@@ -302,11 +320,17 @@ assimp_DIR:PATH=D:/vcpkg/installed/x64-windows/share/assimp
 //The directory containing a CMake configuration file for eigen3.
 eigen3_DIR:PATH=D:/vcpkg/installed/x64-windows/share/eigen3
 
+//Value Computed by CMake
+example_BINARY_DIR:STATIC=D:/repos/Erisu Engine/cmake-build-release/Source/Runtime/Function/Scripts/Python
+
+//Value Computed by CMake
+example_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+example_SOURCE_DIR:STATIC=D:/repos/Erisu Engine/Source/Runtime/Function/Scripts/Python
+
 //The directory containing a CMake configuration file for fmt.
 fmt_DIR:PATH=D:/vcpkg/installed/x64-windows/share/fmt
-
-//The directory containing a CMake configuration file for freetype-gl.
-freetype-gl_DIR:PATH=D:/vcpkg/installed/x64-windows/share/freetype-gl
 
 //The directory containing a CMake configuration file for freetype.
 freetype_DIR:PATH=D:/vcpkg/installed/x64-windows/share/freetype
@@ -325,6 +349,9 @@ nlohmann_json_DIR:PATH=D:/vcpkg/installed/x64-windows/share/nlohmann_json
 
 //The directory containing a CMake configuration file for pugixml.
 pugixml_DIR:PATH=D:/vcpkg/installed/x64-windows/share/pugixml
+
+//The directory containing a CMake configuration file for pybind11.
+pybind11_DIR:PATH=D:/vcpkg/installed/x64-windows/share/pybind11
 
 //The directory containing a CMake configuration file for spdlog.
 spdlog_DIR:PATH=D:/vcpkg/installed/x64-windows/share/spdlog
@@ -480,12 +507,58 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_TOOLCHAIN_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+EIGEN3_CFLAGS:INTERNAL=
+EIGEN3_CFLAGS_I:INTERNAL=
+EIGEN3_CFLAGS_OTHER:INTERNAL=
+EIGEN3_FOUND:INTERNAL=
+EIGEN3_INCLUDEDIR:INTERNAL=
+EIGEN3_LIBDIR:INTERNAL=
+EIGEN3_LIBS:INTERNAL=
+EIGEN3_LIBS_L:INTERNAL=
+EIGEN3_LIBS_OTHER:INTERNAL=
+EIGEN3_LIBS_PATHS:INTERNAL=
+EIGEN3_MODULE_NAME:INTERNAL=
+EIGEN3_PREFIX:INTERNAL=
+EIGEN3_STATIC_CFLAGS:INTERNAL=
+EIGEN3_STATIC_CFLAGS_I:INTERNAL=
+EIGEN3_STATIC_CFLAGS_OTHER:INTERNAL=
+EIGEN3_STATIC_LIBDIR:INTERNAL=
+EIGEN3_STATIC_LIBS:INTERNAL=
+EIGEN3_STATIC_LIBS_L:INTERNAL=
+EIGEN3_STATIC_LIBS_OTHER:INTERNAL=
+EIGEN3_STATIC_LIBS_PATHS:INTERNAL=
+EIGEN3_VERSION:INTERNAL=
+//Details about finding PythonLibs
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[optimized;D:/vcpkg/installed/x64-windows/lib/python310.lib;debug;D:/vcpkg/installed/x64-windows/debug/lib/python310_d.lib][D:/vcpkg/installed/x64-windows/include/python3.10][v3.10.5()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
 FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[optimized;D:/vcpkg/installed/x64-windows/lib/zlib.lib;debug;D:/vcpkg/installed/x64-windows/debug/lib/zlibd.lib][D:/vcpkg/installed/x64-windows/include][v1.2.12()]
 //Details about finding nlohmann_json
 FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[D:/vcpkg/installed/x64-windows/share/nlohmann_json/nlohmann_jsonConfig.cmake][v3.11.2()]
+//Test HAS_FLTO
+HAS_FLTO:INTERNAL=1
+//Test HAS_FLTO_THIN
+HAS_FLTO_THIN:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_DEBUG_LIBRARY
+PYTHON_DEBUG_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_INCLUDE_DIR
+PYTHON_INCLUDE_DIR-ADVANCED:INTERNAL=1
+PYTHON_INCLUDE_DIRS:INTERNAL=D:/vcpkg/installed/x64-windows/include/python3.10
+PYTHON_IS_DEBUG:INTERNAL=
+PYTHON_LIBRARIES:INTERNAL=optimized;D:/vcpkg/installed/x64-windows/lib/python310.lib;debug;D:/vcpkg/installed/x64-windows/debug/lib/python310_d.lib
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+PYTHON_MODULE_EXTENSION:INTERNAL=
+PYTHON_MODULE_PREFIX:INTERNAL=
+PYTHON_VERSION:INTERNAL=
+PYTHON_VERSION_MAJOR:INTERNAL=
+PYTHON_VERSION_MINOR:INTERNAL=
+Python_ADDITIONAL_VERSIONS:INTERNAL=3.11;3.10;3.9;3.8;3.7;3.6
 //Install the dependencies listed in your manifest:
 //\n    If this is off, you will have to manually install your dependencies.
 //\n    See https://github.com/microsoft/vcpkg/tree/master/docs/specifications/manifests.md
@@ -506,4 +579,8 @@ Z_VCPKG_CHECK_MANIFEST_MODE:INTERNAL=OFF
 Z_VCPKG_POWERSHELL_PATH:INTERNAL=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
 //Vcpkg root directory
 Z_VCPKG_ROOT_DIR:INTERNAL=D:/vcpkg
+_Python:INTERNAL=PYTHON
+__pkg_config_checked_EIGEN3:INTERNAL=1
+//Directories where pybind11 and possibly Python headers are located
+pybind11_INCLUDE_DIRS:INTERNAL=D:/vcpkg/installed/x64-windows/include;D:/vcpkg/installed/x64-windows/include/python3.10
 

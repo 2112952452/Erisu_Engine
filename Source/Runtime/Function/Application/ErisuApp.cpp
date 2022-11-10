@@ -7,8 +7,6 @@
 #include <Log/LogSystem.h>
 #include <utility>
 
-#include "../Function/Input/InputSystem.h"
-
 namespace Erisu::Function
 {
     ErisuApp::~ErisuApp()
@@ -57,7 +55,6 @@ namespace Erisu::Function
 
     void ErisuApp::UpdateLogic()
     {
-        InputSystem::GetInstance().Update();
         pScene_->UpdateObjects();
     }
 

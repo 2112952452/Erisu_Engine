@@ -21,7 +21,7 @@ namespace Erisu::Function
         inline static unsigned renderBufferObj_;
         inline static unsigned frameBufferObj_;
     public:
-        PostProcessBase(std::shared_ptr<GLShader> shader);
+        explicit PostProcessBase(std::shared_ptr<GLShader> shader);
         virtual ~PostProcessBase() = default;
 
         virtual void Init();

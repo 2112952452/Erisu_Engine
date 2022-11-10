@@ -51,6 +51,7 @@ namespace Erisu::Function
         }
 
         glUseProgram(shaderProgramId_);
+        UpdateUniform ? UpdateUniform(this) : void();
     }
 
     std::string GLShader::GetVertexCompileLog() const

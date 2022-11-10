@@ -101,6 +101,9 @@ namespace Erisu::Function
         std::string fragmentSource_;
 
         bool isLinked_ = false;
+
+    public:
+        std::function<void(const GLShader *)> UpdateUniform;
     };
 
 

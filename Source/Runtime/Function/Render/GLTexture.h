@@ -6,6 +6,7 @@
 #define ERISU_ENGINE_GLTEXTURE_H
 
 #include <string>
+#include <memory>
 
 namespace Erisu::Function
 {
@@ -25,9 +26,8 @@ namespace Erisu::Function
         void Release();
         void Bind() const;
 
-        void GenerateEmptyTex();
-        void FillTexSingleChannel(unsigned char* buffer, int width, int height);
-
+    public:
+        static std::shared_ptr<GLTexture> Create(const std::string_view& path);
 
     public:
         unsigned int id = 0;

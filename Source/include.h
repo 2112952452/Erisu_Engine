@@ -19,9 +19,12 @@
 #include "Runtime/Resource/ModelImport/ModelImport.h"
 #include "RendererQueue.h"
 #include "Runtime/Function/Utility/ImGuiUtility.h"
-#include "Runtime/Function/Galgame ToolKit/Component/GalTextBox.h"
-#include "Runtime/Function/Galgame ToolKit/Component/GalScene.h"
 #include "Runtime/Function/2D ToolKit/Base/AnimationCurve.h"
+
+#include "Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.h"
+#include "Runtime/Function/2D ToolKit/UI/Core/Component/UIText.h"
+#include "Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.h"
+#include "Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.h"
 
 using namespace Erisu;
 using namespace Function;

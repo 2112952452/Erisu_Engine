@@ -88,4 +88,9 @@ namespace Erisu::Function
     {
         glfwSetFramebufferSizeCallback(pWindow_, callback);
     }
+
+    void GLWindow::SetMaximizedCallback(GLFWwindowmaximizefun callback)
+    {
+        glfwSetWindowMaximizeCallback(pWindow_, callback);
+    }
 }

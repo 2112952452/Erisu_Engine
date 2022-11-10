@@ -1,9 +1,0 @@
-[info] Erisu Engine Start.
-[debug] GLAD and GLFW Initialized
-[debug] Loading texture: Resources/Textures/DefaultGalTextBoxBackGround.png
-[debug] Loading texture: Resources\Textures\ErisuWhite.png
-[debug] Loading texture: D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\街_お店A.png
-[debug] Loading texture: C:\Users\21129\Desktop\349.png
-[debug] ImGui Initialized
-[debug] OpenGL Renderer Initialized
-[debug] Application Initialized.

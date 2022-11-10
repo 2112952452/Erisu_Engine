@@ -52,22 +52,6 @@ namespace Erisu::Function
     void IComponent::Destroy()
     { }
 
-    IComponent::Json IComponent::Serialize() const
-    {
-        Json json;
-        json["name"]    = name;
-        json["enabled"] = enabled;
-        json["className"] = typeid(this).name();
-
-        return json;
-    }
-
-    void IComponent::Deserialize(const IComponent::Json &json)
-    {
-        JsonClassMatchDetect(json);
-        name = json["name"].get<std::string>();
-        enabled = json["enabled"].get<bool>();
-    }
 
     void IComponent::ShowInInspector()
     {

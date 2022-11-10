@@ -9,6 +9,7 @@
 #include <GLFW/glfw3.h>
 #include <Python.h>
 #include <Log/LogSystem.h>
+#include <Eigen/Dense>
 
 #include "../../Function/Render/GLTexture.h"
 
@@ -16,8 +17,11 @@ namespace Erisu::Global
 {
     inline Function::GLTexture ErisuWhiteTexture;
 
-    inline unsigned int FrameWidth = 1920;
-    inline unsigned int FrameHeight = 1080;
+    inline unsigned int CanvasWidth = 1920;
+    inline unsigned int CanvasHeight = 1080;
+
+    inline unsigned int WindowWidth = 1920;
+    inline unsigned int WindowHeight = 1080;
 
     inline std::string DefaultFontPath = R"(C:\Windows\Fonts\msyh.ttc)";
     inline unsigned int DefaultFontSize = 30;
@@ -25,7 +29,7 @@ namespace Erisu::Global
     inline GLFWwindow *pMainWindow = nullptr;
     inline std::string WindowTitle = "Erisu Engine";
 
-    inline int _ = [] {
+    static int _ = [] {
         Py_Initialize();
 
         PyRun_SimpleString("import sys");
@@ -41,8 +45,8 @@ namespace Erisu::Global
             return pObj;
         };
 
-        FrameWidth = PyLong_AsLong(readVariable("WindowWidth"));
-        FrameHeight = PyLong_AsLong(readVariable("WindowHeight"));
+        WindowWidth = CanvasWidth = PyLong_AsLong(readVariable("WindowWidth"));
+        WindowHeight = CanvasHeight = PyLong_AsLong(readVariable("WindowHeight"));
         WindowTitle = PyUnicode_AsUTF8(readVariable("WindowTitle"));
         DefaultFontPath = PyUnicode_AsUTF8(readVariable("GalTextBoxFontPath"));
         DefaultFontSize = PyLong_AsLong(readVariable("GalTextBoxFontSize"));
@@ -52,6 +56,7 @@ namespace Erisu::Global
         return 0;
     }();
 
+    inline Eigen::Vector2i Viewport = {CanvasWidth, CanvasHeight };
 
     // Init Function call after OpenGL context created
     inline void Init()

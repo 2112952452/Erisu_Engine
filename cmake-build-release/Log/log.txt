@@ -1,3 +1,2 @@
 [info] Erisu Engine Start.
 [info] Erisu Engine Shutdown.
-[info] Erisu Engine Shutdown.

@@ -50,7 +50,7 @@ namespace Erisu::Function
             for (int i = 0; i < gameObjects_.size(); i++)
                 gameObjects_[i]->Destroy();
 
-            gameObjects_.clear();
+            std::vector<std::shared_ptr<GameObject>>().swap(gameObjects_);
             return;
         }
 

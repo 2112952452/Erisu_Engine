@@ -6,9 +6,7 @@
 #define ERISU_ENGINE_RENDERERQUEUE_H
 
 #include <map>
-#include "IComponent.h"
-#include "../../2D ToolKit/Component/SpriteRenderer.h"
-#include "../../2D ToolKit/Component/TextRenderer.h"
+#include "ISortableComponent.h"
 
 namespace Erisu::Function
 {
@@ -42,9 +40,6 @@ namespace Erisu::Function
         RendererPtr& GetRenderer(int priority);
         std::map<int, RendererPtr>& GetAllRenderers();
 
-        template<class ...TArg> void CreateSpriteRenderer(TArg &&...args);
-        template<class ...TArg> void CreateTextRenderer(TArg &&...args);
-
         void Update() override;
         void Render() override;
         void Destroy() override;
@@ -52,17 +47,6 @@ namespace Erisu::Function
         void ShowInInspector() override;
     };
 
-    template<class ...TArg>
-    void RendererQueue::CreateSpriteRenderer(TArg &&...args)
-    {
-        AddRenderer(std::make_shared<SpriteRenderer>(std::forward<TArg>(args)...));
-    }
-
-    template<class ...TArg>
-    void RendererQueue::CreateTextRenderer(TArg &&...args)
-    {
-        AddRenderer(std::make_shared<TextRenderer>(std::forward<TArg>(args)...));
-    }
 }
 
 #endif //ERISU_ENGINE_RENDERERQUEUE_H

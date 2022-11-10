@@ -237,10 +237,9 @@ namespace Erisu::Function
 
     }
 
-    void GameObject::DelayDestroy()
+    Eigen::Vector3f GameObject::GetWorldPosition() const
     {
-        if (!scene_.expired())
-            scene_.lock()->DelayDestroy(shared_from_this());
+        return GetModelMatrix().block<3, 1>(0, 3);
     }
 
 }

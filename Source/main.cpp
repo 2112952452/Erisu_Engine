@@ -1,7 +1,5 @@
 #include "include.h"
-#include "Runtime/Function/2D ToolKit/Component/deprecated/StringRenderer.h"
 
-void InitGalScene(std::shared_ptr<GalScene> &scene);
 
 int main()
 {
@@ -9,8 +7,9 @@ int main()
 
     ErisuApp app;
 
-    std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(Global::FrameWidth, Global::FrameHeight, Global::WindowTitle.c_str());
-    std::shared_ptr<GalScene> scene = std::make_shared<GalScene>("Test Scene");
+    std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(Global::CanvasWidth, Global::CanvasHeight,
+                                                                        Global::WindowTitle.c_str());
+    std::shared_ptr<Scene> scene = std::make_shared<Scene>("Test Scene");
 
     Erisu::Global::Init();
 
@@ -20,7 +19,84 @@ int main()
         renderer->AddImGuiWindow(DrawInspector);
     }
 
-    InitGalScene(scene);
+    UIObject::RegisterToScene(scene);
+
+    std::shared_ptr<GLTexture> texture = GLTexture::Create(R"(C:\Users\21129\Desktop\下载.png)");
+
+    std::shared_ptr<UIText> text = std::make_shared<UIText>("Test Text",
+                                                            "これはテスト用例です\nThis is a test string\n测试用例", 1);
+    text->SetFontSize(60);
+    text->Anchor = UIAnchor::BottomCenter;
+    text->SetOutlineThickness(3.f);
+
+    std::shared_ptr<UIContainer> container = std::make_shared<UIContainer>("Test Container", 0, 1280, 720);
+    container->BackgroundColor = Eigen::Vector4f(0.5, 0.5, 0.5, 1);
+    container->AddComponent(text);
+
+    std::shared_ptr<UIImage> image = std::make_shared<UIImage>("Test Image", 1);
+    image->SetTexture(texture);
+
+    container->AddComponent(image);
+
+    //container->OriginOffset = Eigen::Vector2f(0, 100);
+    image->Anchor = UIAnchor::TopLeft;
+
+    std::shared_ptr<UIInput> input = std::make_shared<UIInput>(image);
+    input->Layer =  1;
+    input->onClick = [&]
+    {
+        LOG_DEBUG("Clicked");
+    };
+    input->onPressed = [&]
+    {
+        LOG_DEBUG("Pressed");
+    };
+    input->onHoverEnter = [&]
+    {
+        image->SetColor(Eigen::Vector4f(.8f, .8f, .8f, 1));
+    };
+    input->onHoverExit = [&]
+    {
+        image->SetColor(Eigen::Vector4f(1, 1, 1, 1));
+    };
+    input->onPressedExit = [&]
+    {
+        LOG_DEBUG("Pressed Exit");
+    };
+    input->onDrag = [&](Eigen::Vector2f mousePos)
+    {
+        // if you want to drag the image, you can use this code
+        Eigen::Vector2f offset = input->LastMousePosition - input->BeforeDragPosition;
+        mousePos -= offset;
+
+        image->SetOnScreenPosition(mousePos.x(), mousePos.y());
+    };
+    input->onDragExit = [&] (Eigen::Vector2f mousePos)
+    {
+        LOG_DEBUG("Drag Exit");
+    };
+    input->Register();
+
+    std::shared_ptr<UIInput> input2 = std::make_shared<UIInput>(container);
+    input2->Layer = 0;
+
+    Eigen::Vector2f origin = container->OriginOffset;
+    input2->onDrag = [&](Eigen::Vector2f mousePos)
+    {
+        Eigen::Vector2f offset = input2->LastMousePosition - mousePos;
+
+        container->OriginOffset = origin - offset;
+    };
+    input2->onDragExit = [&] (Eigen::Vector2f mousePos)
+    {
+        origin = container->OriginOffset;
+    };
+
+    input2->Register();
+
+
+    UIObject::AddUIComponent(container);
+    //UIObject::AddUIComponent(text);
 
     app.SetRenderer(renderer);
     app.SetScene(scene);
@@ -28,67 +104,6 @@ int main()
     app.Run();
 
     scene->Destroy();
-    exit(0);
-}
 
-std::vector<std::shared_ptr<GalText>> buildGalText(const std::vector<std::string> &texts)
-{
-    std::vector<std::shared_ptr<GalText>> result;
-
-    for (const auto &text: texts)
-        result.emplace_back(std::make_shared<GalText>(text, Global::DefaultFontSize, 2.f, Eigen::Vector2f{-500.f, 80.f}));
-
-    for (int i = 0; i < result.size() - 1; ++i)
-        result[i]->nextText = result[i + 1];
-
-    result[result.size() - 1]->goNextCallback = []() {
-        // Change to next scene
-        // ...();
-        LOG_INFO("Change to next scene");
-    };
-
-    return result;
-}
-
-void InitGalScene(std::shared_ptr<GalScene> &scene)
-{
-    scene->InitScene();
-
-    std::vector<std::string> testGalText;
-    // Read text by python
-    {
-        Py_Initialize();
-
-        PyRun_SimpleString("import sys");
-        PyRun_SimpleString("sys.path.append('./Scripts')");
-
-        PyObject * pModule = PyImport_ImportModule("GalText");
-        PyObject * pDict = PyModule_GetDict(pModule);
-
-        // call function readFromFile
-        PyObject * pFunc = PyDict_GetItemString(pDict, "readFromFile");
-        PyObject * pArgs = PyTuple_New(1);
-        PyTuple_SetItem(pArgs, 0, PyUnicode_FromString(R"(C:\Users\21129\Desktop\input.txt)"));
-        auto ret = PyObject_CallObject(pFunc, pArgs);
-        LOG_FATAL_IF(ret == nullptr, "Call function readFromFile failed");
-
-        auto size = PyList_Size(ret);
-        for (int i = 0; i < size; ++i)
-        {
-            auto *item = PyList_GetItem(ret, i);
-            auto *str = PyList_GetItem(item, 2);
-            testGalText.emplace_back(PyUnicode_AsUTF8(str));
-        }
-
-        Py_Finalize();
-    }
-
-    static auto galText = buildGalText(testGalText);
-
-    // Scene setting
-    scene->SetCurrentText(galText[0]);
-    scene->SetBackground(std::make_shared<GLTexture>(R"(D:\Games\千恋万花\KrkrExtract_Output\bgimage1080\街_お店A.png)"));
-    scene->SetTextBoxBackground(std::make_shared<GLTexture>(R"(C:\Users\21129\Desktop\349.png)"));
-
-
+    return 0; // do not use exit(0), it will cause memory leak.
 }

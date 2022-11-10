@@ -117,32 +117,9 @@ namespace Erisu::Function
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
 
-    void GLTexture::GenerateEmptyTex()
+    std::shared_ptr<GLTexture> GLTexture::Create(const std::string_view &path)
     {
-        glGenTextures(1, &id);
-        glBindTexture(GL_TEXTURE_2D, id);
-
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-        glBindTexture(GL_TEXTURE_2D, 0);
-
-    }
-
-    void GLTexture::FillTexSingleChannel(unsigned char *buffer, int width, int height)
-    {
-        if (!id) return;
-        bLoaded = true;
-
-        this->width = width;
-        this->height = height;
-        widthRatio = static_cast<float>(width) / static_cast<float>(height);
-
-        glBindTexture(GL_TEXTURE_2D, id);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, buffer);
-        glBindTexture(GL_TEXTURE_2D, 0);
+        return std::make_shared<GLTexture>(path);
     }
 
 }

@@ -38,16 +38,16 @@ void main()
 )";
 
     constexpr float vertex[] =
-    {
-            // pos      // tex
-            -0.5f, -0.5f, 0.0f, 0.0f,
-            0.5f, -0.5f, 1.0f, 0.0f,
-            0.5f, 0.5f, 1.0f, 1.0f,
+            {
+                    // pos      // tex
+                    -0.5f, -0.5f, 0.0f, 0.0f,
+                    0.5f, -0.5f, 1.0f, 0.0f,
+                    0.5f, 0.5f, 1.0f, 1.0f,
 
-            0.5f, 0.5f, 1.0f, 1.0f,
-            -0.5f, 0.5f, 0.0f, 1.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f
-    };
+                    0.5f, 0.5f, 1.0f, 1.0f,
+                    -0.5f, 0.5f, 0.0f, 1.0f,
+                    -0.5f, -0.5f, 0.0f, 0.0f
+            };
 
     unsigned int VAO, VBO;
     std::once_flag flag;
@@ -132,8 +132,8 @@ namespace Erisu::Function
         auto imgWidth = static_cast<float>(texture_->width);
         auto imgHeight = static_cast<float>(texture_->height);
 
-        float offsetX = Global::FrameWidth * 0.5f; // move to center
-        float offsetY = Global::FrameHeight * 0.5f; // move to center
+        float offsetX = Global::CanvasWidth * 0.5f; // move to center
+        float offsetY = Global::CanvasHeight * 0.5f; // move to center
 
         modelMatrix_ << scale_.x() * imgWidth, 0, 0, position_.x() + offsetX,
                 0, scale_.y() * imgHeight, 0, position_.y() + offsetY,
@@ -159,6 +159,7 @@ namespace Erisu::Function
     {
         // check if parent changed model matrix
         this->UpdateModelMatrix();
+        this->UpdateProjectionMatrix();
 
         glActiveTexture(GL_TEXTURE0);
         texture_->Bind();
@@ -166,16 +167,9 @@ namespace Erisu::Function
 
     void Renderable2DBase::DrawQuad()
     {
-        glDepthFunc(GL_ALWAYS);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
         glBindVertexArray(vao_);
         glBindBuffer(GL_ARRAY_BUFFER, vbo_);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        glDepthFunc(GL_LESS);
-        glDisable(GL_BLEND);
     }
 
     void Renderable2DBase::SetRotation(float rotation)
@@ -195,12 +189,12 @@ namespace Erisu::Function
 
     Renderable2DBase::Renderable2DBase(std::shared_ptr<GLTexture> texture) : shader_(std::make_shared<GLShader>(
             defaultVertexShader.data(), defaultFragmentShader.data(), true)), texture_(std::move(texture))
-    { }
+    {}
 
     Renderable2DBase::Renderable2DBase(std::shared_ptr<GLShader> shader,
                                        std::shared_ptr<GLTexture> texture) : shader_(std::move(shader)),
                                                                              texture_(std::move(texture))
-    { }
+    {}
 
     void Renderable2DBase::OnInit()
     {
@@ -226,7 +220,6 @@ namespace Erisu::Function
         vbo_ = ::VBO;
 
         this->shader_->UseProgram();
-        this->shader_->SetMat4("projection", this->projectionMatrix_);
         this->shader_->SetVec4("u_Color", this->color_);
         this->shader_->SetInt("u_Texture", 0);
     }
@@ -255,5 +248,22 @@ namespace Erisu::Function
 
     Renderable2DBase::Renderable2DBase(std::shared_ptr<GLShader> shader) : shader_(std::move(shader))
     {}
+
+    void Renderable2DBase::UpdateProjectionMatrix()
+    {
+        if (viewport_ != Global::Viewport)
+        {
+            viewport_ = {Global::CanvasWidth, Global::CanvasHeight };
+            auto ort = glm::ortho(0.0f, (float) viewport_.x(), 0.0f, (float) viewport_.y());
+
+            projectionMatrix_  << ort[0][0], ort[1][0], ort[2][0], ort[3][0],
+                    ort[0][1], ort[1][1], ort[2][1], ort[3][1],
+                    ort[0][2], ort[1][2], ort[2][2], ort[3][2],
+                    ort[0][3], ort[1][3], ort[2][3], ort[3][3];
+
+            shader_->UseProgram();
+            shader_->SetMat4("projection", projectionMatrix_);
+        }
+    }
 
 }

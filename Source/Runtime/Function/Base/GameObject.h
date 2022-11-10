@@ -19,11 +19,11 @@ namespace Erisu::Function
 
     class GameObject : public std::enable_shared_from_this<GameObject>
     {
-    private:
+    protected:
         friend class Scene;
-        void SetScene(const std::shared_ptr<Scene> &scene);
+        virtual void SetScene(const std::shared_ptr<Scene> &scene);
 
-    private:
+    protected:
         int64_t id_;
 
         std::weak_ptr<GameObject> parent_ {};
@@ -56,12 +56,12 @@ namespace Erisu::Function
         std::shared_ptr<T> AddComponent(TParm &&...parm);
 
         void Destroy();
-        void DelayDestroy();
 
         void RemoveComponent(const std::string &name);
         void RemoveComponent(const std::shared_ptr<IComponent> &component);
 
         Eigen::Matrix4f GetModelMatrix() const;
+        Eigen::Vector3f GetWorldPosition() const;
 
         [[nodiscard]] std::shared_ptr<IComponent> GetComponent(const std::string &) const;
         [[nodiscard]] std::vector<std::shared_ptr<IComponent>>& GetAllComponents();

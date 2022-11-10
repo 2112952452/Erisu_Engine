@@ -22,7 +22,7 @@ msvc_deps_prefix = Note: including file:
 
 rule CXX_COMPILER__Erisu_Engine_Release
   deps = msvc
-  command = "C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = "D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building CXX object $out
 
 
@@ -30,7 +30,7 @@ rule CXX_COMPILER__Erisu_Engine_Release
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__Erisu_Engine_Release
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\JetBrains\CLion 2022.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.19041.0\x64\mt.exe" --manifests $MANIFESTS -- "C:\PROGRA~1\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\JetBrains\CLion 2022.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.19041.0\x64\mt.exe" --manifests $MANIFESTS -- "D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 

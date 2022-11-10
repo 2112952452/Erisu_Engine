@@ -18,6 +18,9 @@ namespace Erisu::Function
 {
     class Renderable2DBase
     {
+    private:
+        Eigen::Vector2i viewport_ = { 0, 0 };
+
     protected:
         unsigned int vao_ = 0;
         unsigned int vbo_ = 0;
@@ -32,19 +35,10 @@ namespace Erisu::Function
         Eigen::Vector4f color_ = {1.0f, 1.0f, 1.0f, 1.0f}; // tint color
     protected:
         Eigen::Matrix4f modelMatrix_;
-        Eigen::Matrix4f projectionMatrix_ = [] {
-            auto ort = glm::ortho(0.0f, (float)Global::FrameWidth, 0.0f, (float)Global::FrameHeight);
-
-            Eigen::Matrix4f matrix = Eigen::Matrix4f::Identity();
-            matrix << ort[0][0], ort[1][0], ort[2][0], ort[3][0],
-                    ort[0][1], ort[1][1], ort[2][1], ort[3][1],
-                    ort[0][2], ort[1][2], ort[2][2], ort[3][2],
-                    ort[0][3], ort[1][3], ort[2][3], ort[3][3];
-
-            return matrix;
-        }();
+        Eigen::Matrix4f projectionMatrix_;
 
         void UpdateModelMatrix();
+        void UpdateProjectionMatrix();
 
     protected:
         virtual void UpdateUniforms();

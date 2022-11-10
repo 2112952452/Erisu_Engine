@@ -13,6 +13,7 @@ namespace Erisu::Function
 
     class ISortableComponent : public IComponent
     {
+        friend class UILayer;
         friend class RendererQueue;
     protected:
         int priority_ = 0;

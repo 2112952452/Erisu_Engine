@@ -9,35 +9,17 @@
 #include <utility>
 #include <memory>
 #include <string>
-#include <nlohmann/json.hpp>
 #include "../GameObject.h"
 #include "../Scene.h"
 
 namespace Erisu::Function
 {
-#ifndef JsonClassMatchDetect
-#define JsonClassMatchDetect(json) do {\
-if (json.contains("className") && json["className"] != typeid(this).name())\
-{\
-    LOG_ERROR("Deserialize failed: class name mismatch");\
-    return;\
-}\
-else if (!json.contains("className"))\
-{\
-LOG_ERROR("Deserialize failed: class name not found");\
-return;\
-} }while(0)
-#endif
-
     Interface IComponent : public std::enable_shared_from_this<IComponent>
     {
     private:
-        using Json = nlohmann::json;
-
         friend class GameObject;
     protected:
         virtual void SetScene (const std::shared_ptr<Scene> &scene);
-
         virtual void SetGameObject(const std::shared_ptr<GameObject> &gameObject);
 
     protected:
@@ -47,7 +29,6 @@ return;\
         std::string name;
         int64_t id;
         bool enabled;
-
 
     public:
         IComponent();
@@ -64,9 +45,6 @@ return;\
 
         virtual void SetActive(bool active);
         void SetName(const std::string &name);
-
-        virtual Json Serialize() const;
-        virtual void Deserialize(const Json &json);
 
         virtual void ShowInInspector();
     };

@@ -46,6 +46,10 @@ namespace Erisu::Function
         void AddPostEffect(const std::shared_ptr<PostProcessBase>& postEffect);
 
     private:
+        void GenerateFrameBuffer(int width, int height);
+        void DeleteFrameBuffer();
+
+    private:
         std::unique_ptr<GLWindow> pWindow_;
         std::unique_ptr<ImGuiWindow> pImGuiWindow_;
         std::vector<std::shared_ptr<PostProcessBase>> postEffects_;

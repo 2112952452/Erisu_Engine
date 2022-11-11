@@ -6,7 +6,7 @@
 #define ERISU_ENGINE_UIINPUTUTI_H
 
 #include "../Base/UIInput.h"
-#include "../Base/UIInputManager.h"
+#include "../Manager/UIInputManager.h"
 
 namespace Erisu::Function
 {

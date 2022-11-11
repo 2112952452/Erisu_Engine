@@ -44,10 +44,15 @@ namespace Erisu::Function
             // Draw every component
             for (auto &component: obj->GetAllComponents())
             {
-                if (component != nullptr && ImGui::TreeNode(typeid(*component).name()))
+                if (component != nullptr)
                 {
-                    component->ShowInInspector();
-                    ImGui::TreePop();
+                    std::string className = typeid (*component).name();
+                    className = className.substr(className.find_last_of(':') + 1);
+                    if (ImGui::TreeNode(className.c_str()))
+                    {
+                        component->ShowInInspector();
+                        ImGui::TreePop();
+                    }
                 }
             }
         }

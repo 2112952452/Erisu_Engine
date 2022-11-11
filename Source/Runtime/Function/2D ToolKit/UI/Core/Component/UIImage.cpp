@@ -72,9 +72,9 @@ namespace Erisu::Function
         glActiveTexture(GL_TEXTURE0);
         texture_->Bind();
 
-        glDepthFunc(GL_ALWAYS); // TODO: reduce the number of glDepthFunc calls
+        glDepthFunc(GL_ALWAYS);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        ApplyBlendMode(AlphaBlend);
 
         glBindVertexArray(vao_);
         glBindBuffer(GL_ARRAY_BUFFER, vbo_);

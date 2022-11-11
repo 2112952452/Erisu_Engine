@@ -10,14 +10,16 @@
 #include "Timer/Timer.h"
 #include "AnimationCurve.h"
 #include "IAnimation.h"
+#include "Log/LogSystem.h"
 
 namespace Erisu::Function
 {
     template<typename T>
-    class AnimationBase : public IAnimation
+    class  AnimationBase : public IAnimation
     {
     protected:
-        T *target_;
+        // T *target_;
+        std::function<void(T)> target_;
         T startValue_;
         T endValue_;
 
@@ -27,6 +29,7 @@ namespace Erisu::Function
         float current_ = 0;
         bool isPlaying_ = false;
         bool isLoop_ = false;
+        bool isFinished_ = false;
 
         std::function<void()> onPlay_;
         std::function<void()> onStop_;
@@ -36,22 +39,14 @@ namespace Erisu::Function
         std::function<void()> onUpdate_; // only playing
 
         AnimationCurve curve_ = Animation::LinearCurve;
+
     public:
-        AnimationBase();
-
-        explicit AnimationBase(float duration, bool isLoop = false);
-
-        AnimationBase(float duration, T *target, AnimationCurve curve = Animation::LinearCurve, bool isLoop = false);
-
-        // for interface init
-        AnimationBase(float duration, T *target, T endValue, AnimationCurve curve = Animation::LinearCurve,
+        AnimationBase(float duration, std::function<void(T)> target, T&& startValue, T&& endValue, AnimationCurve curve = Animation::LinearCurve,
                       bool isLoop = false);
 
         virtual ~AnimationBase() = default;
 
         void Play() override;
-
-        void Play(const T &endValue);
 
         void Stop() override;
 
@@ -65,7 +60,9 @@ namespace Erisu::Function
 
         void ForceStop() override; // force value to endValue and stop
 
-        virtual void BindTarget(T &target);
+        bool IsFinished() override;
+
+        virtual void BindTarget(const std::function<void(T)> &target);
 
         virtual void SetDuration(float duration);
 
@@ -95,16 +92,13 @@ namespace Erisu::Function
 
         [[nodiscard]] virtual bool IsLoop() const;
 
-        bool IsBinding();
+        [[nodiscard]] bool IsBinding();
     };
 
 }
 
 namespace Erisu::Function
 {
-    template<typename T>
-    AnimationBase<T>::AnimationBase(float duration, bool isLoop) : duration_(duration), isLoop_(isLoop)
-    {}
 
     template<typename T>
     void AnimationBase<T>::Play()
@@ -116,8 +110,9 @@ namespace Erisu::Function
             return;
         }
 
-        startValue_ = *target_;
+        // startValue_ = *target_;
         isPlaying_ = true;
+        isFinished_ = false;
         current_ = 0;
 
         timer_.Start();
@@ -125,11 +120,11 @@ namespace Erisu::Function
     }
 
     template<typename T>
-    void AnimationBase<T>::Stop() // stop timer and reset target value
+    void AnimationBase<T>::Stop() // stop timer and no change target value
     {
         isPlaying_ = false;
         current_ = 0;
-        if (target_) *target_ = startValue_;
+        // if (target_) *target_ = startValue_;
 
         timer_.Stop();
         onStop_ ? onStop_() : void();
@@ -161,7 +156,7 @@ namespace Erisu::Function
             else
             {
                 onUpdate_ ? onUpdate_() : void();
-                *target_ = std::lerp(startValue_, endValue_, curve_.Evaluate(current_ / duration_));
+                target_(std::lerp(startValue_, endValue_, curve_.Evaluate(current_ / duration_)));
             }
         }
     }
@@ -171,7 +166,7 @@ namespace Erisu::Function
     {
         current_ = 0;
         timer_.Reset();
-        if (target_) *target_ = startValue_;
+        target_(startValue_);
 
         onReset_ ? onReset_() : void();
     }
@@ -249,14 +244,10 @@ namespace Erisu::Function
     }
 
     template<typename T>
-    void AnimationBase<T>::BindTarget(T &target)
+    void AnimationBase<T>::BindTarget(const std::function<void(T)> &target)
     {
-        target_ = &target;
+        target_ = target;
     }
-
-    template<typename T>
-    AnimationBase<T>::AnimationBase() : duration_(0), isLoop_(false)
-    {}
 
     template<typename T>
     void AnimationBase<T>::SetAnimationCurve(const AnimationCurve &curve)
@@ -265,8 +256,8 @@ namespace Erisu::Function
     }
 
     template<typename T>
-    AnimationBase<T>::AnimationBase(float duration, T *target, T endValue, AnimationCurve curve, bool isLoop)
-            : duration_(duration), target_(target), endValue_(std::move(endValue)), curve_(std::move(curve)),
+    AnimationBase<T>::AnimationBase(float duration, std::function<void(T)> target, T&& startValue, T&& endValue, AnimationCurve curve, bool isLoop)
+            : duration_(duration), target_(std::move(target)), startValue_(std::forward<T>(startValue)), endValue_(std::forward<T>(endValue)), curve_(std::move(curve)),
               isLoop_(isLoop)
     {}
 
@@ -274,8 +265,9 @@ namespace Erisu::Function
     void AnimationBase<T>::ForceStop() // force timer stop and value to the end
     {
         isPlaying_ = false;
+        isFinished_ = true;
         current_ = 0;
-        if (target_) *target_ = endValue_;
+        target_(endValue_);
 
         timer_.Stop();
         onStop_ ? onStop_() : void();
@@ -292,15 +284,9 @@ namespace Erisu::Function
     { endValue_ = endValue; }
 
     template<typename T>
-    void AnimationBase<T>::Play(const T &endValue)
+    bool AnimationBase<T>::IsFinished()
     {
-        SetEndValue(endValue);
-        Play();
+        return isFinished_;
     }
-
-    template<typename T>
-    AnimationBase<T>::AnimationBase(float duration, T *target, AnimationCurve curve, bool isLoop)
-            : duration_(duration), target_(target), curve_(std::move(curve)), isLoop_(isLoop)
-    {}
 }
 #endif //ERISU_ENGINE_ANIMATIONBASE_H

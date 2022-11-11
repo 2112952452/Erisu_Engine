@@ -24,10 +24,11 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(eigen3 CONFIG REQUIRED)
 find_package(assimp CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+find_package(imguizmo CONFIG REQUIRED)
 find_package(freetype CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
-find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_truetype.h" "stb_image_write.h")
+find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_image_write.h")
 
 #生成可执行程序
 add_executable(Erisu_Engine
@@ -54,14 +55,14 @@ add_executable(Erisu_Engine
         Source/Runtime/Function/Utility/ImGuiUtility.cpp
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp
-        "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.cpp" "Source/Runtime/Function/2D ToolKit/Base/Renderable2DBase.h" "Source/Runtime/Function/2D ToolKit/Base/AnimationBase.h" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.cpp" "Source/Runtime/Function/2D ToolKit/Base/AnimationCurve.h" "Source/Runtime/Function/2D ToolKit/Base/IAnimation.h" Source/include.h "Source/Runtime/Function/2D ToolKit/UI/Core/Base/IUIComponent.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIComponent.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Shader/UIShader.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Shader/UIShader.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIComponent.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIText.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIText.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIContainer.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIContainer.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInputManager.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInputManager.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.h")
+        "Source/Runtime/Function/2D ToolKit/Renderer/Renderable2DBase.cpp" "Source/Runtime/Function/2D ToolKit/Renderer/Renderable2DBase.h" "Source/Runtime/Function/Animation/AnimationBase.h" "Source/Runtime/Function/Animation/AnimationCurve.cpp" "Source/Runtime/Function/Animation/AnimationCurve.h" "Source/Runtime/Function/Animation/IAnimation.h" Source/include.h "Source/Runtime/Function/2D ToolKit/UI/Core/Base/IUIComponent.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIComponent.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Shader/UIShader.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Shader/UIShader.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIComponent.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIText.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIText.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIContainer.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Component/UIContainer.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIInputManager.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIInputManager.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.h" Source/Runtime/Demo/senrenbanka.cpp Source/Runtime/Demo/senrenbanka.h "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIAnimationManager.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIAnimationManager.h" "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIEventManager.cpp" "Source/Runtime/Function/2D ToolKit/UI/Core/Manager/UIEventManager.h" Source/Runtime/Function/Animation/Timeline/AnimationClip.h Source/Runtime/Function/Animation/Timeline/Timeline.cpp Source/Runtime/Function/Animation/Timeline/Timeline.h Source/Runtime/Function/Animation/Timeline/IClip.h "Source/Runtime/Function/2D ToolKit/UI/Component/UIButton.cpp" "Source/Runtime/Function/2D ToolKit/UI/Component/UIButton.h" "Source/Runtime/Function/2D ToolKit/UI/Component/UIStackPanel.cpp" "Source/Runtime/Function/2D ToolKit/UI/Component/UIStackPanel.h")
 
 
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 
-target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype)
+target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype imguizmo::imguizmo)
 
 
 

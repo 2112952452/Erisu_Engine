@@ -107,6 +107,8 @@ namespace Erisu::Function
 
         unsigned previousFBO = 0;
         glGetIntegerv(GL_FRAMEBUFFER_BINDING, (int *) &previousFBO);
+        float previousViewport[4];
+        glGetFloatv(GL_VIEWPORT, previousViewport);
 
         glBindFramebuffer(GL_FRAMEBUFFER, fbo_);
         glViewport(0, 0, (int) rect_.z(), (int) rect_.w());
@@ -120,12 +122,12 @@ namespace Erisu::Function
         }
 
         glBindFramebuffer(GL_FRAMEBUFFER, previousFBO);
-        glViewport(0, 0, Global::CanvasWidth, Global::CanvasHeight);
+        glViewport(previousViewport[0], previousViewport[1], previousViewport[2], previousViewport[3]);
 
         // Render FBO
         glDepthFunc(GL_ALWAYS);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        ApplyBlendMode(AlphaBlend);
 
         shader_->UseProgram();
         shader_->SetUniform("u_Texture", 0);

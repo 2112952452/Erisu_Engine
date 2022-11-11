@@ -84,7 +84,7 @@ namespace Erisu::Function
 
         glDepthFunc(GL_ALWAYS);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        ApplyBlendMode(AlphaBlend);
 
         shader_->UseProgram();
         shader_->SetInt("u_Texture", 0);
@@ -117,10 +117,12 @@ namespace Erisu::Function
 
         GLint lastFBO;
         glGetIntegerv(GL_FRAMEBUFFER_BINDING, &lastFBO);
+        float lastViewport[4];
+        glGetFloatv(GL_VIEWPORT, lastViewport);
 
         glDepthFunc(GL_ALWAYS);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        ApplyBlendMode(BlendMode::Alpha);
 
         glBindFramebuffer(GL_FRAMEBUFFER, fbo_);
         glViewport(0, 0, textRenderer_->GetTextWidth(), textRenderer_->GetTextHeight());
@@ -131,7 +133,7 @@ namespace Erisu::Function
         glDisable(GL_BLEND);
 
         glBindFramebuffer(GL_FRAMEBUFFER, lastFBO);
-        glViewport(0, 0, Global::Viewport.x(), Global::Viewport.y());
+        glViewport(lastViewport[0], lastViewport[1], lastViewport[2], lastViewport[3]);
 
     }
 

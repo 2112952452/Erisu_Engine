@@ -6,7 +6,7 @@
 #define ERISU_ENGINE_RENDERABLE2DBASE_H
 
 #include <memory>
-#include <Global/Global.h>
+#include "Global/Global.h"
 #include "../../Render/GLTexture.h"
 #include "../../Render/Shader/GLShader.h"
 #include "../../Base/Transform.h"

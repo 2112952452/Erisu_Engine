@@ -183,22 +183,25 @@ namespace Erisu::Function
         ImGui::Text("エリス大好き！");
 
         ImGui::Checkbox("Demo Window", &show_demo_window);
-        ImGui::Checkbox("Allow Camera Rotate", &allowCameraRotate);
 
-
-        // use mouse to rotate camera
-        if (allowCameraRotate && ImGui::IsMouseDown(0))
+        if (camera_)
         {
-            auto delta = ImGui::GetMouseDragDelta();
-            camera_->GetTransform().GetRotation().y() -= delta.x * 0.001f;
-            camera_->GetTransform().GetRotation().z() += delta.y * 0.001f;
+            ImGui::Checkbox("Allow Camera Rotate", &allowCameraRotate);
+
+
+            // use mouse to rotate camera
+            if (allowCameraRotate && ImGui::IsMouseDown(0))
+            {
+                auto delta = ImGui::GetMouseDragDelta();
+                camera_->GetTransform().GetRotation().y() -= delta.x * 0.001f;
+                camera_->GetTransform().GetRotation().z() += delta.y * 0.001f;
+            }
+
+            ImGui::DragFloat3("Camera Position", camera_->GetTransform().GetPosition().data());
+            ImGui::DragFloat3("Camera Rotation", camera_->GetTransform().GetRotation().data());
+            ImGui::DragFloat3("Light Rotation", mainLight_->GetRotation().data());
+            ImGui::DragFloat("Camera Fov", &camera_->GetFov());
         }
-
-        ImGui::DragFloat3("Camera Position", camera_->GetTransform().GetPosition().data());
-        ImGui::DragFloat3("Camera Rotation", camera_->GetTransform().GetRotation().data());
-        ImGui::DragFloat3("Light Rotation", mainLight_->GetRotation().data());
-        ImGui::DragFloat("Camera Fov", &camera_->GetFov());
-
     }
 
 }

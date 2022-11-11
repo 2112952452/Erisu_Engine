@@ -18,6 +18,8 @@ namespace Erisu::Function
         virtual void Update() = 0;
         virtual void Reset() = 0;
         virtual void ForceStop() = 0;
+
+        virtual bool IsFinished() = 0;
     };
 }
 

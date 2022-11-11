@@ -19,20 +19,26 @@
 #include "Runtime/Resource/ModelImport/ModelImport.h"
 #include "RendererQueue.h"
 #include "Runtime/Function/Utility/ImGuiUtility.h"
-#include "Runtime/Function/2D ToolKit/Base/AnimationCurve.h"
+#include "Runtime/Function/Animation/AnimationCurve.h"
 
 #include "Runtime/Function/2D ToolKit/UI/Core/Component/UIImage.h"
 #include "Runtime/Function/2D ToolKit/UI/Core/Component/UIText.h"
 #include "Runtime/Function/2D ToolKit/UI/Core/Base/UIObject.h"
 #include "Runtime/Function/2D ToolKit/UI/Core/Base/UIInput.h"
+#include "Runtime/Function/2D ToolKit/UI/Core/Utility/UIInputUti.h"
 
 using namespace Erisu;
-using namespace Function;
-using namespace Core;
-using namespace Resource;
+using namespace Erisu::Function;
+using namespace Erisu::Core;
+using namespace Erisu::Resource;
+using namespace Erisu::Global;
 
-
-// Enable NVIDIA GPU
-// extern "C" { _declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001; }
+#if defined(ENABLE_DISCRETE_GPU)
+    // force system to use discrete GPU, if available
+    extern "C" {
+        _declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+        _declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+    }
+#endif
 
 #endif //ERISU_ENGINE_INCLUDE_H

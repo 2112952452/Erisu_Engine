@@ -3,7 +3,9 @@
 //
 
 #include "UIObject.h"
-#include "UIInputManager.h"
+#include "../Manager/UIInputManager.h"
+#include "../Manager/UIAnimationManager.h"
+#include "../Manager/UIEventManager.h"
 
 namespace Erisu::Function
 {
@@ -31,6 +33,8 @@ namespace Erisu::Function
         {
             instance_ = std::make_shared<GameObject>("UIObject");
             instance_->AddComponent(UIInputManager::GetInstance());
+            instance_->AddComponent(UIAnimationManager::GetInstance());
+            instance_->AddComponent(UIEventManager::GetInstance());
         });
         return instance_;
     }

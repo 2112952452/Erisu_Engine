@@ -99,8 +99,11 @@ namespace Erisu::Function
         ImGui::DragFloat2("Scale", scale_.data(), 0.01f);
         ImGui::DragFloat("Rotation", &rotation_, 0.1f);
         ImGui::DragFloat4("Rect", rect_.data(), 0.1f);
+        ImGui::ColorEdit4("Color", color_.data());
         ImGui::Combo("Anchor", (int *) &Anchor,
                      "TopLeft\0TopCenter\0TopRight\0MiddleLeft\0MiddleCenter\0MiddleRight\0BottomLeft\0BottomCenter\0BottomRight\0");
+        ImGui::Combo("BlendMode", (int *) &AlphaBlend,
+                     "Alpha\0Additive\0Multiply\0Screen\0Overlay\0Darken\0Lighten\0");
     }
 
     Eigen::Vector2f UIComponent::GetScreenPosition() const
@@ -154,5 +157,33 @@ namespace Erisu::Function
     }
 
 
+    void ApplyBlendMode(BlendMode mode)
+    {
+        switch (mode)
+        {
+            case BlendMode::Alpha:
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                break;
+            case BlendMode::Additive:
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                break;
+            case BlendMode::Multiply:
+                glBlendFunc(GL_DST_COLOR, GL_ZERO);
+                break;
+            case BlendMode::Screen:
+                glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
+                break;
+            case BlendMode::Overlay:
+                glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ONE);
+                break;
+            case BlendMode::Darken:
+                glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ONE_MINUS_SRC_COLOR);
+                break;
+            case BlendMode::Lighten:
+                glBlendFunc(GL_ONE, GL_ONE);
+                break;
+        }
+
+    }
 }
 

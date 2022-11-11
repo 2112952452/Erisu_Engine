@@ -6,7 +6,7 @@
 #define ERISU_ENGINE_TEXTRENDERER_H
 
 #include "ISortableComponent.h"
-#include "../Base/Renderable2DBase.h"
+#include "Renderable2DBase.h"
 #include <unordered_map>
 #include <freetype/freetype.h>
 

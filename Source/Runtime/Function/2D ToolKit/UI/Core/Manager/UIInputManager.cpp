@@ -19,6 +19,9 @@ namespace Erisu::Function
 
     void UIInputManager::Render()
     {
+        if  (!enabled)
+            return;
+
         double mouseX, mouseY;
         glfwGetCursorPos(Global::pMainWindow, &mouseX, &mouseY);
 
@@ -87,12 +90,12 @@ namespace Erisu::Function
 
             if (input->isDragged)
             {
-                if (!leftDown)
+                if (!leftDown) [[unlikely]]
                 {
                     input->isDragged = false;
                     input->isPressed = false;
                     input->onDragExit ? input->onDragExit(mousePos) : void();
-                } else input->onDrag ? input->onDrag(mousePos) : void();
+                } else [[likely]] input->onDrag ? input->onDrag(mousePos) : void();
             }
 
             if (input->isPressed && !leftDown)
@@ -105,8 +108,8 @@ namespace Erisu::Function
                 else
                 {
                     input->isPressed = false;
-                    input->onClick ? input->onClick() : void();
                     input->onPressedExit ? input->onPressedExit() : void();
+                    input->onClick ? input->onClick() : void();
                 }
             }
 

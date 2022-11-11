@@ -117,7 +117,7 @@ namespace Erisu::Function
 
     void GLRenderer::Render(const std::shared_ptr<Scene> &scene)
     {
-        if (isResized & !isMinimized)
+        if (isResized & !isMinimized) [[unlikely]]
         {
             // 尝试强制调整窗口为16:9
             glfwSetWindowSize(pWindow_->GetWindowPtr(), Viewport.x(), Viewport.y());
@@ -146,7 +146,7 @@ namespace Erisu::Function
 
         glBindFramebuffer(GL_FRAMEBUFFER, frameBufferObj_);
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glViewport(0, 0, Viewport.x(), Viewport.y());
@@ -165,7 +165,7 @@ namespace Erisu::Function
             postEffect->Render();
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         if (DebugMode)

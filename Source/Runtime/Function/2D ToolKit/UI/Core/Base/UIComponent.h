@@ -27,12 +27,26 @@ namespace Erisu::Function
         BottomRight
     };
 
+    enum class BlendMode
+    {
+        Alpha,
+        Additive,
+        Multiply,
+        Screen,
+        Overlay,
+        Darken,
+        Lighten
+    };
+
+    void ApplyBlendMode(BlendMode mode);
+
     // NOTICE: UIComponent is a base class for all UI components
     // UIComponent's transform is not depend on its parent GameObject's transform
     class UIComponent : public IUIComponent
     {
     public:
         UIAnchor Anchor = UIAnchor::MiddleCenter;
+        BlendMode AlphaBlend = BlendMode::Alpha;
 
     protected:
         bool visible_ = true;
@@ -70,19 +84,19 @@ namespace Erisu::Function
         virtual void SetPriority(int priority)
         { this->priority_ = priority; }
 
-        float GetRotation() const
+        float& GetRotation()
         { return rotation_; }
 
         virtual void SetRotation(float rotation)
         { this->rotation_ = rotation; }
 
-        Eigen::Vector4f GetColor() const
+        Eigen::Vector4f& GetColor()
         { return color_; }
 
         virtual void SetColor(const Eigen::Vector4f &color)
         { this->color_ = color; }
 
-        Eigen::Vector4f GetRect() const
+        Eigen::Vector4f& GetRect()
         { return rect_; }
 
         virtual void SetRect(const Eigen::Vector4f &rect)
@@ -111,7 +125,7 @@ namespace Erisu::Function
         Eigen::Vector2f GetSize() const
         { return {this->rect_.z(), this->rect_.w()}; }
 
-        Eigen::Vector2f GetScale() const
+        Eigen::Vector2f& GetScale()
         { return scale_; }
 
         virtual void SetScale(const Eigen::Vector2f &scale)
@@ -130,6 +144,11 @@ namespace Erisu::Function
     public:
         void Update() override
         {}
+
+        void Render() override
+        {
+            // if you use UIComponent directly, it just as a rect which be used to receive input
+        }
 
         void ShowInInspector() override;
     };

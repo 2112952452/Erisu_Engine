@@ -57,10 +57,8 @@ namespace Erisu::Function
     {
         if (child == nullptr)
         {
-            // release all children
-            // WARNING: DO NOT USE RANGE-BASED FOR LOOP HERE!
-            for (int i = 0; i < children_.size(); i++)
-                children_[i]->Destroy();
+            for (auto& ch : children_)
+                ch->Destroy();
 
             children_.clear();
             return;
@@ -72,7 +70,13 @@ namespace Erisu::Function
             return;
         }
 
-        children_.erase(std::remove(children_.begin(), children_.end(), child), children_.end());
+        if (child->GetId() == currentId)
+            currentIsDestroyed = true;
+        else if (auto it = std::find_if(children_.begin(), children_.end(), [child](const auto& ch) { return ch->GetId() == child->GetId(); }); it != children_.end())
+        {
+            (*it)->Destroy();
+            children_.erase(it);
+        }
     }
 
     std::string GameObject::GetName() const
@@ -85,7 +89,7 @@ namespace Erisu::Function
         return parent_;
     }
 
-    std::vector<std::shared_ptr<GameObject>> GameObject::GetChildren() const
+    std::list<std::shared_ptr<GameObject>> GameObject::GetChildren() const
     {
         return children_;
     }
@@ -103,26 +107,76 @@ namespace Erisu::Function
 
     void GameObject::Update()
     {
-        if (!Enabled)
+        if (!Enabled) [[unlikely]]
             return;
-        // Do Update
-        for (const auto& cmt : components_)
-            cmt->Update();
 
-        for (const auto &child : children_)
-            child->Update();
+        // Do Update
+        for (auto it = components_.begin(); it != components_.end(); )
+        {
+            currentId = (*it)->GetId();
+            (*it)->Update();
+
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                it->get()->Destroy();
+                it = components_.erase(it);
+            }
+            else it++;
+        }
+
+        for (auto it = children_.begin(); it != children_.end(); )
+        {
+            currentId = (*it)->GetId();
+            (*it)->Update();
+
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                it->get()->Destroy();
+                it = children_.erase(it);
+            }
+            else it++;
+        }
+
+        currentId = 0;
     }
 
     void GameObject::Render()
     {
-        if (!Enabled)
+        if (!Enabled) [[unlikely]]
             return;
-        // Do Render
-        for (const auto& cmt : components_)
-            cmt->Render();
 
-        for (const auto &child : children_)
-            child->Render();
+        // Do Render
+        for (auto it = components_.begin(); it != components_.end(); )
+        {
+            currentId = (*it)->GetId();
+            (*it)->Render();
+
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                it->get()->Destroy();
+                it = components_.erase(it);
+            }
+            else it++;
+        }
+
+        for (auto it = children_.begin(); it != children_.end(); )
+        {
+            currentId = (*it)->GetId();
+            (*it)->Render();
+
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                it->get()->Destroy();
+                it = children_.erase(it);
+            }
+            else it++;
+        }
+
+        currentId = 0;
     }
 
     void GameObject::AddComponent(const std::shared_ptr<IComponent> &component)
@@ -148,17 +202,6 @@ namespace Erisu::Function
         if (!scene_.expired()) component->SetScene(scene_.lock());
 
         components_.push_back(component);
-    }
-
-    void GameObject::RemoveComponent(const std::string & name)
-    {
-        if (auto it = std::find_if(components_.begin(), components_.end(),
-                                   [&name](const std::shared_ptr<IComponent> &cmt)
-                                   { return cmt->GetName() == name; });
-                it != components_.end())
-            components_.erase(it);
-
-        else LOG_ERROR("[Object id: {}]: Cannot find component to remove.", id_);
     }
 
     std::shared_ptr<IComponent> GameObject::GetComponent(const std::string & name) const
@@ -187,7 +230,7 @@ namespace Erisu::Function
             child->SetScene(scene);
     }
 
-    std::vector<std::shared_ptr<IComponent>> &GameObject::GetAllComponents()
+    std::list<std::shared_ptr<IComponent>> & GameObject::GetAllComponents()
     {
         return components_;
     }
@@ -211,7 +254,7 @@ namespace Erisu::Function
         for (auto & component : components_)
             component->Destroy();
 
-        std::vector<std::shared_ptr<IComponent>>().swap(components_);
+        std::list<std::shared_ptr<IComponent>>().swap(components_);
 
         // Remove from parent
         if (!parent_.expired())
@@ -227,11 +270,17 @@ namespace Erisu::Function
         }
 
         if (auto it = std::find_if(components_.begin(), components_.end(),
-                                   [&](const std::shared_ptr<IComponent> &cmt) {
-                                       return cmt->GetName() == component->name || cmt->GetId() == component->id;
-                                   });
+                                   [&](const std::shared_ptr<IComponent> &cmt) { return cmt->GetId() == component->id; });
                 it != components_.end())
-            components_.erase(it);
+        {
+            if (component->GetId() == currentId)
+                currentIsDestroyed = true;
+            else
+            {
+                it->get()->Destroy();
+                components_.erase(it);
+            }
+        }
 
         else LOG_ERROR("[Object id: {}]: Cannot find component to remove.", id_);
 

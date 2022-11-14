@@ -1,7 +1,6 @@
 #include "include.h"
 
 #include "Runtime/Demo/senrenbanka.h"
-#include "Runtime/Function/Animation/Timeline/AnimationClip.h"
 
 using namespace Senrenbanka;
 
@@ -13,8 +12,9 @@ int main()
     std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(Global::CanvasWidth, Global::CanvasHeight, Global::WindowTitle.c_str());
     Erisu::Global::Init();
 
-    if ((renderer->DebugMode = false))
+    if (Global::DebugMode)
     {
+        LOG_INFO("Debug Mode: ON");
         renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(test_scene); });
         renderer->AddImGuiWindow(DrawInspector);
     }

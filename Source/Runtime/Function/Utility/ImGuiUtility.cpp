@@ -47,7 +47,7 @@ namespace Erisu::Function
                 if (component != nullptr)
                 {
                     std::string className = typeid (*component).name();
-                    className = className.substr(className.find_last_of(':') + 1);
+                    className = className.substr(className.find_last_of(':') + 1) + "##" + std::to_string(component->GetId());
                     if (ImGui::TreeNode(className.c_str()))
                     {
                         component->ShowInInspector();

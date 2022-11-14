@@ -7,6 +7,7 @@
 
 #include <map>
 #include <memory>
+#include <functional>
 
 #include "IClip.h"
 #include "Timer/Timer.h"
@@ -46,6 +47,9 @@ namespace Erisu::Function
 
         bool IsFinished() override;
 
+    public:
+        std::function<void()> OnFinished;
+        std::function<void()> OnStarted;
     };
 }
 

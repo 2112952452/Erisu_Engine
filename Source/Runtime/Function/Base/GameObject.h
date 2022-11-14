@@ -6,6 +6,7 @@
 #define ERISU_ENGINE_GAMEOBJECT_H
 
 #include <string>
+#include <deque>
 #include "Transform.h"
 #include "../Render/Shader/GLShader.h"
 #include "Camera.h"
@@ -30,10 +31,15 @@ namespace Erisu::Function
         std::weak_ptr<Scene> scene_ {};
 
         std::string name_;
-        std::vector<std::shared_ptr<GameObject>> children_;
-        std::vector<std::shared_ptr<IComponent>> components_;
+        // use container which iterator is available after insertion or deletion
+        std::list<std::shared_ptr<GameObject>> children_;
+        std::list<std::shared_ptr<IComponent>> components_;
+
+        int64_t currentId = 0;
+        bool currentIsDestroyed = false;
 
         Transform transform_;
+
     public:
         bool Enabled = true;
     public:
@@ -57,18 +63,17 @@ namespace Erisu::Function
 
         void Destroy();
 
-        void RemoveComponent(const std::string &name);
         void RemoveComponent(const std::shared_ptr<IComponent> &component);
 
         Eigen::Matrix4f GetModelMatrix() const;
         Eigen::Vector3f GetWorldPosition() const;
 
         [[nodiscard]] std::shared_ptr<IComponent> GetComponent(const std::string &) const;
-        [[nodiscard]] std::vector<std::shared_ptr<IComponent>>& GetAllComponents();
+        [[nodiscard]] std::list<std::shared_ptr<IComponent>> & GetAllComponents();
 
         [[nodiscard]] std::string GetName() const;
         [[nodiscard]] std::weak_ptr<GameObject> GetParent() const;
-        [[nodiscard]] std::vector<std::shared_ptr<GameObject>> GetChildren() const;
+        [[nodiscard]] std::list<std::shared_ptr<GameObject>> GetChildren() const;
 
         [[nodiscard]] int64_t GetId() const;
         [[nodiscard]] Transform &GetTransform();

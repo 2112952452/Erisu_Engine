@@ -8,8 +8,8 @@
 
 namespace
 {
-    int windowWidth = 800;
-    int windowHeight = 600;
+    int windowWidth = Erisu::Global::CanvasWidth;
+    int windowHeight = Erisu::Global::CanvasHeight;
 }
 
 namespace Erisu::Function
@@ -19,7 +19,7 @@ namespace Erisu::Function
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-        glfwWindowHint(GLFW_SAMPLES, 4);
+        glfwWindowHint(GLFW_SAMPLES, Global::MSAASampleCount);
 
 #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);

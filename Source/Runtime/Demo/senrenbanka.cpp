@@ -4,16 +4,15 @@
 
 #include "senrenbanka.h"
 
-#include "../Function/2D ToolKit/UI/Core/Component/UIImage.h"
-#include "../Function/2D ToolKit/UI/Core/Component/UIText.h"
-#include "../Function/2D ToolKit/UI/Core/Base/UIObject.h"
-#include "../Function/2D ToolKit/UI/Core/Base/UIInput.h"
-#include "../Function/2D ToolKit/UI/Core/Utility/UIInputUti.h"
+#include "../Function/UI/Core/Component/UIImage.h"
+#include "../Function/UI/Core/Base/UIObject.h"
+#include "../Function/UI/Core/Base/UIInput.h"
+#include "../Function/UI/Core/Utility/UIInputUti.h"
 #include "../Function/Animation/AnimationBase.h"
-#include "../Function/2D ToolKit/UI/Core/Manager/UIAnimationManager.h"
-#include "../Function/2D ToolKit/UI/Core/Manager/UIEventManager.h"
+#include "../Function/UI/Core/Manager/UIAnimationManager.h"
 #include "../Function/Animation/Timeline/AnimationClip.h"
-#include "../Function/2D ToolKit/UI/Component/UIButton.h"
+#include "../Function/UI/Component/UIButton.h"
+#include "../Function/UI/Core/Component/UIText.h"
 
 using namespace Erisu::Function;
 
@@ -25,29 +24,85 @@ namespace
     std::shared_ptr<AnimationBase<float>> ch1_anim2;
 }
 
-// TODO: Embed Script Language
+// TODO: Embed Script Language? やはりgraphical editorが必要かもしれない, じゃLuaとImguiの中で選ばないと、JSやはりダメかな
 
 namespace Senrenbanka
 {
+    void ChangeToMainScene()
+    {
+        auto main_scene = std::make_shared<UIContainer>("MainScene", 0, 1920, 1080);
+        main_scene->AlphaBlend = BlendMode::Screen;
+
+        auto background = std::make_shared<UIContainer>("Background", 0, 1920, 1080);
+        main_scene->AddComponent(background);
+        auto background_image = std::make_shared<UIImage>("BackgroundImage", R"(Resources\Test\Texture\main_scene\QQ图片20221008144043.png)", 0);
+        background->AddComponent(background_image);
+
+
+        auto textBox = std::make_shared<UIContainer>("TextBox", 3, 1920, 263);
+        textBox->Anchor = UIAnchor::BottomCenter;
+        main_scene->AddComponent(textBox);
+
+        auto textBoxBg = std::make_shared<UIImage>("TextBoxBg", R"(Resources\Test\Texture\main_scene\11451.png)", 0);
+        textBoxBg->AlphaBlend = BlendMode::Screen;
+        auto textCh = std::make_shared<UIText>("TextCh", "继续留在这家公司", 1);
+
+        textCh->SetFontSize(25);
+        textCh->AlphaBlend = BlendMode::Alpha;
+        textCh->Anchor = UIAnchor::TopCenter;
+        textCh->SetOutlineThickness(.5f);
+        textCh->SetOutline(true);
+        textCh->SetPosition(-330, 25);
+
+
+        textBox->AddComponent(textBoxBg);
+        textBox->AddComponent(textCh);
+
+        UIObject::AddUIComponent(main_scene);
+
+        auto timeline = std::make_shared<Timeline>();
+        UIAnimationManager::AddTimeline(timeline);
+        timeline->AddClip(0, std::make_shared<AnimationClip<float>>(.5f, [=](float val) {
+            main_scene->SetColor({val, val, val, val});
+        }, 0, 1));
+
+        timeline->Play();
+    }
+
     void CreateStartScene()
     {
         // Init Part
         UIObject::RegisterToScene(test_scene);
-
-        std::shared_ptr<UIContainer> m_background = std::make_shared<UIContainer>("background", 0, Erisu::Global::CanvasWidth, Erisu::Global::CanvasHeight);
+        std::shared_ptr<UIContainer> m_background = std::make_shared<UIContainer>("background", 1,
+                                                                                  Erisu::Global::CanvasWidth,
+                                                                                  Erisu::Global::CanvasHeight);
+        m_background->AlphaBlend = BlendMode::Screen;
         std::shared_ptr<UIContainer> m_mainMenu;
 
-        m_background->AlphaBlend = BlendMode::Screen;
 
         // Load Image
-        std::shared_ptr<UIImage> background = std::make_shared<UIImage>("background", R"(Resources\Test\Texture\start_scene\title#bg.png)", 0);
-        std::shared_ptr<UIImage> chbg = std::make_shared<UIImage>("chbg", R"(Resources\Test\Texture\start_scene\title#title_charall.png)", 15);
-        std::shared_ptr<UIImage> ch1 = std::make_shared<UIImage>("芳乃", R"(Resources\Test\Texture\start_scene\title#ch1_芳乃.png)", 14);
-        std::shared_ptr<UIImage> ch2 = std::make_shared<UIImage>("丛雨", R"(Resources\Test\Texture\start_scene\title#ch2_ムラサメ.png)", 13);
-        std::shared_ptr<UIImage> ch3 = std::make_shared<UIImage>("茉子", R"(Resources\Test\Texture\start_scene\title#ch3_茉子.png)", 12);
-        std::shared_ptr<UIImage> ch4 = std::make_shared<UIImage>("蕾娜", R"(Resources\Test\Texture\start_scene\title#ch4_レナ.png)", 11);
+        std::shared_ptr<UIImage> background = std::make_shared<UIImage>("background",
+                                                                        R"(Resources\Test\Texture\start_scene\title#bg.png)",
+                                                                        0);
+        std::shared_ptr<UIImage> chbg = std::make_shared<UIImage>("chbg",
+                                                                  R"(Resources\Test\Texture\start_scene\title#title_charall.png)",
+                                                                  15);
+        std::shared_ptr<UIImage> ch1 = std::make_shared<UIImage>("芳乃",
+                                                                 R"(Resources\Test\Texture\start_scene\title#ch1_芳乃.png)",
+                                                                 14);
+        std::shared_ptr<UIImage> ch2 = std::make_shared<UIImage>("丛雨",
+                                                                 R"(Resources\Test\Texture\start_scene\title#ch2_ムラサメ.png)",
+                                                                 13);
+        std::shared_ptr<UIImage> ch3 = std::make_shared<UIImage>("茉子",
+                                                                 R"(Resources\Test\Texture\start_scene\title#ch3_茉子.png)",
+                                                                 12);
+        std::shared_ptr<UIImage> ch4 = std::make_shared<UIImage>("蕾娜",
+                                                                 R"(Resources\Test\Texture\start_scene\title#ch4_レナ.png)",
+                                                                 11);
 
-        std::shared_ptr<UIImage> logo = std::make_shared<UIImage>("logo", R"(Resources\Test\Texture\start_scene\title#logo.png)", 25);
+        std::shared_ptr<UIImage> logo = std::make_shared<UIImage>("logo",
+                                                                  R"(Resources\Test\Texture\start_scene\title#logo.png)",
+                                                                  25);
 
         // Set Properties
         background->GetColor().w() = 0.0f;
@@ -93,7 +148,7 @@ namespace Senrenbanka
 
         timeline->AddClip(1.f, std::make_shared<AnimationClip<float>>(.5f, [=](float val) {
             ch2->SetPosition(val, 0);
-        },-200.f, -263.3f));
+        }, -200.f, -263.3f));
 
         timeline->AddClip(1.f, std::make_shared<AnimationClip<float>>(.5f, [=](float val) {
             ch2->SetColor(Eigen::Vector4f(1, 1, 1, val));
@@ -133,7 +188,26 @@ namespace Senrenbanka
         newStory->SetNormalTexture(R"(Resources\Test\Texture\start_scene\2052.png)");
         newStory->SetHoverTexture(R"(Resources\Test\Texture\start_scene\2285.png)");
         newStory->SetPressedTexture(R"(Resources\Test\Texture\start_scene\2059.png)");
-        newStory->SetOnClick([] { LOG_INFO("Start"); });
+
+        newStory->Anchor = UIAnchor::MiddleLeft;
+        newStory->SetPosition(100, 200);
+
+        std::shared_ptr<Timeline> buttonTimeline = std::make_shared<Timeline>();
+        buttonTimeline->AddClip(0, std::make_shared<AnimationClip<float>>(1.5f, [=](float val) {
+            m_background->SetColor({val, val, val, val});
+        }, 1.f, 0.f));
+
+        buttonTimeline->OnFinished = [=]() {
+            UIObject::RemoveUIComponent(m_background);
+            ChangeToMainScene();
+        };
+
+        UIAnimationManager::AddTimeline(buttonTimeline);
+        newStory->SetOnClick([=] {
+            newStory->enabled = false; // avoid double click
+            buttonTimeline->Play();
+        });
+
 
         // Add Component
 
@@ -150,4 +224,5 @@ namespace Senrenbanka
         UIObject::AddUIComponent(m_background);
 
     }
+
 }

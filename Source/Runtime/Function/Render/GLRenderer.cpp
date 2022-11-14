@@ -102,12 +102,14 @@ namespace Erisu::Function
 
         glfwSwapInterval(1);
         glEnable(GL_DEPTH_TEST);
-        if (EnabledMSAA) glEnable(GL_MULTISAMPLE);
+
+        if constexpr (Global::MSAAEnabled)
+            glEnable(GL_MULTISAMPLE);
 
         PostProcessBase::InitPostEffect(frameSampleBufferObj_, frameSampleColorBuffer_, 0);
         pImGuiWindow_->AddNewWindow([&] {
             ImGui::Begin("Game view");
-            ImGui::Image(reinterpret_cast<void *>(EnabledMSAA ? frameSampleColorBuffer_ : textureColorBuffer_), ImVec2(Viewport.x(), Viewport.y()), ImVec2(0, 1), ImVec2(1, 0));
+            ImGui::Image(reinterpret_cast<void *>(Global::MSAAEnabled ? frameSampleColorBuffer_ : textureColorBuffer_), ImVec2(Viewport.x(), Viewport.y()), ImVec2(0, 1), ImVec2(1, 0));
             ImGui::End();
         });
 
@@ -146,14 +148,14 @@ namespace Erisu::Function
 
         glBindFramebuffer(GL_FRAMEBUFFER, frameBufferObj_);
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glViewport(0, 0, Viewport.x(), Viewport.y());
 
         scene->RenderObjects();
 
-        if (EnabledMSAA)
+        if constexpr(Global::MSAAEnabled)
         {
             glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferObj_);
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, frameSampleBufferObj_);
@@ -168,7 +170,7 @@ namespace Erisu::Function
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        if (DebugMode)
+        if constexpr (Global::DebugMode)
             pImGuiWindow_->Render();
         else
         {
@@ -177,7 +179,7 @@ namespace Erisu::Function
             defaultShader->UseProgram();
             glBindVertexArray(scrVAO);
             glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, EnabledMSAA ? frameSampleColorBuffer_ : textureColorBuffer_);
+            glBindTexture(GL_TEXTURE_2D, Global::MSAAEnabled ? frameSampleColorBuffer_ : textureColorBuffer_);
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }
 
@@ -232,10 +234,10 @@ namespace Erisu::Function
 
         // Create a color attachment texture
         glGenTextures(1, &textureColorBuffer_);
-        if (EnabledMSAA)
+        if constexpr(Global::MSAAEnabled)
         {
             glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBuffer_);
-            glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, MSAASampleCount, GL_RGB, width, height, GL_TRUE);
+            glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, Global::MSAASampleCount, GL_RGB, width, height, GL_TRUE);
 
             glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, textureColorBuffer_, 0);
@@ -254,8 +256,8 @@ namespace Erisu::Function
         // Create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
         glGenRenderbuffers(1, &renderBufferObj_);
         glBindRenderbuffer(GL_RENDERBUFFER, renderBufferObj_);
-        if (EnabledMSAA)
-            glRenderbufferStorageMultisample(GL_RENDERBUFFER, MSAASampleCount, GL_DEPTH24_STENCIL8, width,
+        if constexpr(Global::MSAAEnabled)
+            glRenderbufferStorageMultisample(GL_RENDERBUFFER, Global::MSAASampleCount, GL_DEPTH24_STENCIL8, width,
                                              height);
         else
             glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
@@ -266,7 +268,7 @@ namespace Erisu::Function
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             LOG_FATAL("Framebuffer is not complete!");
 
-        if (EnabledMSAA)
+        if constexpr(Global::MSAAEnabled)
         {
             glGenFramebuffers(1, &frameSampleBufferObj_);
             glBindFramebuffer(GL_FRAMEBUFFER, frameSampleBufferObj_);
@@ -310,7 +312,7 @@ namespace Erisu::Function
         glDeleteFramebuffers(1, &frameBufferObj_);
         glDeleteTextures(1, &textureColorBuffer_);
         glDeleteRenderbuffers(1, &renderBufferObj_);
-        if (EnabledMSAA)
+        if constexpr(Global::MSAAEnabled)
         {
             glDeleteFramebuffers(1, &frameSampleBufferObj_);
             glDeleteTextures(1, &frameSampleColorBuffer_);

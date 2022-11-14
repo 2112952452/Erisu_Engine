@@ -25,6 +25,8 @@ namespace Erisu::Function
     protected:
         std::weak_ptr<GameObject> gameObject_ {};
         std::weak_ptr<Scene> scene_ {};
+        bool isExpiring = false;
+
     public:
         std::string name;
         int64_t id;

@@ -30,6 +30,8 @@ namespace Erisu::Function
         this->isFinished_ = false;
 
         this->current_ = 0.0f;
+
+        OnStarted ? OnStarted() : void();
     }
 
     void Timeline::Pause()
@@ -102,6 +104,8 @@ namespace Erisu::Function
             this->timer_.Stop();
             this->isPlaying_ = false;
             this->isFinished_ = true;
+
+            OnFinished ? OnFinished() : void();
         }
     }
 

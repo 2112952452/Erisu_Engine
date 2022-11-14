@@ -47,16 +47,23 @@ namespace Erisu::Function
         if (gameObject == nullptr)
         {
             // release all game objects
-            for (int i = 0; i < gameObjects_.size(); i++)
-                gameObjects_[i]->Destroy();
+            for (auto& go : gameObjects_)
+                go->Destroy();
 
-            std::vector<std::shared_ptr<GameObject>>().swap(gameObjects_);
+            gameObjects_.clear();
             return;
         }
 
         if (auto it = std::find(gameObjects_.begin(), gameObjects_.end(), gameObject);
-                it != gameObjects_.end())
-            gameObjects_.erase(it);
+                it != gameObjects_.end()) {
+            if ((*it)->GetId() == currentId)
+                currentIsDestroyed = true;
+            else {
+                (*it)->Destroy();
+                gameObjects_.erase(it);
+            }
+        }
+
     }
 
     std::string Scene::GetName() const
@@ -64,23 +71,27 @@ namespace Erisu::Function
         return name_;
     }
 
-    std::vector<std::shared_ptr<GameObject>> &Scene::GetGameObjects()
+    std::list<std::shared_ptr<GameObject>> Scene::GetGameObjects()
     {
         return gameObjects_;
     }
 
     void Scene::RenderObjects()
     {
-        // Delayed destroy
-        for (auto &obj: delayDestroyGameObjects_)
+        for (auto it = gameObjects_.begin(); it != gameObjects_.end();)
         {
-            obj.lock()->Destroy();
-            RemoveGameObject(obj.lock());
-        }
-        delayDestroyGameObjects_.clear();
+            currentId = (*it)->GetId();
+            (*it)->Render();
 
-        for (const auto &gameObject: gameObjects_)
-            gameObject->Render();
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                (*it)->Destroy();
+                it = gameObjects_.erase(it);
+            }
+            else ++it;
+        }
+        currentId = 0;
     }
 
     void Scene::SetCamera(const std::shared_ptr<Camera> &camera)
@@ -139,7 +150,7 @@ namespace Erisu::Function
         return mainLight_;
     }
 
-    std::vector<std::shared_ptr<Light>> &Scene::GetAdditionalLights()
+    std::deque<std::shared_ptr<Light>> & Scene::GetAdditionalLights()
     {
         return additionalLights_;
     }
@@ -154,23 +165,23 @@ namespace Erisu::Function
         RemoveGameObject(nullptr);
     }
 
-    void Scene::FrustumCulling()
-    {
-        // TODO: Implement frustum culling.
-    }
-
     void Scene::UpdateObjects()
     {
-        for (const auto &gameObject: gameObjects_)
-            gameObject->Update();
-    }
+        for (auto it = gameObjects_.begin(); it != gameObjects_.end();)
+        {
+            currentId = (*it)->GetId();
+            (*it)->Update();
 
-    void Scene::DelayDestroy(const std::shared_ptr<GameObject> &gameObject)
-    {
-        if (gameObject == nullptr)
-            return;
+            if (currentIsDestroyed) [[unlikely]]
+            {
+                currentIsDestroyed = false;
+                (*it)->Destroy();
+                it = gameObjects_.erase(it);
+            } else
+                ++it;
+        }
 
-        delayDestroyGameObjects_.push_back(gameObject);
+        currentId = 0;
     }
 
     void Scene::ShowInInspector()

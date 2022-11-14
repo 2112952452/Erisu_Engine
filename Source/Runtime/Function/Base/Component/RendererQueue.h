@@ -12,7 +12,7 @@ namespace Erisu::Function
 {
     /// O(log n) insert and O(n) render \n
     /// Priority more higher, render more front \n
-    /// Could not add same priority renderer \n TODO: Support same priority renderer
+    /// Could not add same priority renderer \n TODO: Support Runtime Remove and Insert
     class RendererQueue : public IComponent
     {
     private:

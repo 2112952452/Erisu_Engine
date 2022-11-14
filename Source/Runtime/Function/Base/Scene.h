@@ -15,13 +15,18 @@ namespace Erisu::Function
     {
     protected:
         std::string name_;
-        std::vector<std::shared_ptr<GameObject>> gameObjects_;
+        std::list<std::shared_ptr<GameObject>> gameObjects_;
 
+        // 3D Components, 2D Scene is no need to use them
         std::shared_ptr<DirectionalLight> mainLight_;
-        std::vector<std::shared_ptr<Light>> additionalLights_;
+        std::deque<std::shared_ptr<Light>> additionalLights_;
 
         std::shared_ptr<Camera> camera_;
-        std::vector<std::weak_ptr<GameObject>> delayDestroyGameObjects_;
+
+        // TODO: maybe I should abstract this
+        int64_t currentId = 0;
+        bool currentIsDestroyed = false;
+
     public:
         explicit Scene(std::string name);
 
@@ -47,22 +52,18 @@ namespace Erisu::Function
 
         virtual void Destroy();
 
-        void DelayDestroy(const std::shared_ptr<GameObject> &gameObject);
-
         [[nodiscard]] std::string GetName() const;
 
-        [[nodiscard]] std::vector<std::shared_ptr<GameObject>> &GetGameObjects();
+        [[nodiscard]] std::list<std::shared_ptr<GameObject>> GetGameObjects();
 
         [[nodiscard]] std::shared_ptr<Camera> &GetCamera();
 
         [[nodiscard]] std::shared_ptr<DirectionalLight> &GetMainLight();
 
-        [[nodiscard]] std::vector<std::shared_ptr<Light>> &GetAdditionalLights();
+        [[nodiscard]] std::deque<std::shared_ptr<Light>> & GetAdditionalLights();
 
         virtual void ShowInInspector();
 
-    protected:
-        void FrustumCulling();
     };
 
 

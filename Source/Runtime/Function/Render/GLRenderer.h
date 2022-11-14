@@ -15,15 +15,12 @@
 #include "../Base/Scene.h"
 #include "PostProcessBase.h"
 
+#include "Global/Global.h"
+
 namespace Erisu::Function
 {
     class GLRenderer
     {
-    public:
-        bool DebugMode = false;
-        unsigned int MSAASampleCount = 2;
-        bool EnabledMSAA = false;
-
     public:
         GLRenderer(int width, int height, const char *windowTitle_);
 

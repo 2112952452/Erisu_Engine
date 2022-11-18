@@ -20,6 +20,9 @@
         <option value="$PROJECT_DIR$/out" />
         <option value="$PROJECT_DIR$/.vs" />
         <option value="$PROJECT_DIR$/Source/Runtime/Function/Scripts/Python" />
+        <option value="$PROJECT_DIR$/Source/Runtime/Scripts/Javascript/include" />
+        <option value="$PROJECT_DIR$/Source/Runtime/Scripts/Python/include" />
+        <option value="$PROJECT_DIR$/Source/Runtime/Scripts/Python/libs" />
       </list>
     </option>
   </component>

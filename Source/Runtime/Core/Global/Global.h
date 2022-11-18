@@ -7,7 +7,6 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Python.h>
 #include <Log/LogSystem.h>
 #include <Eigen/Dense>
 
@@ -34,7 +33,7 @@ namespace Erisu::Global
     inline constexpr int MSAASampleCount = 4;
     inline constexpr bool MSAAEnabled = false;
     inline constexpr bool DebugMode = false;
-    inline constexpr bool ForceEnableInputInDebugMode = true;
+    inline constexpr bool ForceEnableInputInDebugMode = false;
 
     // Init Function call after OpenGL context created
     inline void Init()

@@ -8,7 +8,7 @@
 #include "IUIComponent.h"
 #include "../../../Render/GLTexture.h"
 #include "Global/Global.h"
-
+#include "library/Vector.h"
 
 namespace Erisu::Function
 {
@@ -48,6 +48,11 @@ namespace Erisu::Function
     public:
         UIAnchor Anchor = UIAnchor::MiddleCenter;
         BlendMode AlphaBlend = BlendMode::Alpha;
+
+    private:
+        using Vec2 = Scripts::Vector2;
+        using Vec3 = Scripts::Vector3;
+        using Vec4 = Scripts::Vector4;
 
     protected:
         bool visible_ = true;
@@ -141,6 +146,125 @@ namespace Erisu::Function
         Eigen::Vector2f GetScreenPosition() const;
 
         bool IsPointInRect(const Eigen::Vector2f &point) const;
+
+    public:
+        // For Javascript
+
+        Vec2* GetPositionJs() const
+        { return new Vec2{this->rect_.x(), this->rect_.y()}; }
+
+        void SetPositionJs(const Vec2 &position)
+        { this->SetPosition(position.x, position.y); }
+
+        Vec2* GetSizeJs() const
+        { return new Vec2{this->rect_.z(), this->rect_.w()}; }
+
+        void SetSizeJs(const Vec2 &size)
+        { this->SetSize(size.x, size.y); }
+
+        Vec2* GetScaleJs() const
+        { return new Vec2{this->scale_.x(), this->scale_.y()}; }
+
+        void SetScaleJs(const Vec2 &scale)
+        { this->SetScale(scale.x, scale.y); }
+
+        Vec4* GetColorJs() const
+        { return new Vec4{this->color_.x(), this->color_.y(), this->color_.z(), this->color_.w()}; }
+
+        void SetColorJs(const Vec4 &color)
+        { this->SetColor({color.x, color.y, color.z, color.w}); }
+
+        Vec4* GetRectJs() const
+        { return new Vec4{this->rect_.x(), this->rect_.y(), this->rect_.z(), this->rect_.w()}; }
+
+        void SetRectJs(const Vec4 &rect)
+        { this->SetRect(rect.x, rect.y, rect.z, rect.w); }
+
+        Vec2* GetScreenPositionJs() const
+        { auto pos = this->GetScreenPosition(); return new Vec2 {pos.x(), pos.y()}; }
+
+        bool IsPointInRectJs(const Vec2 &point) const
+        { return this->IsPointInRect({point.x, point.y}); }
+
+        void SetOnScreenPositionJs(const Vec2 &position)
+        { this->SetOnScreenPosition(position.x, position.y); }
+
+
+        void SetAnchorJs(const std::string &anchor)
+        {
+            if (anchor == "TopLeft")
+                this->Anchor = UIAnchor::TopLeft;
+            else if (anchor == "TopCenter")
+                this->Anchor = UIAnchor::TopCenter;
+            else if (anchor == "TopRight")
+                this->Anchor = UIAnchor::TopRight;
+            else if (anchor == "MiddleLeft")
+                this->Anchor = UIAnchor::MiddleLeft;
+            else if (anchor == "MiddleCenter")
+                this->Anchor = UIAnchor::MiddleCenter;
+            else if (anchor == "MiddleRight")
+                this->Anchor = UIAnchor::MiddleRight;
+            else if (anchor == "BottomLeft")
+                this->Anchor = UIAnchor::BottomLeft;
+            else if (anchor == "BottomCenter")
+                this->Anchor = UIAnchor::BottomCenter;
+            else if (anchor == "BottomRight")
+                this->Anchor = UIAnchor::BottomRight;
+        }
+
+        std::string GetAnchorJs() const
+        {
+            switch (this->Anchor)
+            {
+                case UIAnchor::TopLeft:
+                    return "TopLeft";
+                case UIAnchor::TopCenter:
+                    return "TopCenter";
+                case UIAnchor::TopRight:
+                    return "TopRight";
+                case UIAnchor::MiddleLeft:
+                    return "MiddleLeft";
+                case UIAnchor::MiddleCenter:
+                    return "MiddleCenter";
+                case UIAnchor::MiddleRight:
+                    return "MiddleRight";
+                case UIAnchor::BottomLeft:
+                    return "BottomLeft";
+                case UIAnchor::BottomCenter:
+                    return "BottomCenter";
+                case UIAnchor::BottomRight:
+                    return "BottomRight";
+                default:
+                    return "TopLeft";
+            }
+        }
+
+        Vec2* GetAnchorOffsetJs() const
+        { auto offset = this->GetAnchorOffset(); return new Vec2{offset.x(), offset.y()}; }
+
+        void AddToUIObjectJs();
+
+        void SetBlendModeJs(const std::string &blendMode)
+        {
+            if (blendMode == "Alpha")
+                this->AlphaBlend = BlendMode::Alpha;
+            else if (blendMode == "Add")
+                this->AlphaBlend = BlendMode::Additive;
+            else if (blendMode == "Multiply")
+                this->AlphaBlend = BlendMode::Multiply;
+            else if (blendMode == "Screen")
+                this->AlphaBlend = BlendMode::Screen;
+            else if (blendMode == "Overlay")
+                this->AlphaBlend = BlendMode::Overlay;
+            else if (blendMode == "Darken")
+                this->AlphaBlend = BlendMode::Darken;
+            else if (blendMode == "Lighten")
+                this->AlphaBlend = BlendMode::Lighten;
+            else if (blendMode == "Disabled")
+                this->AlphaBlend = BlendMode::Disabled;
+            else
+                LOG_ERROR("Unknown blend mode: " + blendMode);
+        }
 
     public:
         void Update() override

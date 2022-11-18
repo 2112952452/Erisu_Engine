@@ -3,7 +3,7 @@
 //
 
 #include "UIButton.h"
-
+#include <JsManager.h>
 #include <utility>
 
 namespace Erisu::Function
@@ -64,7 +64,6 @@ namespace Erisu::Function
             Init();
 
         UIImage::Render();
-        test();
     }
 
     void UIButton::Init()
@@ -123,5 +122,13 @@ namespace Erisu::Function
     void UIButton::SetLayer(int layer)
     {
         input_->Layer = layer;
+    }
+
+    void UIButton::SetOnClickJs(const std::string& script)
+    {
+        onClick_ = [script]()
+        {
+            Scripts::JsManager::GetInstance().Execute(script.c_str());
+        };
     }
 }

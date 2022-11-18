@@ -65,6 +65,18 @@ namespace Erisu::Function
         void SetPosition(float x, float y) override;
         void SetSize(float width, float height) override;
         void SetRotation(float rotation) override;
+    public:
+        // For Javascript
+        void AddComponentJs(UIComponent* component)
+        {
+            AddComponent(std::shared_ptr<UIComponent>(component));
+        }
+
+        void RemoveComponentJs(UIComponent* component)
+        {
+            RemoveComponent(std::shared_ptr<UIComponent>(component));
+        }
+
 
     };
 

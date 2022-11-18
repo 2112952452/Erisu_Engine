@@ -20,7 +20,6 @@ namespace Erisu::Function
         bool isHover = false;
         bool isDragged = false;
 
-
         std::shared_ptr<UIComponent> uiComponent;
 
     public:
@@ -53,6 +52,39 @@ namespace Erisu::Function
     };
 
     bool operator>(const std::shared_ptr<UIInput>& lhs, const std::shared_ptr<UIInput>& rhs);
+
 }
+
+#include <library/Vector.h>
+
+namespace Erisu::Scripts
+{
+    struct UIInputJs
+    {
+    private:
+        std::shared_ptr<Erisu::Function::UIInput> input;
+    public:
+        UIInputJs(Function::UIComponent* component);
+        ~UIInputJs() = default;
+
+        void SetOnClick(const std::string &script);
+        void SetOnHoverEnter(const std::string &script);
+        void SetOnHoverExit(const std::string &script);
+        void SetOnPressed(const std::string &script);
+        void SetOnPressedExit(const std::string &script);
+        void SetOnDragStart(const std::string &script);
+        void SetOnDragExit(const std::string &script);
+        void SetOnDrag(const std::string &script);
+
+        void SetLayer(int layer);
+        void SetShared(bool shared);
+
+        Vector2* GetBeforeDragPosition();
+        Vector2* GetLastMousePosition();
+
+    };
+
+}
+
 
 #endif //ERISU_ENGINE_UIINPUT_H

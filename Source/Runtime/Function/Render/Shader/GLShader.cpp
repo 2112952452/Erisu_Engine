@@ -248,5 +248,11 @@ namespace Erisu::Function
         return std::make_shared<GLShader>(ReadShaderFromFile(vert.data()), ReadShaderFromFile(frag.data()), true);
     }
 
+    std::shared_ptr<GLShader>
+    GLShader::CreateFromFile(const std::string_view &vertPath, const std::string_view &fragPath)
+    {
+        return std::make_shared<GLShader>(ReadShaderFromFile(vertPath.data()), ReadShaderFromFile(fragPath.data()), true);
+    }
+
 
 }

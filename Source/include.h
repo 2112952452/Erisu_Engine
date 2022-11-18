@@ -11,7 +11,6 @@
 #include <Log/LogSystem.h>
 #include <imgui.h>
 #include <Global/Global.h>
-#include <Python.h>
 
 #include "Runtime/Function/Render/GLRenderer.h"
 #include "Runtime/Function/Application/ErisuApp.h"

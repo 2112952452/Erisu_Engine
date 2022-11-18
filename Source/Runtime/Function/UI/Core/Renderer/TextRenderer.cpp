@@ -240,9 +240,12 @@ namespace Erisu::Function
 
     std::wstring TextRenderer::StringToWstring(const std::string &str)
     {
-        // TODO: This STL may be MSVC ONLY?
+#if defined(_WIN32)
         std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
         return converter.from_bytes(str);
+#else
+#error "Not implemented"
+#endif
     }
 
     TextRenderer::TextRenderer(std::string text, std::shared_ptr<GLShader> shader, std::string fontPath,

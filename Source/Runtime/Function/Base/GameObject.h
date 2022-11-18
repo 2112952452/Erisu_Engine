@@ -77,6 +77,7 @@ namespace Erisu::Function
 
         [[nodiscard]] int64_t GetId() const;
         [[nodiscard]] Transform &GetTransform();
+        
     };
 
     template<class T, class... TParm>

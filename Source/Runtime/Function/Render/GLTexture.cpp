@@ -17,7 +17,8 @@ namespace
             case 1:
                 return GL_RED;
             case 2:
-                return GL_RG;
+                LOG_ERROR("Texture format not supported!");
+                return GL_RGB;
             case 3:
                 return GL_RGB;
             case 4:
@@ -37,27 +38,29 @@ namespace Erisu::Function
         Load(path);
     }
 
+    // Save format: RGBA
     bool GLTexture::Load(const std::string_view &path)
     {
         // load image, create texture and generate mipmaps
         LOG_DEBUG("Loading texture: {}", path.data());
 
         stbi_set_flip_vertically_on_load(true);
-        unsigned char *data = stbi_load(path.data(), &width, &height, &channels, 0);
+        unsigned char *data = stbi_load(path.data(), &width, &height, &channels, 4);
 
         if (data)
         {
             widthRatio = static_cast<float>(width) / static_cast<float>(height);
-            auto format = GetTextureFormat(channels);
 
             glGenTextures(1, &id);
             glBindTexture(GL_TEXTURE_2D, id);
-            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 
             bLoaded = true;
         } else

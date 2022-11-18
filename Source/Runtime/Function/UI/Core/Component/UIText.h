@@ -9,6 +9,7 @@
 #include "../Shader/UIShader.h"
 #include "../Renderer/TextRenderer.h"
 
+#include "library/Vector.h"
 
 namespace Erisu::Function
 {
@@ -58,6 +59,30 @@ namespace Erisu::Function
 
         void Render() override;
         void Destroy() override;
+
+    public:
+        // For JavaScript
+        using vec2 = Scripts::Vector2;
+        using vec3 = Scripts::Vector3;
+        using vec4 = Scripts::Vector4;
+
+        void SetOutlineColorJs(vec4* color)
+        { SetOutlineColor({color->x, color->y, color->z, color->w}); }
+
+        void SetColorJs(vec4* color)
+        { SetColor({color->x, color->y, color->z, color->w}); }
+
+        void SetShaderJs(const std::string &vertex, const std::string &fragment)
+        { SetShader(GLShader::Create(vertex, fragment)); }
+
+        void SetOutlineShaderJs(const std::string &vertex, const std::string &fragment)
+        { SetOutlineShader(GLShader::Create(vertex, fragment)); }
+
+        void SetShaderFromFileJs(const std::string &vertex, const std::string &fragment)
+        { SetShader(GLShader::CreateFromFile(vertex, fragment)); }
+
+        void SetOutlineShaderFromFileJs(const std::string &vertex, const std::string &fragment)
+        { SetOutlineShader(GLShader::CreateFromFile(vertex, fragment)); }
 
     };
 

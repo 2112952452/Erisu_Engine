@@ -1,8 +1,9 @@
 #include "include.h"
 
 #include "Runtime/Demo/senrenbanka.h"
-
+#include "JsManager.h"
 using namespace Senrenbanka;
+using namespace Erisu::Scripts;
 
 int main()
 {
@@ -12,17 +13,21 @@ int main()
     std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(Global::CanvasWidth, Global::CanvasHeight, Global::WindowTitle.c_str());
     Erisu::Global::Init();
 
-    if (Global::DebugMode)
+    if constexpr (Global::DebugMode)
     {
         LOG_INFO("Debug Mode: ON");
         renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(test_scene); });
         renderer->AddImGuiWindow(DrawInspector);
     }
 
-    CreateStartScene();
+    //CreateStartScene();
+    std::shared_ptr<Scene> mainScene = std::make_shared<Scene>("Main Scene");
+    UIObject::RegisterToScene(mainScene);
+
+    JsManager::GetInstance().ExecuteFile("Scripts/main.js");
 
     app.SetRenderer(renderer);
-    app.SetScene(test_scene);
+    app.SetScene(mainScene);
     app.Run();
 
     test_scene->Destroy();

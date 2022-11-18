@@ -8,6 +8,8 @@
 #include "Global/Global.h"
 #include <imgui.h>
 
+#include "UIObject.h"
+
 namespace Erisu::Function
 {
 
@@ -155,6 +157,11 @@ namespace Erisu::Function
                    point.y() >= pos.y() - size.y() / 2 && point.y() <= pos.y() + size.y() / 2;
 
         return parent_.expired() ? res : res && parent_.lock()->IsPointInRect(point);
+    }
+
+    void UIComponent::AddToUIObjectJs()
+    {
+        UIObject::AddUIComponent(std::shared_ptr<UIComponent>(this));
     }
 
     void ApplyBlendMode(BlendMode mode)

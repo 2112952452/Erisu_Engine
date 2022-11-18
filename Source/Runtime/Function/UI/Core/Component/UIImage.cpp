@@ -110,4 +110,20 @@ namespace Erisu::Function
         glDeleteBuffers(1, &vbo_);
     }
 
+    void UIImage::SetTextureJs(const std::string &path)
+    {
+        SetTexture(GLTexture::Create(path));
+    }
+
+    void UIImage::SetShaderJs(const std::string &vertex, const std::string &frag)
+    {
+        SetShader(GLShader::Create(vertex, frag));
+    }
+
+    void UIImage::SetShaderFromFileJs(const std::string &vertexPath, const std::string &fragmentPath)
+    {
+        SetShader(GLShader::CreateFromFile(vertexPath, fragmentPath));
+    }
+
+
 }

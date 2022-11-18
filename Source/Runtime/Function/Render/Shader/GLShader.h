@@ -81,6 +81,7 @@ namespace Erisu::Function
         static std::string ReadShaderFromFile(const std::string &path);
 
         static std::shared_ptr<GLShader> Create(const std::string_view& vert, const std::string_view& frag);
+        static std::shared_ptr<GLShader> CreateFromFile(const std::string_view& vertPath, const std::string_view& fragPath);
 
     private:
         static GLuint Compile(const std::string &source, GLenum shaderType, std::string &log);

@@ -62,7 +62,8 @@ namespace Erisu::Function
 
         void Render() override;
 
-        std::function<void()> test = []() { };
+        // For JavaScript binding.
+        void SetOnClickJs(const std::string &script);
     };
 
 }

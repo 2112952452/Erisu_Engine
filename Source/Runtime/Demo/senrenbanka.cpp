@@ -14,7 +14,10 @@
 #include "../Function/UI/Component/UIButton.h"
 #include "../Function/UI/Core/Component/UIText.h"
 
+#include <JsManager.h>
+
 using namespace Erisu::Function;
+using namespace Erisu::Scripts;
 
 namespace
 {
@@ -45,15 +48,14 @@ namespace Senrenbanka
 
         auto textBoxBg = std::make_shared<UIImage>("TextBoxBg", R"(Resources\Test\Texture\main_scene\11451.png)", 0);
         textBoxBg->AlphaBlend = BlendMode::Screen;
-        auto textCh = std::make_shared<UIText>("TextCh", "继续留在这家公司", 1);
+        auto textCh = std::make_shared<UIText>("TextCh", "幸せになりたい\n楽して生きていたい", 1);
 
         textCh->SetFontSize(25);
         textCh->AlphaBlend = BlendMode::Alpha;
         textCh->Anchor = UIAnchor::TopCenter;
-        textCh->SetOutlineThickness(.5f);
+        textCh->SetOutlineThickness(1.f);
         textCh->SetOutline(true);
         textCh->SetPosition(-330, 25);
-
 
         textBox->AddComponent(textBoxBg);
         textBox->AddComponent(textCh);

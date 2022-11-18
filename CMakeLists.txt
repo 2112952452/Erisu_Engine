@@ -15,7 +15,9 @@ include_directories(
         ${RUNTIME_PATH}/Core/
         ${RUNTIME_PATH}/Core/include/
         ${RUNTIME_PATH}/Function/Base/Component
-        ${RUNTIME_PATH}/Tool/Python/include
+        ${RUNTIME_PATH}/Scripts/Python/include
+        ${RUNTIME_PATH}/Scripts/Javascript/include
+        ${RUNTIME_PATH}/Scripts/Javascript/Core
 )
 
 #添加依赖的库文件
@@ -27,12 +29,14 @@ find_package(imgui CONFIG REQUIRED)
 find_package(imguizmo CONFIG REQUIRED)
 find_package(freetype CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
+find_package(OpenAL CONFIG REQUIRED)
 
 find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_image_write.h")
 
 #生成可执行程序
 add_executable(Erisu_Engine
         Source/main.cpp
+        Source/Runtime/Scripts/Javascript/include/duktape.c
         ${RUNTIME_PATH}/Core/Global/Global.h ${RUNTIME_PATH}/Core/Log/LogSystem.cpp ${RUNTIME_PATH}/Core/Timer/Timer.cpp
         "Source/Runtime/Function/UI/Core/Renderer/TextRenderer.cpp"
         Source/Runtime/Function/Application/ErisuApp.cpp
@@ -55,22 +59,21 @@ add_executable(Erisu_Engine
         Source/Runtime/Function/Utility/ImGuiUtility.cpp
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp
-        "Source/Runtime/Function/UI/Core/Renderer/Renderable2DBase.cpp" "Source/Runtime/Function/UI/Core/Renderer/Renderable2DBase.h" "Source/Runtime/Function/Animation/AnimationBase.h" "Source/Runtime/Function/Animation/AnimationCurve.cpp" "Source/Runtime/Function/Animation/AnimationCurve.h" "Source/Runtime/Function/Animation/IAnimation.h" Source/include.h "Source/Runtime/Function/UI/Core/Base/IUIComponent.h" "Source/Runtime/Function/UI/Core/Base/UIComponent.h" "Source/Runtime/Function/UI/Core/Component/UIImage.cpp" "Source/Runtime/Function/UI/Core/Component/UIImage.h" "Source/Runtime/Function/UI/Core/Shader/UIShader.h" "Source/Runtime/Function/UI/Core/Shader/UIShader.cpp" "Source/Runtime/Function/UI/Core/Base/UIComponent.cpp" "Source/Runtime/Function/UI/Core/Component/UIText.cpp" "Source/Runtime/Function/UI/Core/Component/UIText.h" "Source/Runtime/Function/UI/Core/Component/UIContainer.cpp" "Source/Runtime/Function/UI/Core/Component/UIContainer.h" "Source/Runtime/Function/UI/Core/Base/UIInput.cpp" "Source/Runtime/Function/UI/Core/Base/UIInput.h" "Source/Runtime/Function/UI/Core/Manager/UIInputManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIInputManager.h" "Source/Runtime/Function/UI/Core/Base/UIObject.cpp" "Source/Runtime/Function/UI/Core/Base/UIObject.h" Source/Runtime/Demo/senrenbanka.cpp Source/Runtime/Demo/senrenbanka.h "Source/Runtime/Function/UI/Core/Manager/UIAnimationManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIAnimationManager.h" "Source/Runtime/Function/UI/Core/Manager/UIEventManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIEventManager.h" Source/Runtime/Function/Animation/Timeline/AnimationClip.h Source/Runtime/Function/Animation/Timeline/Timeline.cpp Source/Runtime/Function/Animation/Timeline/Timeline.h Source/Runtime/Function/Animation/Timeline/IClip.h "Source/Runtime/Function/UI/Component/UIButton.cpp" "Source/Runtime/Function/UI/Component/UIButton.h" "Source/Runtime/Function/UI/Component/UIStackPanel.cpp" "Source/Runtime/Function/UI/Component/UIStackPanel.h")
+        "Source/Runtime/Function/UI/Core/Renderer/Renderable2DBase.cpp" "Source/Runtime/Function/UI/Core/Renderer/Renderable2DBase.h" "Source/Runtime/Function/Animation/AnimationBase.h" "Source/Runtime/Function/Animation/AnimationCurve.cpp" "Source/Runtime/Function/Animation/AnimationCurve.h" "Source/Runtime/Function/Animation/IAnimation.h" Source/include.h "Source/Runtime/Function/UI/Core/Base/IUIComponent.h" "Source/Runtime/Function/UI/Core/Base/UIComponent.h" "Source/Runtime/Function/UI/Core/Component/UIImage.cpp" "Source/Runtime/Function/UI/Core/Component/UIImage.h" "Source/Runtime/Function/UI/Core/Shader/UIShader.h" "Source/Runtime/Function/UI/Core/Shader/UIShader.cpp" "Source/Runtime/Function/UI/Core/Base/UIComponent.cpp" "Source/Runtime/Function/UI/Core/Component/UIText.cpp" "Source/Runtime/Function/UI/Core/Component/UIText.h" "Source/Runtime/Function/UI/Core/Component/UIContainer.cpp" "Source/Runtime/Function/UI/Core/Component/UIContainer.h" "Source/Runtime/Function/UI/Core/Base/UIInput.cpp" "Source/Runtime/Function/UI/Core/Base/UIInput.h" "Source/Runtime/Function/UI/Core/Manager/UIInputManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIInputManager.h" "Source/Runtime/Function/UI/Core/Base/UIObject.cpp" "Source/Runtime/Function/UI/Core/Base/UIObject.h" Source/Runtime/Demo/senrenbanka.cpp Source/Runtime/Demo/senrenbanka.h "Source/Runtime/Function/UI/Core/Manager/UIAnimationManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIAnimationManager.h" "Source/Runtime/Function/UI/Core/Manager/UIEventManager.cpp" "Source/Runtime/Function/UI/Core/Manager/UIEventManager.h" Source/Runtime/Function/Animation/Timeline/AnimationClip.h Source/Runtime/Function/Animation/Timeline/Timeline.cpp Source/Runtime/Function/Animation/Timeline/Timeline.h Source/Runtime/Function/Animation/Timeline/IClip.h "Source/Runtime/Function/UI/Component/UIButton.cpp" "Source/Runtime/Function/UI/Component/UIButton.h" "Source/Runtime/Function/UI/Component/UIStackPanel.cpp" "Source/Runtime/Function/UI/Component/UIStackPanel.h" Source/Runtime/Function/Audio/AudioPlayer.cpp Source/Runtime/Function/Audio/AudioPlayer.h Source/Runtime/Scripts/Javascript/Core/UIRegister.cpp Source/Runtime/Scripts/Javascript/Core/JsManager.cpp Source/Runtime/Scripts/Javascript/Core/library/Vector.cpp)
 
 
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 
-target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype imguizmo::imguizmo)
+target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype imguizmo::imguizmo OpenAL::OpenAL)
 
 
-
-
-if (CMAKE_BUILD_TYPE MATCHES Debug)
-    target_link_libraries(${PROJECT_NAME} ${RUNTIME_PATH}/Tool/Python/libs/python310_d.lib)
-endif ()
-
-if (CMAKE_BUILD_TYPE MATCHES Release)
-    target_link_libraries(${PROJECT_NAME} ${RUNTIME_PATH}/Tool/Python/libs/python310.lib)
-endif()
+# changed to javascript currently
+#if (CMAKE_BUILD_TYPE MATCHES Debug)
+#    target_link_libraries(${PROJECT_NAME} ${RUNTIME_PATH}/Tool/Python/libs/python310_d.lib)
+#endif ()
+#
+#if (CMAKE_BUILD_TYPE MATCHES Release)
+#    target_link_libraries(${PROJECT_NAME} ${RUNTIME_PATH}/Tool/Python/libs/python310.lib)
+#endif()

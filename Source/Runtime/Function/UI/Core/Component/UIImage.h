@@ -39,6 +39,13 @@ namespace Erisu::Function
 
         void SetTexture(std::shared_ptr<GLTexture> texture);
         void SetShader(std::shared_ptr<GLShader> shader);
+
+    public:
+        // For JavaScript
+
+        void SetTextureJs(const std::string& path);
+        void SetShaderJs(const std::string& vertex, const std::string& frag);
+        void SetShaderFromFileJs(const std::string& vertexPath, const std::string& fragmentPath);
     };
 }
 

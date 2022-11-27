@@ -5,10 +5,10 @@
 #include "JsManager.h"
 
 
-#include "../../../Function/UI/Core/Base/UIObject.h"
-#include "../../../Function/UI/Core/Component/UIText.h"
-#include "../../../Function/UI/Core/Component/UIImage.h"
-#include "../../../Function/UI/Component/UIButton.h"
+#include "../../../../Function/UI/Core/Base/UIObject.h"
+#include "../../../../Function/UI/Core/Component/UIText.h"
+#include "../../../../Function/UI/Core/Component/UIImage.h"
+#include "../../../../Function/UI/Component/UIButton.h"
 
 
 using namespace Erisu::Scripts;
@@ -18,8 +18,16 @@ using namespace Eigen;
 
 namespace
 {
+    void DestroyComponent(UIComponent* component)
+    {
+        auto ptr = std::dynamic_pointer_cast<IUIComponent>(component->shared_from_this());
+        UIObject::RemoveUIComponent(ptr);
+    }
+
     int __REG__UI__ = []() {
         auto &js = JsManager::GetInstance();
+
+        js.RegisterFunction("DestroyComponent", DestroyComponent);
 
         js.RegisterConstructor<UIComponent, std::string, int>("UIComponent");           // UIComponent(name, priority)
         js.RegisterConstructor<UIImage, std::string, std::string, int>("UIImage");      // UIImage(name, path, priority)
@@ -39,6 +47,7 @@ namespace
         js.RegisterMethod("SetScale", &UIComponent::SetScaleJs);           // SetScale(scaleX, scaleY)
         js.RegisterMethod("SetColor", &UIComponent::SetColorJs);           // SetColor(r, g, b, a)
         js.RegisterMethod("SetRect", &UIComponent::SetRectJs);             // SetRect(x, y, width, height)
+        js.RegisterMethod("SetEnabled", &UIComponent::SetEnabledJs);         // SetEnabled(enabled)
         js.RegisterMethod("SetOnScreenPosition", &UIComponent::SetOnScreenPositionJs); // SetOnScreenPosition(x, y)
         js.RegisterMethod("SetRotation", &UIComponent::SetRotation);       // SetRotation(rotation)
         js.RegisterMethod("SetVisible", &UIComponent::SetVisible);         // SetVisible(visible)
@@ -85,9 +94,7 @@ namespace
         js.RegisterMethod("AddComponent", &UIContainer::AddComponentJs);             // AddChild(child)
         js.RegisterMethod("RemoveComponent", &UIContainer::RemoveComponentJs);       // RemoveChild(child)
         js.RegisterMethod<UIContainer, void, float, float, float, float>("SetRect", &UIContainer::SetRect);                       // SetRect(x, y, width, height)
-        js.RegisterMethod("SetPosition", &UIContainer::SetPosition);               // SetPosition(x, y)
         js.RegisterMethod("SetSize", &UIContainer::SetSize);                       // SetSize(width, height)
-        js.RegisterMethod("SetRotation", &UIContainer::SetRotation);               // SetRotation(rotation)
 
         // UIInput
         js.RegisterMethod("SetOnClick", &UIInputJs::SetOnClick);               // SetOnClicked(function)
@@ -113,15 +120,4 @@ namespace
         return 0;
     }();
 
-    void printJs(const std::string &info)
-    {
-        LOG_INFO(info);
-    }
-
-    int __REG__ = [] {
-        auto &js = JsManager::GetInstance();
-        js.RegisterFunction("print", printJs);
-
-        return 0;
-    }();
 }

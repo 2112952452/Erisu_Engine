@@ -26,6 +26,9 @@ namespace Erisu::Scripts
         constexpr void operator-=(const Vector2 &other) { x -= other.x;y -= other.y; }
         constexpr void operator*=(const Vector2 &other) { x *= other.x;y *= other.y; }
 
+        float GetX() const { return x; }
+        float GetY() const { return y; }
+
         void Print() const { LOG_DEBUG("Vector2: x = {}, y = {}", x, y); }
     };
 
@@ -44,6 +47,10 @@ namespace Erisu::Scripts
         constexpr void operator+=(const Vector3 &other) { x += other.x;y += other.y;z += other.z; }
         constexpr void operator-=(const Vector3 &other) { x -= other.x;y -= other.y;z -= other.z; }
         constexpr void operator*=(const Vector3 &other) { x *= other.x;y *= other.y;z *= other.z; }
+
+        float GetX() const { return x; }
+        float GetY() const { return y; }
+        float GetZ() const { return z; }
 
         void Print() const { LOG_DEBUG("Vector3: (%f, %f, %f)", x, y, z); }
     };
@@ -64,6 +71,11 @@ namespace Erisu::Scripts
         constexpr void operator+=(const Vector4 &other) { x += other.x;y += other.y;z += other.z;w += other.w; }
         constexpr void operator-=(const Vector4 &other) { x -= other.x;y -= other.y;z -= other.z;w -= other.w; }
         constexpr void operator*=(const Vector4 &other) { x *= other.x;y *= other.y;z *= other.z;w *= other.w; }
+
+        float GetX() const { return x; }
+        float GetY() const { return y; }
+        float GetZ() const { return z; }
+        float GetW() const { return w; }
 
         void Print() const { LOG_DEBUG("Vector4: x = {}, y = {}, z = {}, w = {}", x, y, z, w); }
     };

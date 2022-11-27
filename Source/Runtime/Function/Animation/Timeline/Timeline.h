@@ -50,6 +50,14 @@ namespace Erisu::Function
     public:
         std::function<void()> OnFinished;
         std::function<void()> OnStarted;
+
+    public:
+        // For JavaScript
+        void SetOnFinishedJs(const std::string& script);
+        void SetOnStartedJs(const std::string& script);
+
+        void AddClipJs(float startTime, IClip* clip);
+        void ActivateJs();
     };
 }
 

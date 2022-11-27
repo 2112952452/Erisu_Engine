@@ -131,4 +131,12 @@ namespace Erisu::Function
             Scripts::JsManager::GetInstance().Execute(script.c_str());
         };
     }
+
+    void UIButton::Destroy()
+    {
+        IComponent::Destroy();
+        input_->Destroy();
+        input_.reset(); // if not destroy, will cause reference cycle
+    }
+
 }

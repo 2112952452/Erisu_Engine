@@ -32,6 +32,16 @@ namespace Erisu::Scripts
         js.RegisterMethod<Vector3>("Print", &Vector3::Print);
         js.RegisterMethod<Vector4>("Print", &Vector4::Print);
 
+        js.RegisterMethod("GetX", &Vector2::GetX);
+        js.RegisterMethod("GetY", &Vector2::GetY);
+        js.RegisterMethod("GetX", &Vector3::GetX);
+        js.RegisterMethod("GetY", &Vector3::GetY);
+        js.RegisterMethod("GetZ", &Vector3::GetZ);
+        js.RegisterMethod("GetX", &Vector4::GetX);
+        js.RegisterMethod("GetY", &Vector4::GetY);
+        js.RegisterMethod("GetZ", &Vector4::GetZ);
+        js.RegisterMethod("GetW", &Vector4::GetW);
+
         return 0;
     }();
 

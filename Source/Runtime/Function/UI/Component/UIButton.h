@@ -44,6 +44,7 @@ namespace Erisu::Function
         UIButton(std::string name, const std::shared_ptr<GLTexture> &texture, std::function<void()> onClick, int priority);
         UIButton(std::string name, const std::shared_ptr<GLTexture> &texture, std::shared_ptr<GLTexture> hoverTexture, std::shared_ptr<GLTexture> pressedTexture, std::function<void()> onClick, int priority);
 
+        void Destroy() override;
         void SetOnClick(const std::function<void()>& onClick);
 
         // NormalTexture is the texture when the button is not pressed or hovered.

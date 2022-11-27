@@ -205,8 +205,10 @@ namespace Senrenbanka
         };
 
         UIAnimationManager::AddTimeline(buttonTimeline);
+
+        std::weak_ptr<UIButton> weakButton = newStory;
         newStory->SetOnClick([=] {
-            newStory->enabled = false; // avoid double click
+            weakButton.lock()->enabled = false; // avoid double click
             buttonTimeline->Play();
         });
 
@@ -222,9 +224,7 @@ namespace Senrenbanka
         m_background->AddComponent(logo);
 
         m_background->AddComponent(newStory);
-
         UIObject::AddUIComponent(m_background);
-
     }
 
 }

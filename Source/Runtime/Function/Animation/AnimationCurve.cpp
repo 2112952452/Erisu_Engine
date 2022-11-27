@@ -30,4 +30,11 @@ namespace Erisu::Function
     {
         keyFrames_[time] = value;
     }
+
+    AnimationCurve::AnimationCurve(const std::string & curveName)
+    {
+        if (Animation::curveMap.contains(curveName)) [[likely]]
+            *this = Animation::curveMap[curveName];
+        else *this = Animation::curveMap["Linear"];
+    }
 }

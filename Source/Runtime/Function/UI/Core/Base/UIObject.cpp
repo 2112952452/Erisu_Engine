@@ -48,4 +48,7 @@ namespace Erisu::Function
 
         GetInstance()->RemoveComponent(uiComponent);
     }
+
+    UIObject::~UIObject()
+    = default;
 }

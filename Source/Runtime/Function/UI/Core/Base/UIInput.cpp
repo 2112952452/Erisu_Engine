@@ -38,6 +38,12 @@ namespace Erisu::Function
         return uiComponent->IsVisible();
     }
 
+    void UIInput::Destroy()
+    {
+        UIInputManager::GetInstance()->UnregisterInput(shared_from_this());
+        uiComponent.reset();
+    }
+
     bool operator>(const std::shared_ptr<UIInput>& lhs, const std::shared_ptr<UIInput>& rhs)
     {
         return lhs->Layer > rhs->Layer;

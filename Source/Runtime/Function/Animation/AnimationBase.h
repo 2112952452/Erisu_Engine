@@ -11,11 +11,43 @@
 #include "AnimationCurve.h"
 #include "IAnimation.h"
 #include "Log/LogSystem.h"
+#include "library/Vector.h"
+
+
+namespace
+{
+    using namespace Erisu::Scripts;
+
+    template <typename T>
+    T Lerp(T start, T end, float t)
+    {
+        return start + (end - start) * t;
+    }
+
+    template <>
+    inline Vector2 Lerp<Vector2>(Vector2 start, Vector2 end, float t)
+    {
+        return { Lerp(start.x, end.x, t), Lerp(start.y, end.y, t) };
+    }
+
+    template <>
+    inline Vector3 Lerp<Vector3>(Vector3 start, Vector3 end, float t)
+    {
+        return { Lerp(start.x, end.x, t), Lerp(start.y, end.y, t), Lerp(start.z, end.z, t) };
+    }
+
+    template <>
+    inline Vector4 Lerp<Vector4>(Vector4 start, Vector4 end, float t)
+    {
+        return { Lerp(start.x, end.x, t), Lerp(start.y, end.y, t), Lerp(start.z, end.z, t), Lerp(start.w, end.w, t) };
+    }
+
+}
 
 namespace Erisu::Function
 {
     template<typename T>
-    class  AnimationBase : public IAnimation
+    class AnimationBase : public IAnimation
     {
     protected:
         // T *target_;
@@ -41,7 +73,8 @@ namespace Erisu::Function
         AnimationCurve curve_ = Animation::LinearCurve;
 
     public:
-        AnimationBase(float duration, std::function<void(T)> target, T&& startValue, T&& endValue, AnimationCurve curve = Animation::LinearCurve,
+        AnimationBase(float duration, std::function<void(T)> target, T &&startValue, T &&endValue,
+                      AnimationCurve curve = Animation::LinearCurve,
                       bool isLoop = false);
 
         virtual ~AnimationBase() = default;
@@ -156,7 +189,7 @@ namespace Erisu::Function
             else
             {
                 onUpdate_ ? onUpdate_() : void();
-                target_(std::lerp(startValue_, endValue_, curve_.Evaluate(current_ / duration_)));
+                target_(Lerp(startValue_, endValue_, curve_.Evaluate(current_ / duration_)));
             }
         }
     }
@@ -256,8 +289,10 @@ namespace Erisu::Function
     }
 
     template<typename T>
-    AnimationBase<T>::AnimationBase(float duration, std::function<void(T)> target, T&& startValue, T&& endValue, AnimationCurve curve, bool isLoop)
-            : duration_(duration), target_(std::move(target)), startValue_(std::forward<T>(startValue)), endValue_(std::forward<T>(endValue)), curve_(std::move(curve)),
+    AnimationBase<T>::AnimationBase(float duration, std::function<void(T)> target, T &&startValue, T &&endValue,
+                                    AnimationCurve curve, bool isLoop)
+            : duration_(duration), target_(std::move(target)), startValue_(std::forward<T>(startValue)),
+              endValue_(std::forward<T>(endValue)), curve_(std::move(curve)),
               isLoop_(isLoop)
     {}
 
@@ -288,5 +323,6 @@ namespace Erisu::Function
     {
         return isFinished_;
     }
+
 }
 #endif //ERISU_ENGINE_ANIMATIONBASE_H

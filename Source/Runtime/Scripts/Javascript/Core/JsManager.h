@@ -29,6 +29,12 @@ namespace Erisu::Scripts
         void Execute(const char *script);
         void ExecuteFile(const char *path);
 
+        template<class T, class Ret, class... Args>
+        Ret CallMethod(T& obj, Args... args)
+        {
+            return dukglue_pcall_method<Ret>(context_, obj, args...);
+        }
+
         template<typename T>
         void RegisterGlobal(const T& obj, const char* name)
         {

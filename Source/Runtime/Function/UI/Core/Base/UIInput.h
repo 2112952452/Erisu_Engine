@@ -49,6 +49,8 @@ namespace Erisu::Function
         bool IsPointInRect(const Eigen::Vector2f& point) const;
         bool IsEnabled() const;
         bool IsVisible() const;
+
+        void Destroy();
     };
 
     bool operator>(const std::shared_ptr<UIInput>& lhs, const std::shared_ptr<UIInput>& rhs);

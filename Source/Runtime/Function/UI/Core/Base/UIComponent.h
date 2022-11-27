@@ -266,6 +266,9 @@ namespace Erisu::Function
                 LOG_ERROR("Unknown blend mode: " + blendMode);
         }
 
+        void SetEnabledJs(bool enabled_)
+        { this->enabled = enabled_; }
+
     public:
         void Update() override
         {}

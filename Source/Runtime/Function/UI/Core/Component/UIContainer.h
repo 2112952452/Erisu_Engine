@@ -62,9 +62,7 @@ namespace Erisu::Function
 
         void SetRect(const Eigen::Vector4f& rect) override;
         void SetRect(float x, float y, float width, float height) override;
-        void SetPosition(float x, float y) override;
         void SetSize(float width, float height) override;
-        void SetRotation(float rotation) override;
     public:
         // For Javascript
         void AddComponentJs(UIComponent* component)

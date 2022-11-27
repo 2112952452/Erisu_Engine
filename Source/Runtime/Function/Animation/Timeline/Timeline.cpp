@@ -4,6 +4,8 @@
 
 #include "Timeline.h"
 #include "Log/LogSystem.h"
+#include "../../UI/Core/Manager/UIAnimationManager.h"
+#include <JsManager.h>
 
 namespace Erisu::Function
 {
@@ -122,5 +124,29 @@ namespace Erisu::Function
     bool Timeline::IsFinished()
     {
         return this->isFinished_;
+    }
+
+    void Timeline::SetOnFinishedJs(const std::string &script)
+    {
+        OnFinished = [script] {
+            Scripts::JsManager::GetInstance().Execute(script.c_str());
+        };
+    }
+
+    void Timeline::SetOnStartedJs(const std::string &script)
+    {
+        OnStarted = [script] {
+            Scripts::JsManager::GetInstance().Execute(script.c_str());
+        };
+    }
+
+    void Timeline::AddClipJs(float startTime, IClip *clip)
+    {
+        AddClip(startTime, std::shared_ptr<IClip>(clip));
+    }
+
+    void Timeline::ActivateJs()
+    {
+        UIAnimationManager::AddTimeline(std::shared_ptr<Timeline>(this));
     }
 }

@@ -10,6 +10,7 @@ namespace Erisu::Function
     struct IClip
     {
     public:
+        virtual ~IClip() = default;
         [[nodiscard]] virtual float GetDuration() = 0;
 
         virtual void Play() = 0;

@@ -79,23 +79,12 @@ namespace Erisu::Function
         GenerateFBO();
     }
 
-    void UIContainer::SetPosition(float x, float y)
-    {
-        UIComponent::SetPosition(x, y);
-        GenerateFBO();
-    }
-
     void UIContainer::SetSize(float width, float height)
     {
         UIComponent::SetSize(width, height);
         GenerateFBO();
     }
 
-    void UIContainer::SetRotation(float rotation)
-    {
-        UIComponent::SetRotation(rotation);
-        GenerateFBO();
-    }
 
     UIContainer::UIContainer(std::string name, int priority, float width, float height) : UIComponent(std::move(name), priority)
     {
@@ -260,7 +249,10 @@ namespace Erisu::Function
         shader_.reset();
 
         for (const auto &component : components)
+        {
             component->SetParent(nullptr);
+            component->Destroy();
+        }
 
         components.clear();
     }

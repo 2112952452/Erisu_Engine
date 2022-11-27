@@ -20,6 +20,7 @@ namespace Erisu::Function
         AnimationCurve() = default;
         explicit AnimationCurve(std::map<float, float> keyFrames) : keyFrames_(std::move(keyFrames)) {}
         explicit AnimationCurve(std::function<float(float)> evaluateFunction) : evaluateFunction_(std::move(evaluateFunction)) {}
+        explicit AnimationCurve(const std::string &curveName);
 
         void AddKeyFrame(float time, float value);
         void SetEvaluateFunction(std::function<float(float)> evaluateFunction) { evaluateFunction_ = std::move(evaluateFunction); }

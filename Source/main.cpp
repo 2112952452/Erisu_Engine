@@ -13,16 +13,15 @@ int main()
     std::shared_ptr<GLRenderer> renderer = std::make_shared<GLRenderer>(Global::CanvasWidth, Global::CanvasHeight, Global::WindowTitle.c_str());
     Erisu::Global::Init();
 
+    std::shared_ptr<Scene> mainScene = std::make_shared<Scene>("Main Scene");
+    UIObject::RegisterToScene(mainScene);
+
     if constexpr (Global::DebugMode)
     {
         LOG_INFO("Debug Mode: ON");
-        renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(test_scene); });
+        renderer->AddImGuiWindow([&]() { DrawSceneHierarchy(mainScene); });
         renderer->AddImGuiWindow(DrawInspector);
     }
-
-    //CreateStartScene();
-    std::shared_ptr<Scene> mainScene = std::make_shared<Scene>("Main Scene");
-    UIObject::RegisterToScene(mainScene);
 
     JsManager::GetInstance().ExecuteFile("Scripts/main.js");
 
@@ -30,7 +29,7 @@ int main()
     app.SetScene(mainScene);
     app.Run();
 
-    test_scene->Destroy();
+    mainScene->Destroy();
 
     return 0; // do not use exit(0), it will cause memory leak.
 }

@@ -15,7 +15,7 @@ namespace Erisu::Function
     {
     private:
         UIObject() = default;
-        ~UIObject() = default;
+        ~UIObject();
 
     private:
         inline static std::shared_ptr<GameObject> instance_;

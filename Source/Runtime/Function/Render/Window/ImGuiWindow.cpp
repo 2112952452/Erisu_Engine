@@ -13,10 +13,9 @@
 
 namespace
 {
-
-    constexpr const char *imguiFontPath = "C:\\Users\\21129\\AppData\\Local\\Microsoft\\Windows\\Fonts\\方正兰亭细黑_GBK.ttf";
+    // 微软雅黑
+    constexpr const char *imguiFontPath = R"(C:\Windows\Fonts\msyh.ttc)";
     constexpr const char *glsl_version = "#version 330";
-
 }
 
 namespace Erisu::Function

@@ -28,7 +28,8 @@ namespace Erisu::Function
 
         int GetPriority() const override;
     public:
-        static std::shared_ptr<UIInputManager> GetInstance();
+        static std::shared_ptr<UIInputManager> GetInstancePtr();
+        static UIInputManager& GetInstance();
 
         void RegisterInput(const std::shared_ptr<UIInput>& input);
         void UnregisterInput(const std::shared_ptr<UIInput>& input);

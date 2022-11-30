@@ -22,7 +22,8 @@ namespace Erisu::Global
     inline unsigned int WindowWidth = 1920;
     inline unsigned int WindowHeight = 1080;
 
-    inline std::string DefaultFontPath = R"(Resources/font/SourceHanSansSC-Bold.otf)";
+    // 微软雅黑
+    inline std::string DefaultFontPath = R"(C:\Windows\Fonts\msyh.ttc)";
     inline unsigned int DefaultFontSize = 30;
 
     inline GLFWwindow *pMainWindow = nullptr;
@@ -38,36 +39,18 @@ namespace Erisu::Global
     // Init Function call after OpenGL context created
     inline void Init()
     {
-        ErisuWhiteTexture.Load("Resources\\Textures\\ErisuWhite.png");
-    }
+        // 1x1 white texture
+        {
+            // ErisuWhiteTexture.Load("Resources\\Textures\\ErisuWhite.png");
+            unsigned id;
+            glGenTextures(1, &id);
+            glBindTexture(GL_TEXTURE_2D, id);
+            unsigned char data[] = {255, 255, 255, 255};
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+            glBindTexture(GL_TEXTURE_2D, 0);
+            ErisuWhiteTexture = Function::GLTexture(id, 1, 1);
+        }
 
-    namespace Internal {
-        static int _ = [] {
-//            Py_Initialize();
-//
-//            PyRun_SimpleString("import sys");
-//            PyRun_SimpleString("sys.path.append('./Scripts')");
-//
-//            PyObject *pModule = PyImport_ImportModule("init");
-//            PyObject *pDict = PyModule_GetDict(pModule);
-//
-//            auto readVariable = [&](const char *name) {
-//                auto pObj = PyDict_GetItemString(pDict, name);
-//                LOG_FATAL_IF(pObj == nullptr, "Variable {} not found in init.py", name);
-//
-//                return pObj;
-//            };
-//
-//            WindowWidth = CanvasWidth = PyLong_AsLong(readVariable("WindowWidth"));
-//            WindowHeight = CanvasHeight = PyLong_AsLong(readVariable("WindowHeight"));
-//            WindowTitle = PyUnicode_AsUTF8(readVariable("WindowTitle"));
-//            DefaultFontPath = PyUnicode_AsUTF8(readVariable("GalTextBoxFontPath"));
-//            DefaultFontSize = PyLong_AsLong(readVariable("GalTextBoxFontSize"));
-//
-//            Py_Finalize();
-//
-            return 0;
-        }();
     }
 
 }

@@ -11,20 +11,19 @@
 #include "../../../../Function/UI/Component/UIButton.h"
 
 
-using namespace Erisu::Scripts;
-using namespace Erisu::Function;
-using namespace Eigen;
-
-
 namespace
 {
+    using namespace Erisu::Scripts;
+    using namespace Erisu::Function;
+    using namespace Eigen;
+
     void DestroyComponent(UIComponent* component)
     {
         auto ptr = std::dynamic_pointer_cast<IUIComponent>(component->shared_from_this());
         UIObject::RemoveUIComponent(ptr);
     }
 
-    int __REG__UI__ = []() {
+    int REG_ = []() {
         auto &js = JsManager::GetInstance();
 
         js.RegisterFunction("DestroyComponent", DestroyComponent);
@@ -112,6 +111,8 @@ namespace
 
         // UIButton
         js.RegisterMethod("SetOnClick", &UIButton::SetOnClickJs);             // SetOnClicked(function)
+        js.RegisterMethod("SetOnHoverEnter", &UIButton::SetOnHoverEnterJs);   // SetOnHoverEnter(function)
+        js.RegisterMethod("SetOnHoverExit", &UIButton::SetOnHoverExitJs);     // SetOnHoverExit(function)
         js.RegisterMethod<UIButton, void, const std::string&>("SetNormalTexture", &UIButton::SetNormalTexture); // SetNormalTexture(path)
         js.RegisterMethod<UIButton, void, const std::string&>("SetHoverTexture", &UIButton::SetHoverTexture);   // SetHoverTexture(path)
         js.RegisterMethod<UIButton, void, const std::string&>("SetPressedTexture", &UIButton::SetPressedTexture); // SetPressedTexture(path)

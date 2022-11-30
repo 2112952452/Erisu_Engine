@@ -6,12 +6,12 @@
 
 namespace Erisu::Function
 {
-    std::shared_ptr<UIInputManager> UIInputManager::GetInstance()
+    UIInputManager& UIInputManager::GetInstance()
     {
         std::call_once(UIInputManager::onceFlag_, []() {
             instance_ = std::shared_ptr<UIInputManager>(new UIInputManager, [](UIInputManager *p) { delete p; });
         });
-        return instance_;
+        return *instance_;
     }
 
     UIInputManager::UIInputManager() : IUIComponent("UIInputManager")
@@ -151,5 +151,12 @@ namespace Erisu::Function
     {
         if (auto it = inputs.find(input); it != inputs.end())
             inputs.erase(it);
+    }
+
+    std::shared_ptr<UIInputManager> UIInputManager::GetInstancePtr()
+    {
+        if (!instance_)
+            GetInstance();
+        return instance_;
     }
 }

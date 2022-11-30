@@ -5,6 +5,10 @@
 #ifndef ADARION_IAUDIODECODER_H
 #define ADARION_IAUDIODECODER_H
 
+#include <Log/LogSystem.h>
+/* You can use your own logger replace this */
+#define KANO_AUDIO_LOG(ERROR, ...) LOG_ERROR(ERROR, __VA_ARGS__)
+
 #include <memory>
 #include <string>
 

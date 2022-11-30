@@ -10,7 +10,7 @@ namespace
     ALCdevice *device = nullptr;
     ALCcontext *context = nullptr;
 
-    __attribute__((unused))
+    [[maybe_unused]]
     int INIT_OPENAL = [] {
         device = alcOpenDevice(nullptr);
         context = alcCreateContext(device, nullptr);
@@ -18,7 +18,7 @@ namespace
         return 0;
     }();
 
-    __attribute__((unused))
+    [[maybe_unused]]
     struct CLOSE_OPENAL
     {
         ~CLOSE_OPENAL()
@@ -45,6 +45,8 @@ namespace KanoAudio
 
     void Audio::Play() const
     {
+        std::lock_guard<std::mutex> lock(mutex_);
+
         if (IsPlaying() || !IsLoaded())
             return;
 
@@ -54,12 +56,19 @@ namespace KanoAudio
             alSourcef(source_, AL_GAIN, volume_);
             alSourcef(source_, AL_PITCH, pitch_);
             alSourcei(source_, AL_LOOPING, isLooping_ ? AL_TRUE : AL_FALSE);
+            alSourcef(source_, AL_ROLLOFF_FACTOR, 0.0f);
+            alSourcef(source_, AL_REFERENCE_DISTANCE, 0.0f);
+            alSourcef(source_, AL_MIN_GAIN, 0.0f);
+            alSourcef(source_, AL_MAX_GAIN, 2.0f);
+
         }
+
         alSourcePlay(source_);
     }
 
     void Audio::Pause() const
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         if (!IsPlaying())
             return;
 
@@ -68,6 +77,7 @@ namespace KanoAudio
 
     void Audio::Stop() const
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         if (!IsPlaying() && !IsPaused())
             return;
 
@@ -76,6 +86,7 @@ namespace KanoAudio
 
     void Audio::SetVolume(float volume)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         volume_ = volume;
         if (IsLoaded())
             alSourcef(source_, AL_GAIN, volume_);
@@ -83,6 +94,7 @@ namespace KanoAudio
 
     void Audio::SetPitch(float pitch)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         pitch_ = pitch;
         if (IsLoaded())
             alSourcef(source_, AL_PITCH, pitch_);
@@ -90,6 +102,7 @@ namespace KanoAudio
 
     void Audio::SetLooping(bool looping)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         isLooping_ = looping;
         if (IsLoaded())
             alSourcei(source_, AL_LOOPING, isLooping_ ? AL_TRUE : AL_FALSE);
@@ -144,8 +157,11 @@ namespace KanoAudio
 
     void Audio::SetCurrentTime(double time) const
     {
-        if (!IsLoaded()) return;
-        alSourcei(source_, AL_SAMPLE_OFFSET, (ALint) (time * frequency_));
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (!IsLoaded()) return;
+            alSourcei(source_, AL_SAMPLE_OFFSET, (ALint) (time * frequency_));
+        }
         Play();
     }
 
@@ -166,6 +182,7 @@ namespace KanoAudio
             Stop();
             alDeleteSources(1, &source_);
             alDeleteBuffers(1, &buffer_);
+
             size_ = 0;
             frequency_ = 0;
             channels_ = 0;

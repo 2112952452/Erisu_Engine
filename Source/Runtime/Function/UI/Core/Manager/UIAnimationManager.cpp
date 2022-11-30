@@ -11,14 +11,14 @@ namespace Erisu::Function
     { }
 
 
-    std::shared_ptr<UIAnimationManager> UIAnimationManager::GetInstance()
+    UIAnimationManager& UIAnimationManager::GetInstance()
     {
         std::call_once(onceFlag_, []() {
             instance_ = std::shared_ptr<UIAnimationManager>(new UIAnimationManager(), [](UIAnimationManager *p) {
                 delete p;
             });
         });
-        return instance_;
+        return *instance_;
     }
 
     void UIAnimationManager::SetVisible(bool visible)
@@ -64,15 +64,22 @@ namespace Erisu::Function
 
     void UIAnimationManager::AddTimeline(const std::shared_ptr<Timeline> &animation, bool removeAfterFinish)
     {
-        GetInstance()->animations.emplace_back(animation, removeAfterFinish);
+        GetInstance().animations.emplace_back(animation, removeAfterFinish);
     }
 
     void UIAnimationManager::RemoveTimeline(const std::shared_ptr<Timeline> &animation)
     {
-        auto& animations = GetInstance()->animations;
+        auto& animations = GetInstance().animations;
 
         animations.erase(std::remove_if(animations.begin(), animations.end(), [&](const auto &pair) {
             return pair.first == animation;
         }), animations.end());
+    }
+
+    std::shared_ptr<UIAnimationManager> UIAnimationManager::GetInstancePtr()
+    {
+        if (!instance_)
+            GetInstance();
+        return instance_;
     }
 }

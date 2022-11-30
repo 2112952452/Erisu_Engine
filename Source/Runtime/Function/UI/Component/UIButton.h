@@ -19,21 +19,9 @@ namespace Erisu::Function
         std::shared_ptr<GLTexture> hoverTexture_;
         std::shared_ptr<GLTexture> pressedTexture_;
 
-
         std::function<void()> onClick_;
-        /*
-        Simplified this class to only support onClick event.
-        if you want to support other events, you can inherit this class and override the virtual function.
-        or use UIInput directly.
-
-        とりあえず放っておこう。
         std::function<void()> onHoverEnter_;
         std::function<void()> onHoverExit_;
-
-        std::shared_ptr<GLShader> normalShader_;
-        std::shared_ptr<GLShader> hoverShader_;
-        std::shared_ptr<GLShader> pressedShader_;
-        */
 
     private:
         void Init();
@@ -46,6 +34,8 @@ namespace Erisu::Function
 
         void Destroy() override;
         void SetOnClick(const std::function<void()>& onClick);
+        void SetOnHoverEnter(const std::function<void()>& onHoverEnter);
+        void SetOnHoverExit(const std::function<void()>& onHoverExit);
 
         // NormalTexture is the texture when the button is not pressed or hovered.
         void SetNormalTexture(const std::shared_ptr<GLTexture>& texture);
@@ -65,6 +55,8 @@ namespace Erisu::Function
 
         // For JavaScript binding.
         void SetOnClickJs(const std::string &script);
+        void SetOnHoverEnterJs(const std::string &script);
+        void SetOnHoverExitJs(const std::string &script);
     };
 
 }

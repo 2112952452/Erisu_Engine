@@ -24,7 +24,7 @@ namespace Erisu::Function
         std::list<std::pair<std::shared_ptr<Timeline>, bool>> animations;
 
     public:
-        static std::shared_ptr<UIAnimationManager> GetInstance();
+        static UIAnimationManager& GetInstance();
 
         void SetVisible(bool visible) override;
         bool IsVisible() override;
@@ -36,6 +36,8 @@ namespace Erisu::Function
 
         static void AddTimeline(const std::shared_ptr<Timeline>& animation, bool removeAfterFinish = true);
         static void RemoveTimeline(const std::shared_ptr<Timeline>& animation);
+
+        static std::shared_ptr<UIAnimationManager> GetInstancePtr();
     public:
         inline static std::function<void()> OnStart; // only once, do not set it repeatedly
     };

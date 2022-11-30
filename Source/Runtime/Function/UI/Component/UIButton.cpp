@@ -74,11 +74,15 @@ namespace Erisu::Function
         {
             if (hoverTexture_ != nullptr)
                 SetTexture(hoverTexture_);
+            if (onHoverEnter_)
+                onHoverEnter_();
         };
 
         input_->onHoverExit = [this]()
         {
             SetTexture(normalTexture_);
+            if (onHoverExit_)
+                onHoverExit_();
         };
 
         input_->onPressed = [this]()
@@ -137,6 +141,32 @@ namespace Erisu::Function
         IComponent::Destroy();
         input_->Destroy();
         input_.reset(); // if not destroy, will cause reference cycle
+    }
+
+    void UIButton::SetOnHoverEnter(const std::function<void()> &onHoverEnter)
+    {
+        input_->onHoverEnter = onHoverEnter;
+    }
+
+    void UIButton::SetOnHoverExit(const std::function<void()> &onHoverExit)
+    {
+        input_->onHoverExit = onHoverExit;
+    }
+
+    void UIButton::SetOnHoverEnterJs(const std::string &script)
+    {
+        input_->onHoverEnter = [script]()
+        {
+            Scripts::JsManager::GetInstance().Execute(script.c_str());
+        };
+    }
+
+    void UIButton::SetOnHoverExitJs(const std::string &script)
+    {
+        input_->onHoverExit = [script]()
+        {
+            Scripts::JsManager::GetInstance().Execute(script.c_str());
+        };
     }
 
 }

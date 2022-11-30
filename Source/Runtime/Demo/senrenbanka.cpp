@@ -27,8 +27,6 @@ namespace
     std::shared_ptr<AnimationBase<float>> ch1_anim2;
 }
 
-// TODO: Embed Script Language? やはりgraphical editorが必要かもしれない, じゃLuaとImguiの中で選ばないと、JSやはりダメかな
-
 namespace Senrenbanka
 {
     void ChangeToMainScene()

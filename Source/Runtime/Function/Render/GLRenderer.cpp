@@ -37,17 +37,11 @@ void main()
 }
 )";
 
-    constexpr float vertex[] =
-            {
-                    // pos      // tex
-                    -1.f, -1.f, 0.0f, 0.0f,
-                    1.f, -1.f, 1.0f, 0.0f,
-                    1.f, 1.f, 1.0f, 1.0f,
+    constexpr float vertex[] = {
+            // pos      // tex
+            -1.f, -1.f, 0.0f, 0.0f, 1.f, -1.f, 1.0f, 0.0f, 1.f, 1.f, 1.0f, 1.0f,
 
-                    1.f, 1.f, 1.0f, 1.0f,
-                    -1.f, 1.f, 0.0f, 1.0f,
-                    -1.f, -1.f, 0.0f, 0.0f
-            };
+            1.f, 1.f, 1.0f, 1.0f, -1.f, 1.f, 0.0f, 1.0f, -1.f, -1.f, 0.0f, 0.0f};
 
     unsigned int scrVAO, scrVBO;
 
@@ -62,8 +56,8 @@ using namespace Erisu::Global;
 
 namespace Erisu::Function
 {
-    GLRenderer::GLRenderer(int width, int height, const char *windowTitle)
-            : pWindow_(std::make_unique<GLWindow>(width, height, windowTitle))
+    GLRenderer::GLRenderer(int width, int height, const char *windowTitle) : pWindow_(
+            std::make_unique<GLWindow>(width, height, windowTitle))
     {
         glfwInit();
         pWindow_->Init();
@@ -74,26 +68,34 @@ namespace Erisu::Function
         pImGuiWindow_ = std::make_unique<ImGuiWindow>(pWindow_->GetWindowPtr());
 
         LOG_DEBUG("GLAD and GLFW Initialized");
+
+        static bool isInitialized = false;
+        if (!isInitialized)
+        {
+            Global::Init();
+            isInitialized = true;
+        }
     }
 
-    GLRenderer::~GLRenderer()
-    = default;
+    GLRenderer::~GLRenderer() = default;
 
     void GLRenderer::Init()
     {
         pImGuiWindow_->Init();
 
-        pWindow_->SetFrameBufferSizeCallback([](GLFWwindow *window, int width, int height) {
-            isResized = true;
+        pWindow_->SetFrameBufferSizeCallback([](GLFWwindow *window, int width, int height)
+                                             {
+                                                 isResized = true;
 
-            Viewport.x() = width;
-            Viewport.y() = Viewport.x() * 9 / 16;
+                                                 Viewport.x() = width;
+                                                 Viewport.y() = Viewport.x() * 9 / 16;
 
-            glViewport(0, 0, Viewport.x(), Viewport.y());
-        });
+                                                 glViewport(0, 0, Viewport.x(), Viewport.y());
+                                             });
 
         // 最小化窗口时不渲染
-        glfwSetWindowIconifyCallback(pWindow_->GetWindowPtr(), [](GLFWwindow *window, int iconified) {
+        glfwSetWindowIconifyCallback(pWindow_->GetWindowPtr(), [](GLFWwindow *window, int iconified)
+        {
             isMinimized = iconified;
             LOG_DEBUG("Window minimized: {}", isMinimized);
         });
@@ -107,11 +109,15 @@ namespace Erisu::Function
             glEnable(GL_MULTISAMPLE);
 
         PostProcessBase::InitPostEffect(frameSampleBufferObj_, frameSampleColorBuffer_, 0);
-        pImGuiWindow_->AddNewWindow([&] {
-            ImGui::Begin("Game view");
-            ImGui::Image(reinterpret_cast<void *>(Global::MSAAEnabled ? frameSampleColorBuffer_ : textureColorBuffer_), ImVec2(Viewport.x(), Viewport.y()), ImVec2(0, 1), ImVec2(1, 0));
-            ImGui::End();
-        });
+        pImGuiWindow_->AddNewWindow([&]
+                                    {
+                                        ImGui::Begin("Game view");
+                                        ImGui::Image(
+                                                reinterpret_cast<void *>(Global::MSAAEnabled ? frameSampleColorBuffer_
+                                                                                             : textureColorBuffer_),
+                                                ImVec2(Viewport.x(), Viewport.y()), ImVec2(0, 1), ImVec2(1, 0));
+                                        ImGui::End();
+                                    });
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         LOG_DEBUG("OpenGL Renderer Initialized");
@@ -155,11 +161,12 @@ namespace Erisu::Function
 
         scene->RenderObjects();
 
-        if constexpr(Global::MSAAEnabled)
+        if constexpr (Global::MSAAEnabled)
         {
             glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferObj_);
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, frameSampleBufferObj_);
-            glBlitFramebuffer(0, 0, Viewport.x(), Viewport.y(), 0, 0, Viewport.x(), Viewport.y(), GL_COLOR_BUFFER_BIT, GL_NEAREST);
+            glBlitFramebuffer(0, 0, Viewport.x(), Viewport.y(), 0, 0, Viewport.x(), Viewport.y(), GL_COLOR_BUFFER_BIT,
+                              GL_NEAREST);
         }
 
         glDisable(GL_DEPTH_TEST);
@@ -234,13 +241,14 @@ namespace Erisu::Function
 
         // Create a color attachment texture
         glGenTextures(1, &textureColorBuffer_);
-        if constexpr(Global::MSAAEnabled)
+        if constexpr (Global::MSAAEnabled)
         {
             glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBuffer_);
             glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, Global::MSAASampleCount, GL_RGB, width, height, GL_TRUE);
 
             glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, textureColorBuffer_, 0);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, textureColorBuffer_,
+                                   0);
         } else
         {
             glBindTexture(GL_TEXTURE_2D, textureColorBuffer_);
@@ -256,7 +264,7 @@ namespace Erisu::Function
         // Create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
         glGenRenderbuffers(1, &renderBufferObj_);
         glBindRenderbuffer(GL_RENDERBUFFER, renderBufferObj_);
-        if constexpr(Global::MSAAEnabled)
+        if constexpr (Global::MSAAEnabled)
             glRenderbufferStorageMultisample(GL_RENDERBUFFER, Global::MSAASampleCount, GL_DEPTH24_STENCIL8, width,
                                              height);
         else
@@ -268,7 +276,7 @@ namespace Erisu::Function
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             LOG_FATAL("Framebuffer is not complete!");
 
-        if constexpr(Global::MSAAEnabled)
+        if constexpr (Global::MSAAEnabled)
         {
             glGenFramebuffers(1, &frameSampleBufferObj_);
             glBindFramebuffer(GL_FRAMEBUFFER, frameSampleBufferObj_);
@@ -312,7 +320,7 @@ namespace Erisu::Function
         glDeleteFramebuffers(1, &frameBufferObj_);
         glDeleteTextures(1, &textureColorBuffer_);
         glDeleteRenderbuffers(1, &renderBufferObj_);
-        if constexpr(Global::MSAAEnabled)
+        if constexpr (Global::MSAAEnabled)
         {
             glDeleteFramebuffers(1, &frameSampleBufferObj_);
             glDeleteTextures(1, &frameSampleColorBuffer_);

@@ -8,6 +8,7 @@
 #include "../../../../Function/Animation/AnimationCurve.h"
 #include "../../../../Function/Animation/Javascript/PositionClipJs.h"
 #include "../../../../Function/Animation/Javascript/ColorClipJs.h"
+#include "../../../../Function/Animation/Javascript/AudioClipJs.h"
 
 namespace
 {
@@ -21,19 +22,22 @@ namespace
         };
     }
 
-    int __REG__ = [] {
+    int REG_ = [] {
         auto &js = JsManager::GetInstance();
 
         js.RegisterFunction("SetOnGameStart", SetOnGameStartJs);
 
         js.RegisterConstructor<AnimationCurve, const std::string&>("AnimationCurve");
         js.RegisterConstructor<Timeline>("Timeline");
+
         js.RegisterConstructor<PositionClipJs, float, UIComponent*, Vector2*, Vector2*, AnimationCurve*>("PositionClip");
         js.RegisterConstructor<ColorClipJs, float, UIComponent*, Vector4*, Vector4*, AnimationCurve*>("ColorClip");
+        js.RegisterConstructor<AudioClipJs, float, Audio*, float, float, AnimationCurve*, int>("AudioClip");
 
         js.RegisterInheritance<IClip, Timeline>();
         js.RegisterInheritance<IClip, PositionClipJs>();
         js.RegisterInheritance<IClip, ColorClipJs>();
+        js.RegisterInheritance<IClip, AudioClipJs>();
 
         js.RegisterMethod("SetOnStarted", &Timeline::SetOnStartedJs);
         js.RegisterMethod("SetOnFinished", &Timeline::SetOnFinishedJs);
@@ -44,7 +48,6 @@ namespace
         js.RegisterMethod("Resume", &IClip::Resume);
         js.RegisterMethod("Stop", &IClip::Stop);
         js.RegisterMethod("ForceStop", &IClip::ForceStop);
-
         return 0;
     }();
 

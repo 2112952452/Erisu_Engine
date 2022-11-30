@@ -20,7 +20,7 @@ namespace Erisu::Function
 
     void UIInput::Register()
     {
-        UIInputManager::GetInstance()->RegisterInput(shared_from_this());
+        UIInputManager::GetInstance().RegisterInput(shared_from_this());
     }
 
     bool UIInput::IsPointInRect(const Eigen::Vector2f& point) const
@@ -40,7 +40,7 @@ namespace Erisu::Function
 
     void UIInput::Destroy()
     {
-        UIInputManager::GetInstance()->UnregisterInput(shared_from_this());
+        UIInputManager::GetInstance().UnregisterInput(shared_from_this());
         uiComponent.reset();
     }
 

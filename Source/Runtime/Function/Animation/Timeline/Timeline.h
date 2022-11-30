@@ -26,6 +26,7 @@ namespace Erisu::Function
 
     public:
         Timeline();
+        ~Timeline() override = default;
 
         void AddClip(float startTime, const std::shared_ptr<IClip>& clip);
 
@@ -53,10 +54,12 @@ namespace Erisu::Function
 
     public:
         // For JavaScript
+
         void SetOnFinishedJs(const std::string& script);
         void SetOnStartedJs(const std::string& script);
 
         void AddClipJs(float startTime, IClip* clip);
+        // Do not use it in C++, if you want to use it in C++, use UIAnimationManager::AddTimeline instead
         void ActivateJs();
     };
 }

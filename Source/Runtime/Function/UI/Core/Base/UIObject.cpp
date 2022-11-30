@@ -34,9 +34,9 @@ namespace Erisu::Function
             instance_ = std::make_shared<GameObject>("UIObject");
             // In DebugMode, fbo is rendered to imgui and not to screen, so input is no accurate
             if constexpr (!Global::DebugMode || Global::ForceEnableInputInDebugMode)
-                instance_->AddComponent(UIInputManager::GetInstance());
-            instance_->AddComponent(UIAnimationManager::GetInstance());
-            instance_->AddComponent(UIEventManager::GetInstance());
+                instance_->AddComponent(UIInputManager::GetInstancePtr());
+            instance_->AddComponent(UIAnimationManager::GetInstancePtr());
+            instance_->AddComponent(UIEventManager::GetInstancePtr());
         });
         return instance_;
     }

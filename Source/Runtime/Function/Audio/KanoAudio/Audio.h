@@ -17,7 +17,7 @@ extern "C" {
 #include <memory>
 #include <mutex>
 
-#include "Decoder/IAudioDecoder.h"
+#include "Source/Runtime/Function/Audio/KanoAudio/Decoder/IAudioDecoder.h"
 
 namespace KanoAudio
 {
@@ -64,7 +64,7 @@ namespace KanoAudio
 
         void SetVolume(float volume);
         void SetPitch(float pitch);
-        void SetLooping(bool looping);
+        void SetLoop(bool looping);
         void SetCurrentTime(double time) const;
 
         [[nodiscard]] float GetVolume() const;

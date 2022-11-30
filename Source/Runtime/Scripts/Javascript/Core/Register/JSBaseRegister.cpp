@@ -19,7 +19,7 @@ namespace
         JsManager::GetInstance().ExecuteFile(path.c_str());
     }
 
-    int __REG__ = [] {
+    int REG_ = [] {
         auto &js = JsManager::GetInstance();
         js.RegisterFunction("Print", printJs);
         js.RegisterFunction("ExecuteFile", executeFileJs);

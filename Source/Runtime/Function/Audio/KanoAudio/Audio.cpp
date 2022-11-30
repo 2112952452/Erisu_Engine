@@ -10,16 +10,16 @@ namespace
     ALCdevice *device = nullptr;
     ALCcontext *context = nullptr;
 
-    __attribute__((unused))
-    int INIT_OPENAL = [] {
+
+    [[maybe_unused]] int INIT_OPENAL = [] {
         device = alcOpenDevice(nullptr);
         context = alcCreateContext(device, nullptr);
         alcMakeContextCurrent(context);
         return 0;
     }();
 
-    __attribute__((unused))
-    struct CLOSE_OPENAL
+
+    [[maybe_unused]] struct CLOSE_OPENAL
     {
         ~CLOSE_OPENAL()
         {
@@ -88,7 +88,7 @@ namespace KanoAudio
             alSourcef(source_, AL_PITCH, pitch_);
     }
 
-    void Audio::SetLooping(bool looping)
+    void Audio::SetLoop(bool looping)
     {
         isLooping_ = looping;
         if (IsLoaded())

@@ -1,7 +1,6 @@
 
-
 function main() {
-    // push your code here
+    ExecuteFile("Scripts/start_scene.js");
 }
 
 main();

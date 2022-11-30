@@ -1,9 +1,5 @@
 #include "include.h"
-
-#include "Runtime/Demo/senrenbanka.h"
-#include "JsManager.h"
-using namespace Senrenbanka;
-using namespace Erisu::Scripts;
+#include "Source/Runtime/Function/Audio/AudioManager.h"
 
 int main()
 {
@@ -16,6 +12,11 @@ int main()
     std::shared_ptr<Scene> mainScene = std::make_shared<Scene>("Main Scene");
     UIObject::RegisterToScene(mainScene);
 
+    /* 音频模块 */
+    std::shared_ptr<GameObject> AudioMgr = std::make_shared<GameObject>("Audio Manager");
+    AudioMgr->AddComponent(AudioManager::GetInstancePtr());
+    mainScene->AddGameObject(AudioMgr);
+
     if constexpr (Global::DebugMode)
     {
         LOG_INFO("Debug Mode: ON");
@@ -23,6 +24,7 @@ int main()
         renderer->AddImGuiWindow(DrawInspector);
     }
 
+    //AudioManager::GetInstance().Play("C:\\Users\\Adarion\\Music\\米津玄師 (よねづ けんし) - LOSER.flac");
     JsManager::GetInstance().ExecuteFile("Scripts/main.js");
 
     app.SetRenderer(renderer);

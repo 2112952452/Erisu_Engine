@@ -11,14 +11,14 @@ namespace Erisu::Function
     UIEventManager::UIEventManager() : IUIComponent("UIEventManager")
     { }
 
-    std::shared_ptr<UIEventManager> UIEventManager::GetInstance()
+    UIEventManager& UIEventManager::GetInstance()
     {
         std::call_once(onceFlag_, []() {
             instance_ = std::shared_ptr<UIEventManager>(new UIEventManager(), [](UIEventManager *p) {
                 delete p;
             });
         });
-        return instance_;
+        return *instance_;
     }
 
     void UIEventManager::SetVisible(bool visible)
@@ -62,20 +62,28 @@ namespace Erisu::Function
 
     void UIEventManager::AddEvent(const std::string &name, const UIEventManager::Event &event, bool removeAfterFinish)
     {
-        GetInstance()->events.insert_or_assign(name, std::make_pair(event, removeAfterFinish));
+        GetInstance().events.insert_or_assign(name, std::make_pair(event, removeAfterFinish));
     }
 
     void UIEventManager::RemoveEvent(const std::string &name)
     {
-        auto it = GetInstance()->events.find(name);
-        if (it != GetInstance()->events.end())
-            GetInstance()->events.erase(it);
+        auto it = GetInstance().events.find(name);
+        if (it != GetInstance().events.end())
+            GetInstance().events.erase(it);
     }
 
     void UIEventManager::AddEvent(const std::string &name, const std::function<void()> &event,
                                   const std::function<bool()> &condition, bool removeAfterFinish)
     {
-        GetInstance()->events.insert_or_assign(name, std::make_pair(std::make_pair(event, condition), removeAfterFinish));
+        GetInstance().events.insert_or_assign(name, std::make_pair(std::make_pair(event, condition), removeAfterFinish));
 
+    }
+
+    std::shared_ptr<UIEventManager> UIEventManager::GetInstancePtr()
+    {
+        if (!instance_)
+            GetInstance();
+
+        return instance_;
     }
 }

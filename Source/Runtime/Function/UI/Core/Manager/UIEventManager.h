@@ -25,7 +25,9 @@ namespace Erisu::Function
         ~UIEventManager() override = default;
 
     public:
-        static std::shared_ptr<UIEventManager> GetInstance();
+        static UIEventManager& GetInstance();
+        static std::shared_ptr<UIEventManager> GetInstancePtr();
+
 
         void SetVisible(bool visible) override;
         bool IsVisible() override;

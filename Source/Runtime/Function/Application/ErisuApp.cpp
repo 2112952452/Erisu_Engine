@@ -99,7 +99,7 @@ namespace Erisu::Function
         pScene_ = pScene;
     }
 
-    ErisuApp::ErisuApp(std::shared_ptr<GLRenderer> renderer, std::shared_ptr<Scene> scene)
+    [[maybe_unused]] [[maybe_unused]] ErisuApp::ErisuApp(std::shared_ptr<GLRenderer> renderer, std::shared_ptr<Scene> scene)
             : pRenderer_(std::move(renderer)), pScene_(std::move(scene))
     {
     }

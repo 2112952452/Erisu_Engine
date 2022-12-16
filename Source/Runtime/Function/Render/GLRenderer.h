@@ -13,7 +13,6 @@
 #include "../Base/Camera.h"
 #include "Window/ImGuiWindow.h"
 #include "../Base/Scene.h"
-#include "PostProcessBase.h"
 
 #include "Global/Global.h"
 
@@ -40,8 +39,6 @@ namespace Erisu::Function
 
         void AddImGuiWindow(const std::function<void()>& drawFunction);
 
-        void AddPostEffect(const std::shared_ptr<PostProcessBase>& postEffect);
-
     private:
         void GenerateFrameBuffer(int width, int height);
         void DeleteFrameBuffer();
@@ -49,7 +46,6 @@ namespace Erisu::Function
     private:
         std::unique_ptr<GLWindow> pWindow_;
         std::unique_ptr<ImGuiWindow> pImGuiWindow_;
-        std::vector<std::shared_ptr<PostProcessBase>> postEffects_;
 
         unsigned renderBufferObj_   = 0;
         unsigned frameBufferObj_    = 0;

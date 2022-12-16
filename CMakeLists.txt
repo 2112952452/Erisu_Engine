@@ -61,7 +61,6 @@ add_executable(Erisu_Engine
         Source/Runtime/Function/Render/Window/ImGuiWindow.cpp
         Source/Runtime/Function/Render/GLRenderer.cpp
         Source/Runtime/Function/Render/GLTexture.cpp
-        Source/Runtime/Function/Render/PostProcessBase.cpp
         Source/Runtime/Function/Utility/ImGuiUtility.cpp
         Source/Runtime/Resource/ResourceManager.cpp
         Source/Runtime/Resource/ModelImport/ModelImport.cpp

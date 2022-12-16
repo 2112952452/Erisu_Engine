@@ -16,7 +16,6 @@ extern "C" {
 #include <future>
 
 #include "Decoder/IAudioDecoder.h"
-// push your own log system here
 
 namespace KanoAudio
 {

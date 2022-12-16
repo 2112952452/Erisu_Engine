@@ -18,6 +18,7 @@ namespace Erisu::Function
     public:
         ErisuApp();
 
+        [[maybe_unused]]
         ErisuApp(std::shared_ptr<GLRenderer> renderer, std::shared_ptr<Scene> scene);
 
         ErisuApp(const ErisuApp &) = delete;

@@ -108,7 +108,6 @@ namespace Erisu::Function
         if constexpr (Global::MSAAEnabled)
             glEnable(GL_MULTISAMPLE);
 
-        PostProcessBase::InitPostEffect(frameSampleBufferObj_, frameSampleColorBuffer_, 0);
         pImGuiWindow_->AddNewWindow([&]
                                     {
                                         ImGui::Begin("Game view");
@@ -170,9 +169,6 @@ namespace Erisu::Function
         }
 
         glDisable(GL_DEPTH_TEST);
-        for (const auto &postEffect: postEffects_)
-            postEffect->Render();
-
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -226,11 +222,6 @@ namespace Erisu::Function
     void GLRenderer::AddImGuiWindow(const std::function<void()> &drawFunction)
     {
         pImGuiWindow_->AddNewWindow(drawFunction);
-    }
-
-    void GLRenderer::AddPostEffect(const std::shared_ptr<PostProcessBase> &postEffect)
-    {
-        postEffects_.push_back(postEffect);
     }
 
     void GLRenderer::GenerateFrameBuffer(int width, int height)

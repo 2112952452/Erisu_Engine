@@ -8,7 +8,7 @@
 #include <string>
 
 #include "../Timeline/AnimationClip.h"
-#include "Source/Runtime/Function/Audio/AudioManager.h"
+#include "../../../Function/Audio/AudioManager.h"
 
 namespace Erisu::Function
 {

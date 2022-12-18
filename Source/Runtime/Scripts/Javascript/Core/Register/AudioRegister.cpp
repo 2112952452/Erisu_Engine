@@ -4,8 +4,7 @@
 
 
 #include "JsManager.h"
-#include "Source/Runtime/Function/Audio/AudioManager.h"
-
+#include "../../../Function/Audio/AudioManager.h"
 namespace
 {
     using namespace Erisu::Scripts;

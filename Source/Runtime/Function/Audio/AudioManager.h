@@ -9,7 +9,7 @@
 #include <mutex>
 #include <vector>
 
-#include "Source/Runtime/Function/Audio/KanoAudio/Audio.h"
+#include "KanoAudio/Audio.h"
 #include "IComponent.h"
 
 namespace Erisu::Function

@@ -13,7 +13,7 @@ namespace Erisu::Function
     class ImGuiWindow
     {
     public:
-        ImGuiWindow(GLFWwindow *pWindow_);
+        explicit ImGuiWindow(GLFWwindow *pWindow_);
         ~ImGuiWindow() = default;
 
         virtual void Init();

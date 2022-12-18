@@ -5,7 +5,7 @@
 extern "C" {
 #include <AL/al.h>
 #include <AL/alext.h>
-};
+}
 
 #include "FLACDecoder.h"
 #include "sndfile.h"

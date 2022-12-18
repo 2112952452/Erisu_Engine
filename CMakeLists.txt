@@ -39,7 +39,6 @@ find_package(Duktape CONFIG REQUIRED)
 
 find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_image_write.h")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${DUKTAPE_INCLUDE_DIRS})
 #生成可执行程序
 add_executable(Erisu_Engine
         Source/main.cpp

@@ -33,7 +33,6 @@ find_package(MPG123 CONFIG REQUIRED)
 find_package(Vorbis CONFIG REQUIRED)
 find_package(flac CONFIG REQUIRED)
 find_package(SndFile CONFIG REQUIRED)
-find_package(Duktape CONFIG REQUIRED)
 #暫くこれは使わない
 #find_package(imguizmo CONFIG REQUIRED)
 
@@ -42,6 +41,7 @@ find_path(STB_INCLUDE_DIRS "stb_image.h" "stb_image_write.h")
 #生成可执行程序
 add_executable(Erisu_Engine
         Source/main.cpp
+        Source/Runtime/Scripts/Javascript/include/dukglue/duktape.c
         ${RUNTIME_PATH}/Core/Global/Global.h ${RUNTIME_PATH}/Core/Log/LogSystem.cpp ${RUNTIME_PATH}/Core/Timer/Timer.cpp
         "Source/Runtime/Function/UI/Core/Renderer/TextRenderer.cpp"
         Source/Runtime/Function/Application/ErisuApp.cpp
@@ -76,4 +76,4 @@ add_executable(Erisu_Engine
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
-target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype OpenAL::OpenAL MPG123::libmpg123 MPG123::libout123 MPG123::libsyn123 Vorbis::vorbisfile FLAC::FLAC ${DUKTAPE_LIBRARY} SndFile::sndfile)
+target_link_libraries(${PROJECT_NAME} glad::glad glfw assimp::assimp imgui::imgui spdlog::spdlog spdlog::spdlog_header_only freetype OpenAL::OpenAL MPG123::libmpg123 MPG123::libout123 MPG123::libsyn123 Vorbis::vorbisfile FLAC::FLAC SndFile::sndfile)

@@ -15,4 +15,4 @@
 
 ## Demo
 
-![Demo](Demo.gif)
+![Demo](https://github.com/A-Greyrat/Erisu_Engine/blob/master/Demo.gif)

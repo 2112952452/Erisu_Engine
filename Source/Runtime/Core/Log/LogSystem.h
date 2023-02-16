@@ -41,12 +41,12 @@ namespace Erisu::Core
     };
 }
 
-#define LOG_FATAL_CALLBACK()    Erisu::Core::LogSystem::Close(); std::abort()
+#define LOG_FATAL_CALLBACK()    std::abort()
 
 #define LOG_INFO(...)           SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::info, __VA_ARGS__)
 #define LOG_WARNING(...)        SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::warn, __VA_ARGS__)
 #define LOG_ERROR(...)          SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::err, __VA_ARGS__)
-#define LOG_FATAL(...)          do { SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::critical, __VA_ARGS__); LOG_FATAL_CALLBACK(); } while (0)
+#define LOG_FATAL(...)          do { SPDLOG_LOGGER_CALL(Erisu::Core::LogSystem::GetLogger(), spdlog::level::critical, __VA_ARGS__); Erisu::Core::LogSystem::Close(); LOG_FATAL_CALLBACK(); } while (0)
 
 
 #define LOG_ERROR_IF(condition, ...)    do { if (condition) { LOG_ERROR(__VA_ARGS__);  return; } } while (0)

@@ -15,6 +15,4 @@
 
 ## Demo
 
-![Demo](Demo.gif)
-
 ![Demo](demo.jpg)
